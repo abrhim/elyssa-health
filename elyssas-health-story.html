@@ -21,7 +21,22 @@ body{font-family:var(--fb);color:var(--text);background:var(--bg);line-height:1.
 .sidebar .nav-label{font-size:.68rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--text-t);padding:16px 16px 6px;margin-top:8px;opacity:.6}
 .sidebar .nav-label:first-child{margin-top:0;padding-top:8px}
 .mobile-nav{display:none;position:sticky;top:0;z-index:100;background:var(--bg);border-bottom:1px solid var(--border);padding:12px 24px}
-.mobile-nav select{width:100%;font-family:var(--fb);font-size:.88rem;font-weight:500;color:var(--text);background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r);padding:10px 14px;cursor:pointer;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%239A9A94' stroke-width='2' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center}
+.mn-trigger{display:flex;align-items:center;justify-content:space-between;width:100%;font-family:var(--fb);font-size:.88rem;font-weight:500;color:var(--text);background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r);padding:10px 14px;cursor:pointer;transition:border-color .15s}
+.mn-trigger:hover,.mn-trigger.open{border-color:var(--orange)}
+.mn-trigger .mn-label{display:flex;align-items:center;gap:8px}
+.mn-trigger .mn-dot{width:6px;height:6px;border-radius:50%;background:var(--orange)}
+.mn-trigger .mn-chev{width:16px;height:16px;transition:transform .2s;color:var(--text-t)}
+.mn-trigger.open .mn-chev{transform:rotate(180deg)}
+.mn-panel{display:none;position:fixed;left:12px;right:12px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--rl);box-shadow:0 8px 24px rgba(0,0,0,.12);overflow-x:hidden;overflow-y:auto;max-height:calc(100vh - 80px);scrollbar-width:thin;-webkit-overflow-scrolling:touch;z-index:101}
+.mn-panel.open{display:block;animation:mnIn .15s ease}
+@keyframes mnIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+.mn-group{padding:10px 14px 4px;font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text-t);opacity:.6}
+.mn-item{display:flex;align-items:center;gap:10px;padding:10px 14px;font-size:.86rem;font-weight:500;color:var(--text-s);cursor:pointer;transition:all .1s;border-left:3px solid transparent}
+.mn-item:hover{background:var(--bg-warm);color:var(--text)}
+.mn-item.a{color:var(--orange);background:var(--orange-light);border-left-color:var(--orange);font-weight:600}
+.mn-sep{height:1px;background:var(--border-l);margin:4px 0}
+.mn-overlay{display:none;position:fixed;inset:0;z-index:99}
+.mn-overlay.open{display:block}
 .main{flex:1;min-width:0;max-width:860px;padding:0 24px}
 .ctr{max-width:1120px;margin:0 auto;padding:0}
 .ph{padding:48px 24px 0;text-align:center}
@@ -79,6 +94,41 @@ details[open] summary{border-bottom-color:var(--border);margin-bottom:12px}
 .dfn::after{content:attr(data-tip);position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);background:var(--bg-card);color:var(--text-s);border:1px solid var(--border);border-radius:var(--r);padding:8px 12px;font-size:.78rem;font-weight:400;font-family:var(--fb);line-height:1.5;width:280px;white-space:normal;pointer-events:none;opacity:0;transition:opacity .15s;z-index:200;box-shadow:0 4px 12px rgba(0,0,0,.1)}
 .dfn:hover::after{opacity:1}
 @media(max-width:640px){.dfn::after{left:0;transform:none;width:220px}}
+
+.cyc-cal{display:grid;grid-template-columns:repeat(10,1fr);gap:4px;margin:20px 0}
+.cyc-day{position:relative;border-radius:6px;padding:8px 4px;text-align:center;cursor:pointer;border:2px solid transparent;transition:all .15s;min-height:68px}
+.cyc-day:hover{border-color:var(--orange);transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.08)}
+.cyc-day.sel{border-color:var(--orange);box-shadow:0 4px 12px rgba(0,0,0,.1)}
+.cyc-day .cd-num{font-size:.72rem;font-weight:700;color:var(--text);margin-bottom:2px}
+.cyc-day .cd-bb{font-size:1.1rem;font-weight:700}
+.cyc-day .cd-crash{font-size:.62rem;font-weight:600;margin-top:1px}
+.cyc-day.g-green{background:var(--teal-light)}.cyc-day.g-green .cd-bb{color:var(--teal)}
+.cyc-day.g-yellow{background:#FFF8E1}.cyc-day.g-yellow .cd-bb{color:#B8860B}
+.cyc-day.g-orange{background:var(--orange-light)}.cyc-day.g-orange .cd-bb{color:var(--orange)}
+.cyc-day.g-red{background:#FDDEDE}.cyc-day.g-red .cd-bb{color:#C0392B}
+@media(prefers-color-scheme:dark){.cyc-day.g-yellow{background:#2A2510}.cyc-day.g-yellow .cd-bb{color:#D4A843}.cyc-day.g-red{background:#3D1414}.cyc-day.g-red .cd-bb{color:#E87474}}
+.phase-bar{display:flex;margin:8px 0 20px;border-radius:6px;overflow:hidden;font-size:.68rem;font-weight:600;text-align:center;letter-spacing:.02em}
+.phase-bar div{padding:6px 0;color:#fff}
+.phase-bar .pb-men{background:#C0392B;flex:7}.phase-bar .pb-fol{background:var(--teal);flex:7}
+.phase-bar .pb-ovu{background:var(--orange);flex:7}.phase-bar .pb-lut{background:#7B5EA7;flex:9}
+.day-detail{background:var(--bg-card);border:1px solid var(--border-l);border-radius:var(--rl);padding:24px;margin:20px 0;display:none}
+.day-detail.vis{display:block}
+.day-detail h4{font-family:var(--fh);font-size:1.1rem;margin-bottom:4px}
+.dd-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:12px 0}
+.dd-metric{text-align:center}
+.dd-metric .dd-val{font-size:1.4rem;font-weight:700}
+.dd-metric .dd-lbl{font-size:.72rem;color:var(--text-t);text-transform:uppercase;letter-spacing:.03em}
+.dd-rec{margin-top:16px;padding:16px;border-radius:var(--r);font-size:.88rem;line-height:1.6}
+.dd-rec.rec-go{background:var(--teal-light);border-left:3px solid var(--teal)}
+.dd-rec.rec-caution{background:#FFF8E1;border-left:3px solid #B8860B}
+.dd-rec.rec-protect{background:var(--orange-light);border-left:3px solid var(--orange)}
+.dd-rec.rec-danger{background:#FDDEDE;border-left:3px solid #C0392B}
+@media(prefers-color-scheme:dark){.dd-rec.rec-caution{background:#2A2510;border-left-color:#D4A843}.dd-rec.rec-danger{background:#3D1414;border-left-color:#E87474}}
+.phase-guide{margin:32px 0}
+.phase-guide h3{margin-bottom:8px}
+.pg-header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.pg-badge{display:inline-block;padding:3px 12px;border-radius:20px;font-size:.72rem;font-weight:700;color:#fff}
+@media(max-width:640px){.cyc-cal{grid-template-columns:repeat(5,1fr)}.dd-grid{grid-template-columns:repeat(2,1fr)}}
 </style>
 </head>
 <body>
@@ -88,21 +138,32 @@ details[open] summary{border-bottom-color:var(--border);margin-bottom:12px}
 <p class="sub">An interpretation of 365 days of wearable data, reported symptoms, and medical history. This is not a diagnosis. This is a picture drawn from data, intended to help her and her care team see what's happening.</p>
 </div>
 
-<div class="mobile-nav">
-<select id="nav-select">
-<option value="story">Her Story</option>
-<option value="plan">Daily Plan</option>
-<option value="month">Her Month</option>
-<option value="daily">The Comparison</option>
-<option value="exercise">Exercise</option>
-<option value="tuesday">Her Week</option>
-<option value="sleep">Sleep</option>
-<option value="picture">Bigger Picture</option>
-<option value="start">What To Investigate</option>
-<option value="known">What We Know</option>
-<option value="data">The Data</option>
-<option value="defs">Definitions</option>
-</select>
+<div class="mobile-nav" id="mobileNav">
+<div class="mn-overlay" id="mnOverlay"></div>
+<button class="mn-trigger" id="mnTrigger">
+<span class="mn-label"><span class="mn-dot"></span><span id="mnCurrent">Her Story</span></span>
+<svg class="mn-chev" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+</button>
+<div class="mn-panel" id="mnPanel">
+<div class="mn-group">Overview</div>
+<div class="mn-item a" data-t="story">Her Story</div>
+<div class="mn-item" data-t="plan">Daily Plan</div>
+<div class="mn-sep"></div>
+<div class="mn-group">The Data</div>
+<div class="mn-item" data-t="month">Her Month</div>
+<div class="mn-item" data-t="cycle">Cycle Planner</div>
+<div class="mn-item" data-t="daily">The Comparison</div>
+<div class="mn-item" data-t="exercise">Exercise</div>
+<div class="mn-item" data-t="tuesday">Her Week</div>
+<div class="mn-item" data-t="sleep">Sleep</div>
+<div class="mn-sep"></div>
+<div class="mn-group">Context</div>
+<div class="mn-item" data-t="picture">Bigger Picture</div>
+<div class="mn-item" data-t="start">What To Investigate</div>
+<div class="mn-item" data-t="known">What We Know</div>
+<div class="mn-item" data-t="data">Raw Data</div>
+<div class="mn-item" data-t="defs">Definitions</div>
+</div>
 </div>
 
 <div class="layout">
@@ -112,6 +173,7 @@ details[open] summary{border-bottom-color:var(--border);margin-bottom:12px}
 <a href="javascript:void(0)" data-t="plan">Daily Plan</a>
 <div class="nav-label">The Data</div>
 <a href="javascript:void(0)" data-t="month">Her Month</a>
+<a href="javascript:void(0)" data-t="cycle">Cycle Planner</a>
 <a href="javascript:void(0)" data-t="daily">The Comparison</a>
 <a href="javascript:void(0)" data-t="exercise">Exercise</a>
 <a href="javascript:void(0)" data-t="tuesday">Her Week</a>
@@ -429,6 +491,95 @@ details[open] summary{border-bottom-color:var(--border);margin-bottom:12px}
 <p>During waking hours when she takes zero steps — completely still — her heart rate averages 83.5 bpm. When walking 500+ steps, it's 89.3. A difference of only 6 bpm across the entire range of human movement. Her cardiovascular cost is almost entirely postural and autonomic, not movement-driven. On co-op Tuesdays, her zero-step heart rate averages 102 bpm. On Fridays (her best day), the same stillness averages 86. She's 16 bpm higher at co-op while motionless.</p>
 
 <p class="dn">Menstrual data from Garmin menstrual_cycle table (152 days, 6 cycles). Activity classifications: 52 CrossFit sessions, 2 co-op sessions (Jan 27, Feb 17) misclassified as HIIT. Co-op started Jan 27, 2026.</p>
+</section>
+
+<!-- ====== TAB: CYCLE PLANNER ====== -->
+<section class="tc" id="tab-cycle">
+<h2>Cycle planner: day by day</h2>
+<p class="si">Every day of her 30-day cycle, mapped from 6 cycles of data. Tap any day to see what to expect and how to approach it. Green days are safe for harder tasks. Red days need protection.</p>
+
+<div class="phase-bar">
+<div class="pb-men">Menstrual<br>Days 1–7</div>
+<div class="pb-fol">Follicular<br>Days 8–14</div>
+<div class="pb-ovu">Ovulatory<br>Days 15–21</div>
+<div class="pb-lut">Luteal<br>Days 22–30</div>
+</div>
+
+<div class="cyc-cal" id="cycCal"></div>
+
+<div class="day-detail" id="dayDetail">
+<h4 id="dd-title">Day 1 — Menstrual</h4>
+<div class="dd-grid">
+<div class="dd-metric"><div class="dd-val" id="dd-bb">—</div><div class="dd-lbl">Avg BB</div></div>
+<div class="dd-metric"><div class="dd-val" id="dd-hr">—</div><div class="dd-lbl">Avg HR</div></div>
+<div class="dd-metric"><div class="dd-val" id="dd-crash">—</div><div class="dd-lbl">Crash risk</div></div>
+<div class="dd-metric"><div class="dd-val" id="dd-hard">—</div><div class="dd-lbl">Hard day risk</div></div>
+</div>
+<div class="dd-grid" style="grid-template-columns:1fr 1fr">
+<div class="dd-metric"><div class="dd-val" id="dd-worst" style="font-size:1rem">—</div><div class="dd-lbl">Worst recorded</div></div>
+<div class="dd-metric"><div class="dd-val" id="dd-best" style="font-size:1rem">—</div><div class="dd-lbl">Best recorded</div></div>
+</div>
+<div id="dd-rec" class="dd-rec rec-go"></div>
+</div>
+
+<h3 style="margin-top:40px">Phase-by-phase guide</h3>
+
+<div class="phase-guide">
+<div class="pg-header"><span class="pg-badge" style="background:#C0392B">MENSTRUAL</span> Days 1–7</div>
+<div class="card">
+<p><strong>Day 1 is the most dangerous day of the month.</strong> She crashes 50% of the time. BB averages only 52 and 75% of day-1s qualify as hard days. Blood loss is heaviest. This is not a day to plan anything demanding.</p>
+<p><strong>Day 2</strong> is still risky (20% crash, 60% hard). The body is trying to recover from day 1 while still bleeding heavily.</p>
+<p><strong>Days 3–7 improve rapidly.</strong> By day 3, BB is back to 84. Days 5 and 7 are among the best days in the entire cycle (BB 88–90, zero crashes). The worst is over quickly if day 1 doesn’t trigger a cascade.</p>
+<p style="margin-top:12px"><strong>→ Day 1–2:</strong> Cancel or lighten everything possible. Pre-load electrolytes the night before. Lie flat. Floor exercise only if tolerable. Accept this day.<br>
+<strong>→ Days 3–7:</strong> Resume normal activity. Energy is rebuilding. Light to moderate exercise. By day 5–7, she may feel the best she’s felt in weeks.</p>
+</div>
+</div>
+
+<div class="phase-guide">
+<div class="pg-header"><span class="pg-badge" style="background:var(--teal)">FOLLICULAR</span> Days 8–14</div>
+<div class="card">
+<p><strong>This is the best window of the month.</strong> Day 8 averages BB of 95 — nearly full. Crash rate is 4.3% across the phase. Her body recharges well overnight. She starts each day with capacity to spare.</p>
+<p><strong>Day 11 is the one exception</strong> (BB 70, 40% hard day rate). This may be an ovulation-related dip mid-phase. Worth watching but not alarming.</p>
+<p><strong>Schedule hard things here.</strong> Appointments, errands, social commitments, physically demanding tasks — if it can wait until follicular phase, wait. This is when she has the margin to handle it.</p>
+<p style="margin-top:12px"><strong>→ Exercise:</strong> This is the phase for slightly more ambitious workouts. Her body can handle it and recovers well. Build strength now for the harder phases ahead.<br>
+<strong>→ Planning:</strong> Use this window to prepare for ovulatory phase. Stock up on electrolytes, prep easy meals, simplify the schedule for days 15–21.</p>
+</div>
+</div>
+
+<div class="phase-guide">
+<div class="pg-header"><span class="pg-badge" style="background:var(--orange)">OVULATORY</span> Days 15–21</div>
+<div class="card">
+<p><strong>The vulnerability window.</strong> 17.1% crash rate. She starts every day 15 points behind follicular. Her 3 PM heart rate averages 97.5 bpm. The three worst crashes in the dataset happened during this phase.</p>
+<p><strong>Days 13–15</strong> (follicular→ovulatory transition) are unpredictable — BB ranged from 33 to 100 across cycles. Don’t assume follicular energy carries over.</p>
+<p><strong>Day 16</strong> is consistently the tightest day (BB 68, 40% hard, range only 52–80). <strong>Day 20</strong> is the most dangerous ovulatory day (HR spikes to 88, 50% hard, 25% crash).</p>
+<p style="margin-top:12px"><strong>→ Exercise is non-negotiable this week.</strong> This is when the buffer matters most. Even 10 minutes. The Feb–Mar cascade happened because CrossFit stopped right as ovulatory arrived.<br>
+<strong>→ Reduce standing time.</strong> Sit whenever possible. Her zero-step HR during ovulatory averages 106+ bpm. Standing is expensive.<br>
+<strong>→ Co-op Tuesdays during ovulatory phase are highest-risk events in her life.</strong> If co-op falls on days 15–21, she needs maximum support: exercise that morning, extra electrolytes, horizontal rest before and after, and acceptance that Wednesday may be a write-off.</p>
+</div>
+</div>
+
+<div class="phase-guide">
+<div class="pg-header"><span class="pg-badge" style="background:#7B5EA7">LUTEAL</span> Days 22–30</div>
+<div class="card">
+<p><strong>Variable and watch-dependent.</strong> If she came through ovulatory without crashing, luteal is manageable (days 22, 25–27 are decent, BB 75–85). If ovulatory triggered a cascade, luteal is where it plays out.</p>
+<p><strong>Day 23 is the danger spot</strong> (40% crash, BB range 16–84). <strong>Day 28</strong> (25% crash, BB range 23–86) and <strong>Day 30</strong> (50% hard) are also watch days. HR runs highest of any phase in the mornings (73 at 7am vs 62.5 follicular).</p>
+<p><strong>Day 29 is surprisingly good</strong> (BB 85, zero crashes). A brief window before the next period.</p>
+<p style="margin-top:12px"><strong>→ Keep exercising daily.</strong> Don’t let up now. Her body is heading toward period start and needs the vascular support.<br>
+<strong>→ Days 28–30: start pre-loading.</strong> Period is coming. Increase fluids and electrolytes. Plan a light day 1. If she feels herself slipping, go horizontal early.<br>
+<strong>→ Watch for cascade setup.</strong> If day 23 or 24 is hard, the next several days need protection or a crash at day 1 is almost certain.</p>
+</div>
+</div>
+
+<h3 style="margin-top:40px">Today’s card</h3>
+<p class="si">Enter her current cycle day to see the planning recommendation.</p>
+<div style="display:flex;gap:12px;align-items:center;margin-bottom:16px">
+<label style="font-size:.88rem;font-weight:500;color:var(--text)">Cycle day:</label>
+<input type="number" id="todayInput" min="1" max="30" value="1" style="width:70px;padding:8px 12px;font-size:1rem;font-family:var(--fb);border:1px solid var(--border);border-radius:var(--r);background:var(--bg-card);color:var(--text)">
+<button onclick="showToday()" style="padding:8px 16px;font-size:.88rem;font-weight:500;color:#fff;background:var(--orange);border:none;border-radius:var(--r);cursor:pointer;font-family:var(--fb)">Show plan</button>
+</div>
+<div id="todayCard" class="day-detail vis" style="display:none"></div>
+
+<p class="dn">Data from 6 menstrual cycles (Oct 2025–Mar 2026). 3–6 data points per cycle day. Crash = BB peak < 50. Hard day = BB peak < 65. Phase boundaries approximate; individual cycles vary by 1–2 days. Day 19 has only 3 data points (small sample). Future version will integrate live Garmin data and auto-detect cycle day.</p>
 </section>
 
 <!-- ====== TAB: TUESDAY ====== -->
@@ -767,20 +918,38 @@ details[open] summary{border-bottom-color:var(--border);margin-bottom:12px}
 function switchTab(id){
 document.querySelectorAll('.sidebar a').forEach(x=>x.classList.remove('a'));
 document.querySelectorAll('.tc').forEach(x=>x.classList.remove('a'));
+document.querySelectorAll('.mn-item').forEach(x=>x.classList.remove('a'));
 const sideLink=document.querySelector('.sidebar a[data-t="'+id+'"]');
 if(sideLink) sideLink.classList.add('a');
+const mnItem=document.querySelector('.mn-item[data-t="'+id+'"]');
+if(mnItem){mnItem.classList.add('a');document.getElementById('mnCurrent').textContent=mnItem.textContent;}
 document.getElementById('tab-'+id).classList.add('a');
-document.getElementById('nav-select').value=id;
+closeMobileMenu();
 const mainEl=document.querySelector('.main');
 if(mainEl) mainEl.scrollTop=0;
 window.scrollTo({top:document.querySelector('.ph').offsetTop,behavior:'smooth'});
 }
+// Sidebar clicks
 document.querySelectorAll('.sidebar a').forEach(a=>{
 a.addEventListener('click',e=>{e.preventDefault();switchTab(a.dataset.t);});
 });
-document.getElementById('nav-select').addEventListener('change',e=>{
-switchTab(e.target.value);
+// Mobile dropdown
+const mnTrigger=document.getElementById('mnTrigger');
+const mnPanel=document.getElementById('mnPanel');
+const mnOverlay=document.getElementById('mnOverlay');
+function openMobileMenu(){
+const rect=mnTrigger.getBoundingClientRect();
+mnPanel.style.top=(rect.bottom+4)+'px';
+mnTrigger.classList.add('open');mnPanel.classList.add('open');mnOverlay.classList.add('open');
+}
+function closeMobileMenu(){mnTrigger.classList.remove('open');mnPanel.classList.remove('open');mnOverlay.classList.remove('open');}
+if(mnTrigger){
+mnTrigger.addEventListener('click',()=>{mnPanel.classList.contains('open')?closeMobileMenu():openMobileMenu();});
+mnOverlay.addEventListener('click',closeMobileMenu);
+document.querySelectorAll('.mn-item').forEach(item=>{
+item.addEventListener('click',()=>{switchTab(item.dataset.t);});
 });
+}
 
 // Data
 const hrs=['12am','1am','2am','3am','4am','5am','6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm','8pm','9pm','10pm','11pm'];
@@ -1430,6 +1599,138 @@ const el=document.getElementById(anchor);
 if(el) el.scrollIntoView({behavior:'smooth',block:'center'});
 },100);
 });
+})();
+
+// Cycle planner data and interactivity
+(function(){
+const cycData=[
+{d:1,phase:'menstrual',bb:52,worst:21,best:100,hr:78.5,stress:45.3,crash:50,hard:75},
+{d:2,phase:'menstrual',bb:61,worst:7,best:100,hr:75.3,stress:42.2,crash:20,hard:60},
+{d:3,phase:'menstrual',bb:84,worst:51,best:100,hr:74.3,stress:35.8,crash:0,hard:20},
+{d:4,phase:'menstrual',bb:85,worst:63,best:100,hr:70.9,stress:34.2,crash:0,hard:20},
+{d:5,phase:'menstrual',bb:88,worst:76,best:99,hr:78.0,stress:41.5,crash:0,hard:0},
+{d:6,phase:'menstrual',bb:71,worst:18,best:100,hr:59.2,stress:40.0,crash:20,hard:20},
+{d:7,phase:'menstrual',bb:90,worst:82,best:100,hr:55.8,stress:33.6,crash:0,hard:0},
+{d:8,phase:'follicular',bb:95,worst:79,best:100,hr:60.7,stress:40.8,crash:0,hard:0},
+{d:9,phase:'follicular',bb:82,worst:64,best:96,hr:61.3,stress:40.2,crash:0,hard:20},
+{d:10,phase:'follicular',bb:82,worst:69,best:100,hr:60.5,stress:41.4,crash:0,hard:0},
+{d:11,phase:'follicular',bb:70,worst:40,best:89,hr:66.6,stress:49.4,crash:20,hard:40},
+{d:12,phase:'follicular',bb:81,worst:51,best:100,hr:60.0,stress:40.8,crash:0,hard:20},
+{d:13,phase:'ovulatory',bb:79,worst:28,best:100,hr:62.5,stress:40.8,crash:20,hard:20},
+{d:14,phase:'ovulatory',bb:79,worst:33,best:96,hr:63.6,stress:41.2,crash:20,hard:20},
+{d:15,phase:'ovulatory',bb:80,worst:48,best:98,hr:64.7,stress:41.6,crash:20,hard:20},
+{d:16,phase:'ovulatory',bb:68,worst:52,best:80,hr:66.6,stress:37.6,crash:0,hard:40},
+{d:17,phase:'ovulatory',bb:76,worst:37,best:95,hr:66.6,stress:41.4,crash:20,hard:20},
+{d:18,phase:'luteal',bb:78,worst:58,best:100,hr:58.7,stress:33.6,crash:0,hard:20},
+{d:19,phase:'ovulatory',bb:94,worst:87,best:100,hr:50.0,stress:27.8,crash:0,hard:0},
+{d:20,phase:'luteal',bb:63,worst:20,best:90,hr:88.1,stress:57.3,crash:25,hard:50},
+{d:21,phase:'luteal',bb:77,worst:31,best:97,hr:76.2,stress:37.8,crash:25,hard:25},
+{d:22,phase:'luteal',bb:85,worst:54,best:100,hr:76.4,stress:35.5,crash:0,hard:25},
+{d:23,phase:'luteal',bb:63,worst:16,best:84,hr:81.1,stress:45.6,crash:40,hard:40},
+{d:24,phase:'luteal',bb:71,worst:39,best:93,hr:79.2,stress:40.4,crash:20,hard:20},
+{d:25,phase:'luteal',bb:76,worst:70,best:83,hr:75.6,stress:39.4,crash:0,hard:0},
+{d:26,phase:'luteal',bb:78,worst:55,best:100,hr:75.9,stress:41.2,crash:0,hard:20},
+{d:27,phase:'luteal',bb:75,worst:67,best:78,hr:78.7,stress:45.8,crash:0,hard:0},
+{d:28,phase:'luteal',bb:65,worst:23,best:86,hr:76.6,stress:44.8,crash:25,hard:25},
+{d:29,phase:'luteal',bb:85,worst:73,best:91,hr:78.1,stress:46.7,crash:0,hard:0},
+{d:30,phase:'luteal',bb:66,worst:59,best:72,hr:75.6,stress:38.5,crash:0,hard:50}
+];
+
+function getGrade(day){
+if(day.crash>=40) return 'g-red';
+if(day.crash>=20||day.hard>=50) return 'g-orange';
+if(day.hard>=20||day.bb<75) return 'g-yellow';
+return 'g-green';
+}
+
+function getRec(day){
+const d=day.d;
+const phase=day.phase;
+if(d===1) return {cls:'rec-danger',text:'\u26a0\ufe0f <strong>Highest-risk day of the month.</strong> Cancel or lighten everything. Pre-load electrolytes. Stay horizontal as much as possible. Floor exercise only if tolerable. If you feel okay, great \u2014 but don\u2019t plan as if you will. 3 of 4 tracked cycles started with BB \u226463.'};
+if(d===2) return {cls:'rec-protect',text:'\u26a0\ufe0f <strong>Still recovering.</strong> 60% chance of a hard day. Keep it light. Electrolytes, fluids, rest. The body is trying to rebuild blood volume while still losing it.'};
+if(d>=3&&d<=4) return {cls:'rec-caution',text:'\ud83d\udfe1 <strong>Recovery underway.</strong> BB averaging 84\u201385. Most days are fine but 1 in 5 is still hard. Gentle exercise. Start resuming normal activity. Listen to how the morning feels.'};
+if(d>=5&&d<=7) return {cls:'rec-go',text:'\u2705 <strong>Clear window.</strong> BB 88\u201390, zero crashes. Energy is rebuilding strongly. Moderate exercise is great. This is often when she feels the best she\u2019s felt all month.'};
+if(d===8) return {cls:'rec-go',text:'\u2705 <strong>Best day of the entire cycle.</strong> BB averages 95. Zero crashes, zero hard days. Schedule anything. Push a bit harder in exercise. Enjoy this.'};
+if(d>=9&&d<=10) return {cls:'rec-go',text:'\u2705 <strong>Excellent window continues.</strong> BB 82. Low risk. Good day for appointments, errands, social energy, harder workouts.'};
+if(d===11) return {cls:'rec-caution',text:'\ud83d\udfe1 <strong>Mid-follicular dip.</strong> BB drops to 70, 40% hard day rate. Possibly ovulation-related. Don\u2019t skip exercise. Still manageable but temper expectations.'};
+if(d>=12&&d<=14) return {cls:'rec-caution',text:'\ud83d\udfe1 <strong>Approaching the transition.</strong> BB ~79\u201381. Generally good but the follicular\u2192ovulatory boundary is unpredictable (BB ranged 33\u201396 across cycles). Don\u2019t overcommit. Exercise is important \u2014 build the buffer for what\u2019s coming.'};
+if(d>=15&&d<=17) return {cls:'rec-protect',text:'\u26a0\ufe0f <strong>Ovulatory phase \u2014 exercise is non-negotiable.</strong> BB drops to 68\u201380. HR climbs. 20\u201340% hard day rate. Don\u2019t skip the morning workout. Reduce standing time. Extra electrolytes. If this is a co-op Tuesday, prepare for the hardest version of that day.'};
+if(d===18||d===19) return {cls:'rec-caution',text:'\ud83d\udfe1 <strong>Brief mid-ovulatory respite.</strong> Day 19 averages BB 94 \u2014 a surprising bright spot. Don\u2019t be fooled; day 20 is ahead. Use this energy wisely.'};
+if(d===20) return {cls:'rec-danger',text:'\u26a0\ufe0f <strong>Peak danger in ovulatory phase.</strong> HR spikes to 88 avg. 50% hard day rate. 25% crash risk. This was the day of the Jan 27 co-op crash (BB 20). Exercise, electrolytes, minimize standing, horizontal rest midday.'};
+if(d===21) return {cls:'rec-protect',text:'\u26a0\ufe0f <strong>End of ovulatory.</strong> 25% crash risk. Still elevated. Keep protecting. The luteal transition is coming and if she\u2019s already depleted, it cascades.'};
+if(d===22) return {cls:'rec-caution',text:'\ud83d\udfe1 <strong>Entering luteal.</strong> BB 85 if she made it through ovulatory intact. 25% hard day rate. Exercise daily, stay hydrated. Watch how the body responds.'};
+if(d===23) return {cls:'rec-danger',text:'\u26a0\ufe0f <strong>Mid-luteal danger spot.</strong> 40% crash rate, BB range 16\u201384. Two crashes have hit this day. If day 20\u201322 were hard, she may be in a cascade. Prioritize rest, horizontal time, and exercise.'};
+if(d>=24&&d<=27) return {cls:'rec-caution',text:'\ud83d\udfe1 <strong>Variable luteal.</strong> BB 71\u201378. Generally manageable unless a cascade is active. Keep daily exercise going. HR runs high in mornings (73+ at 7am). Day 25 and 27 are relatively safe.'};
+if(d===28) return {cls:'rec-protect',text:'\u26a0\ufe0f <strong>Late luteal \u2014 period approaching.</strong> 25% crash risk. BB range 23\u201386. Start pre-loading electrolytes and fluids for day 1. Plan a light tomorrow if possible.'};
+if(d===29) return {cls:'rec-go',text:'\u2705 <strong>Surprisingly good.</strong> BB 85, zero crashes. A brief window before the period. Use it to prepare: stock electrolytes, simplify the next 2 days, set up for a gentle day 1.'};
+if(d===30) return {cls:'rec-protect',text:'\u26a0\ufe0f <strong>Eve of the period.</strong> 50% hard day rate. BB 66. Increase fluids, front-load sodium. Tomorrow is day 1 \u2014 the most dangerous day. If she can rest tonight, it helps.'};
+return {cls:'rec-caution',text:'No specific data for this day.'};
+}
+
+const phaseLabel={menstrual:'Menstrual',follicular:'Follicular',ovulatory:'Ovulatory',luteal:'Luteal'};
+
+// Build calendar grid
+const cal=document.getElementById('cycCal');
+if(cal){
+cycData.forEach(day=>{
+const div=document.createElement('div');
+div.className='cyc-day '+getGrade(day);
+div.dataset.day=day.d;
+div.innerHTML='<div class="cd-num">Day '+day.d+'</div><div class="cd-bb">'+day.bb+'</div>'+(day.crash>0?'<div class="cd-crash" style="color:'+(day.crash>=40?'#C0392B':'var(--orange)')+'">'+day.crash+'% crash</div>':'<div class="cd-crash" style="color:var(--text-t)">'+(day.hard>0?day.hard+'% hard':'\u2713')+'</div>');
+div.addEventListener('click',()=>showDay(day.d));
+cal.appendChild(div);
+});
+}
+
+function showDay(num){
+const day=cycData.find(d=>d.d===num);
+if(!day) return;
+const det=document.getElementById('dayDetail');
+det.classList.add('vis');
+det.style.display='block';
+document.querySelectorAll('.cyc-day').forEach(d=>{d.classList.remove('sel')});
+const sel=document.querySelector('.cyc-day[data-day="'+num+'"]');
+if(sel) sel.classList.add('sel');
+document.getElementById('dd-title').textContent='Day '+day.d+' \u2014 '+phaseLabel[day.phase];
+document.getElementById('dd-bb').textContent=day.bb;
+document.getElementById('dd-bb').style.color=day.bb>=80?'var(--teal)':day.bb>=65?'#B8860B':'var(--orange)';
+document.getElementById('dd-hr').textContent=day.hr;
+document.getElementById('dd-hr').style.color=day.hr>=80?'var(--orange)':day.hr>=70?'#B8860B':'var(--teal)';
+document.getElementById('dd-crash').textContent=day.crash+'%';
+document.getElementById('dd-crash').style.color=day.crash>=40?'#C0392B':day.crash>=20?'var(--orange)':'var(--teal)';
+document.getElementById('dd-hard').textContent=day.hard+'%';
+document.getElementById('dd-hard').style.color=day.hard>=40?'var(--orange)':day.hard>=20?'#B8860B':'var(--teal)';
+document.getElementById('dd-worst').textContent='BB '+day.worst;
+document.getElementById('dd-worst').style.color=day.worst<30?'#C0392B':day.worst<50?'var(--orange)':'var(--text-s)';
+document.getElementById('dd-best').textContent='BB '+day.best;
+document.getElementById('dd-best').style.color='var(--teal)';
+const rec=getRec(day);
+const recEl=document.getElementById('dd-rec');
+recEl.className='dd-rec '+rec.cls;
+recEl.innerHTML=rec.text;
+}
+
+// Today's card
+window.showToday=function(){
+const input=document.getElementById('todayInput');
+const num=parseInt(input.value);
+if(num<1||num>30) return;
+const day=cycData.find(d=>d.d===num);
+if(!day) return;
+const rec=getRec(day);
+const card=document.getElementById('todayCard');
+card.style.display='block';
+card.className='day-detail vis';
+card.innerHTML='<h4>Today: Day '+day.d+' \u2014 '+phaseLabel[day.phase]+'</h4>'+
+'<div class="dd-grid"><div class="dd-metric"><div class="dd-val" style="color:'+(day.bb>=80?'var(--teal)':day.bb>=65?'#B8860B':'var(--orange)')+'">'+day.bb+'</div><div class="dd-lbl">Expected BB</div></div>'+
+'<div class="dd-metric"><div class="dd-val" style="color:'+(day.crash>=40?'#C0392B':day.crash>=20?'var(--orange)':'var(--teal)')+'">'+day.crash+'%</div><div class="dd-lbl">Crash risk</div></div>'+
+'<div class="dd-metric"><div class="dd-val" style="color:'+(day.hr>=80?'var(--orange)':'var(--text)')+'">'+day.hr+'</div><div class="dd-lbl">Expected HR</div></div>'+
+'<div class="dd-metric"><div class="dd-val">'+day.hard+'%</div><div class="dd-lbl">Hard day risk</div></div></div>'+
+'<div class="dd-rec '+rec.cls+'">'+rec.text+'</div>';
+};
+
+// Auto-show day 1 on load
+showDay(1);
 })();
 </script>
 </body>
