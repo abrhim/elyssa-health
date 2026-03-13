@@ -1,0 +1,1436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What Elyssa's Body Is Doing</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+:root{--teal:#1D9E75;--teal-light:#E1F5EE;--orange:#C4663A;--orange-light:#FAECE7;--bg:#FAFAF7;--bg-card:#FFF;--bg-warm:#F5F3EE;--text:#2C2C2A;--text-s:#6B6B66;--text-t:#9A9A94;--border:#E5E3DC;--border-l:#EEECE6;--fh:'Lora',Georgia,serif;--fb:'DM Sans',-apple-system,sans-serif;--r:10px;--rl:14px}
+@media(prefers-color-scheme:dark){:root{--teal:#5DCAA5;--teal-light:#0D2E23;--orange:#E8956A;--orange-light:#3D1F14;--bg:#141413;--bg-card:#1C1C1A;--bg-warm:#1F1E1B;--text:#E0DED6;--text-s:#A5A39B;--text-t:#737168;--border:#333230;--border-l:#2A2928}}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth}
+body{font-family:var(--fb);color:var(--text);background:var(--bg);line-height:1.7;-webkit-font-smoothing:antialiased}
+.layout{display:flex;min-height:100vh}
+.sidebar{position:sticky;top:0;height:100vh;width:200px;flex-shrink:0;padding:24px 0 24px 24px;overflow-y:auto;scrollbar-width:none}
+.sidebar::-webkit-scrollbar{display:none}
+.sidebar a{display:block;font-family:var(--fb);font-size:.82rem;font-weight:500;color:var(--text-t);text-decoration:none;padding:8px 16px;border-left:2px solid transparent;border-radius:0;transition:all .15s;line-height:1.4;margin-bottom:2px}
+.sidebar a:hover{color:var(--text-s);background:var(--bg-warm)}
+.sidebar a.a{color:var(--orange);border-left-color:var(--orange);background:var(--orange-light);font-weight:600}
+.sidebar .nav-label{font-size:.68rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--text-t);padding:16px 16px 6px;margin-top:8px;opacity:.6}
+.sidebar .nav-label:first-child{margin-top:0;padding-top:8px}
+.mobile-nav{display:none;position:sticky;top:0;z-index:100;background:var(--bg);border-bottom:1px solid var(--border);padding:12px 24px}
+.mobile-nav select{width:100%;font-family:var(--fb);font-size:.88rem;font-weight:500;color:var(--text);background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r);padding:10px 14px;cursor:pointer;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%239A9A94' stroke-width='2' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center}
+.main{flex:1;min-width:0;max-width:860px;padding:0 24px}
+.ctr{max-width:1120px;margin:0 auto;padding:0}
+.ph{padding:48px 24px 0;text-align:center}
+.ph h1{font-family:var(--fh);font-size:2rem;font-weight:500;margin-bottom:8px}
+.ph .sub{font-size:.9rem;color:var(--text-s);max-width:540px;margin:0 auto;line-height:1.6}
+.tc{display:none;padding:40px 0 60px;animation:fi .3s ease}
+.tc.a{display:block}
+@keyframes fi{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+h2{font-family:var(--fh);font-size:1.5rem;font-weight:500;margin-bottom:8px}
+h3{font-family:var(--fh);font-size:1.15rem;font-weight:500;margin:32px 0 12px}
+p{margin-bottom:16px;color:var(--text-s);font-size:.92rem}
+.si{font-size:.95rem;color:var(--text-s);margin-bottom:28px;line-height:1.7}
+.lead{font-size:1.05rem;color:var(--text);line-height:1.7;margin-bottom:20px}
+.card{background:var(--bg-card);border:1px solid var(--border-l);border-radius:var(--rl);padding:20px 24px;margin-bottom:16px}
+.sg{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:20px 0}
+.sc{background:var(--bg-card);border:1px solid var(--border-l);border-radius:var(--r);padding:16px}
+.sl{font-size:.78rem;color:var(--text-t);margin-bottom:8px;font-weight:500;text-transform:uppercase;letter-spacing:.04em}
+.sr{display:flex;justify-content:space-between;align-items:baseline;margin:4px 0}
+.sv{font-size:1.4rem;font-weight:600}
+.st{font-size:.72rem;font-weight:500;padding:2px 8px;border-radius:20px}
+.vt{color:var(--teal)}.vo{color:var(--orange)}
+.tt{background:var(--teal-light);color:var(--teal)}.to{background:var(--orange-light);color:var(--orange)}
+.cw{position:relative;width:100%;margin:20px 0 8px}
+.cw canvas{width:100%!important}
+.cw.h3{height:320px}.cw.h2{height:260px}.cw.h1{height:200px}
+.cl{display:flex;gap:20px;font-size:.82rem;color:var(--text-s);margin:4px 0 24px}
+.ld{width:10px;height:10px;border-radius:50%;display:inline-block;margin-right:6px;vertical-align:middle}
+table.dt{width:100%;border-collapse:collapse;font-size:.82rem;margin:16px 0}
+.dt th{text-align:left;padding:10px 12px;font-weight:600;color:var(--text-t);font-size:.75rem;text-transform:uppercase;letter-spacing:.04em;border-bottom:2px solid var(--border)}
+.dt td{padding:10px 12px;border-bottom:1px solid var(--border-l);color:var(--text-s)}
+.dt td:not(:first-child),.dt th:not(:first-child){text-align:center}
+.dt tr:last-child td{border-bottom:none}
+.dt tr.hl{background:var(--orange-light)}
+.iv{padding:20px 24px;margin-bottom:12px;border-radius:var(--rl);border:1px solid var(--border-l);background:var(--bg-card)}
+.iv-t{font-family:var(--fh);font-size:1.05rem;font-weight:500;color:var(--text);margin-bottom:6px}
+.iv p{margin-bottom:0}
+.cr{display:grid;grid-template-columns:1fr auto 1fr;gap:16px;align-items:center;margin:16px 0;padding:16px 20px;background:var(--bg-warm);border-radius:var(--r)}
+.cr-s{text-align:center}
+.cr-v{font-size:.75rem;color:var(--text-t);font-weight:600}
+.cr-n{font-size:1.8rem;font-weight:600}
+.cr-l{font-size:.78rem;color:var(--text-s)}
+details{margin:12px 0}
+details summary{cursor:pointer;font-weight:500;font-size:.88rem;color:var(--text);padding:12px 0;border-bottom:1px solid var(--border-l)}
+details summary:hover{color:var(--orange)}
+details[open] summary{border-bottom-color:var(--border);margin-bottom:12px}
+.dn{font-size:.78rem;color:var(--text-t);margin-top:16px;padding-top:16px;border-top:1px solid var(--border-l);line-height:1.6}
+.dl-btn{display:inline-block;padding:8px 16px;font-size:.82rem;font-weight:500;color:var(--teal);background:var(--teal-light);border:none;border-radius:var(--r);cursor:pointer;margin:4px 8px 4px 0;font-family:var(--fb);transition:opacity .2s}
+.dl-btn:hover{opacity:.8}
+@media(max-width:900px){.sidebar{display:none}.mobile-nav{display:block}.main{max-width:100%}}
+@media(max-width:640px){.sg{grid-template-columns:1fr 1fr}.cr{grid-template-columns:1fr;gap:8px}.cr-v{display:none}h2{font-size:1.3rem}.ctr{padding:0}.main{padding:0 16px}.dt{font-size:.75rem}.dt th,.dt td{padding:8px 6px}}
+@media print{.sidebar,.mobile-nav{display:none}.tc{display:block!important;page-break-inside:avoid;padding:20px 0;border-bottom:1px solid #ccc}.ph{padding:20px 0 0}body{background:#fff;font-size:11pt}.cw{height:auto!important}.dl-btn{display:none}.main{max-width:100%}}
+
+.dfn{position:relative;border-bottom:1px dotted var(--orange);color:var(--text);cursor:pointer;text-decoration:none}
+.dfn:hover{border-bottom-color:var(--orange);color:var(--orange)}
+.dfn::after{content:attr(data-tip);position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);background:var(--bg-card);color:var(--text-s);border:1px solid var(--border);border-radius:var(--r);padding:8px 12px;font-size:.78rem;font-weight:400;font-family:var(--fb);line-height:1.5;width:280px;white-space:normal;pointer-events:none;opacity:0;transition:opacity .15s;z-index:200;box-shadow:0 4px 12px rgba(0,0,0,.1)}
+.dfn:hover::after{opacity:1}
+@media(max-width:640px){.dfn::after{left:0;transform:none;width:220px}}
+</style>
+</head>
+<body>
+<div class="ctr">
+<div class="ph">
+<h1>What Elyssa's Body Is Doing</h1>
+<p class="sub">An interpretation of 365 days of wearable data, reported symptoms, and medical history. This is not a diagnosis. This is a picture drawn from data, intended to help her and her care team see what's happening.</p>
+</div>
+
+<div class="mobile-nav">
+<select id="nav-select">
+<option value="story">Her Story</option>
+<option value="plan">Daily Plan</option>
+<option value="month">Her Month</option>
+<option value="daily">The Comparison</option>
+<option value="exercise">Exercise</option>
+<option value="tuesday">Her Week</option>
+<option value="sleep">Sleep</option>
+<option value="picture">Bigger Picture</option>
+<option value="start">What To Investigate</option>
+<option value="known">What We Know</option>
+<option value="data">The Data</option>
+<option value="defs">Definitions</option>
+</select>
+</div>
+
+<div class="layout">
+<nav class="sidebar" id="sidebar">
+<div class="nav-label">Overview</div>
+<a href="javascript:void(0)" data-t="story" class="a">Her Story</a>
+<a href="javascript:void(0)" data-t="plan">Daily Plan</a>
+<div class="nav-label">The Data</div>
+<a href="javascript:void(0)" data-t="month">Her Month</a>
+<a href="javascript:void(0)" data-t="daily">The Comparison</a>
+<a href="javascript:void(0)" data-t="exercise">Exercise</a>
+<a href="javascript:void(0)" data-t="tuesday">Her Week</a>
+<a href="javascript:void(0)" data-t="sleep">Sleep</a>
+<div class="nav-label">Context</div>
+<a href="javascript:void(0)" data-t="picture">Bigger Picture</a>
+<a href="javascript:void(0)" data-t="start">What To Investigate</a>
+<a href="javascript:void(0)" data-t="known">What We Know</a>
+<a href="javascript:void(0)" data-t="data">Raw Data</a>
+<a href="javascript:void(0)" data-t="defs">Definitions</a>
+</nav>
+<div class="main">
+
+<!-- ====== TAB: HER STORY ====== -->
+<section class="tc a" id="tab-story">
+<h2>What a day feels like</h2>
+
+<p class="lead">Most people don't think about what their body is doing to keep them upright. They stand up from a chair and walk to the kitchen without their heart racing, without their vision dimming, without a quiet negotiation happening between their brain and their blood vessels. Their body does thousands of invisible things per hour — adjusting blood pressure, redirecting blood flow, regulating temperature — and none of it costs them anything they'd notice.</p>
+
+<p class="lead">Elyssa's body does all of those same things. It just costs her almost everything she has.</p>
+
+<h3>Morning</h3>
+<p>A healthy person sleeps 7–8 hours, spends about 20% of that in deep sleep — the phase where the body physically repairs itself — and wakes up near full capacity. Healthy Garmin users with good sleep routinely start the day at 85–100 on the Body Battery scale.</p>
+
+<p>Elyssa sleeps nearly 10 hours. Despite all that time, she only gets about an hour of deep sleep — roughly half the minimum normal amount. Her brain spends a third of the night in vivid REM dreaming, far more than typical, while being shortchanged on the phase that actually restores her body. A healthy person's body recovers at about 12–14 energy points per hour of sleep. Elyssa's recovers at 6.9. She sleeps 30% longer and gets half the return. That's why she needs almost 10 hours to reach a morning level of 75 that a healthy person reaches in 7.</p>
+
+<p>On her worst days, she wakes up in single digits. The day is over before it starts.</p>
+
+<h3>Standing up</h3>
+<p>When a healthy person stands, gravity pulls blood into the legs. Within a second — before they could even form a conscious thought about it — the brain detects a tiny pressure drop, fires a signal through small nerve fibers to the blood vessels in the legs, and those vessels squeeze tight. Blood pushes back upward. Pressure holds steady. The person doesn't feel a thing.</p>
+
+<p>Elyssa's blood vessels don't squeeze properly. Blood falls into her legs and stays there. So her heart does the only thing it can — it beats faster and harder to try to push blood upward on its own. A healthy person's heart rate might rise 18 beats per minute from sleeping to standing. Elyssa's rises 37. Both of them end up around 90 beats per minute during the day — but the healthy person's heart climbed from 72 to get there. Elyssa's climbed from 57. Double the distance. Double the work. Every morning. Just to reach the same starting line.</p>
+
+<h3>The long drain</h3>
+<p>From the moment she's upright, Elyssa starts losing energy. And this is where her day diverges most from a typical person's.</p>
+
+<p>A healthy person's energy curve has texture. It dips when they exert themselves and rises when they sit down, eat lunch, or relax for a few minutes. Healthy Garmin users routinely see their energy climb by 5 to 30 points during a quiet afternoon — watching TV, sitting at a desk, reading on the couch. Some describe their energy "staying almost full" through an entire day of desk work. On rest days, a healthy person might only lose 10–30 points across the whole day.</p>
+
+<p>Elyssa's curve is a straight line down. On nearly two-thirds of her days, her energy drops from morning to night without a single upward bump. No recovery from sitting. No recharge after lunch. No bounce-back from resting on the couch. She loses about 5 energy points every waking hour, and here is the finding that stands out most in her data: <strong style="color:var(--text)">it doesn't matter what she does.</strong> Whether she walks 11,000 steps or takes 95, the drain rate is almost identical. She loses 62 points on a rest day and 66 on an active day.</p>
+
+<p>A healthy person who walks 11,000 steps drains significantly more than one who rests. Elyssa drains the same either way. Her body is spending nearly all of its energy on something invisible — the constant cardiovascular effort of keeping blood flowing to her brain against a system that won't cooperate. The walking barely registers on top of that baseline cost.</p>
+
+<h3>Afternoon</h3>
+<p>By noon, Elyssa's energy is at 45 out of 100. A healthy person at noon might be at 60. The gap has already opened.</p>
+
+<p>By 3 PM she's at 29. The healthy person: 47. By this point in the day, Elyssa has entered the zone where language starts to slip. Reading becomes harder. Finding words takes effort. She can still think in images, still process spatial information — but the verbal system, which is the most energy-hungry thing her brain does, is running on fumes. This isn't a learning disability. It's an underfueled brain rationing its resources. On good days, speaking is easier. On bad days, it's the first thing to go.</p>
+
+<p>By 6 PM, she's at 18. The healthy person is still at 39, and their body has already started shifting into evening recovery mode — their energy is beginning to tick back upward while they're still awake, sitting on the couch after dinner. Elyssa's body doesn't do this. Her system doesn't downshift into recovery while she's conscious. She just keeps draining.</p>
+
+<h3>Evening</h3>
+<p>By 9 PM, Elyssa is at 13 out of 100. Essentially empty. The healthy person, at the end of their most exhausting day of the week, might hit 20. Elyssa hits 13 on a normal day. On Tuesdays — her hardest day — she's at 10.</p>
+
+<p>Then she sleeps. For ten hours. And claws her way back to 75.</p>
+
+<p>And does it again.</p>
+
+<h3>But not every day is the same</h3>
+<p>That description is an average day. The reality is that her days cycle on a monthly rhythm that reshapes everything. During follicular phase — the week or two after her period ends — her body recovers better overnight. She wakes up at 82. Her heart rate stays lower. She crashes only 4% of the time. This is her best window, and it's when she feels closest to functional.</p>
+
+<p>During ovulatory phase, the system breaks down. Her body's overnight recovery is impaired by the hormonal shift. She wakes up at 67 instead of 82 — starting 15 points behind before she's even stood up. Her heart rate at 3 PM hits 97.5 instead of 87. She crashes 17% of the time. The three worst crashes in the entire dataset all happened during ovulatory phase.</p>
+
+<p>And on day 1 of her period — when blood loss is heaviest — she crashes half the time. The single worst day in five months of data was November 11: she went from 91 to 21 overnight, on the exact day her period started. She went to bed feeling fine and woke up in crisis.</p>
+
+<p>This means she doesn't just have good days and bad days. She has good <em>weeks</em> and bad <em>weeks</em>, on a monthly clock, and many of the "random" crashes that seem unpredictable from outside are actually predictable once you know where she is in her cycle.</p>
+
+<h3>What the data says about all of this</h3>
+<p>These aren't impressions. They come from 140 days of continuous wearable monitoring, compared against 796 days of data from a healthy Garmin user and benchmarked against global averages from millions of users and an academic study of 781 individuals.</p>
+
+<p>Her morning energy looks normal on paper — 75 versus the global average of 71. But that number hides what it costs: she sleeps 30% longer at half the recovery efficiency. Her daily energy drain of 67 points is 37% higher than the global average of 49. Her drain rate of 4.7 points per hour is 74% faster than our reference individual's 2.7. And on 64% of her days, her energy goes in only one direction — down — with no daytime recovery at all. The reference individual gets daytime recharge on 90% of days.</p>
+
+<p>She's not tired because she does too much. She's not tired because she doesn't try hard enough. She's tired because her body spends nearly all of its energy on the invisible work of staying upright and perfused, and there's almost nothing left over for living.</p>
+
+<p style="margin-top:32px;font-style:italic;color:var(--text-s)">The rest of this document shows the data, the charts, the comparisons, and the medical context behind this picture. But if this page is all you read, you've understood the most important thing.</p>
+</section>
+
+<!-- ====== TAB: DAILY PLAN ====== -->
+<section class="tc" id="tab-plan">
+<h2>Daily action plan</h2>
+<p class="si">These are the things that help, based on 140 days of data. Print this page. None require a doctor's visit. All can start today.</p>
+
+<div class="iv">
+<div class="iv-t"><span style="background:var(--teal-light);color:var(--teal);padding:2px 10px;border-radius:12px;font-size:.72rem;font-weight:600;margin-right:8px">DAILY</span> Exercise — 15 to 20 minutes, every morning</div>
+<p>Her muscles physically pump blood back to her heart and brain. Without this, her veins can’t do it alone. The day after exercise, her resting heart rate drops 6 bpm and her autonomic system runs calmer for 24 hours. This isn’t fitness training — it’s mechanical circulatory support.</p>
+<p><strong>How:</strong> Start with the floor workout (starts lying down, never requires standing). Once the home gym is set up, add light barbell work. On bad days when her body won’t move, even 4 minutes of ankle pumps and glute bridges while lying flat counts. Consistency matters more than intensity. Never push to max heart rate — the data shows a run at HR 169 during a vulnerable phase caused a multi-day crash.</p>
+<p><strong>When it matters most:</strong> During ovulatory phase (roughly days 15–21 of her cycle). This is when her system is most vulnerable and the exercise buffer is the difference between a hard week and a crash cascade.</p>
+</div>
+
+<div class="iv">
+<div class="iv-t"><span style="background:var(--teal-light);color:var(--teal);padding:2px 10px;border-radius:12px;font-size:.72rem;font-weight:600;margin-right:8px">DAILY</span> Salt and electrolytes — 3 to 5 grams of sodium per day</div>
+<p>More sodium means more blood volume. More blood volume means more blood available to pump upward to her brain. The standard POTS recommendation is 3–5g sodium/day — roughly double what’s recommended for healthy people. This isn’t unhealthy for her; it’s compensating for a system that can’t hold onto fluid properly.</p>
+<p><strong>How:</strong> Use quality electrolyte mixes with high sodium and low sugar — LMNT (1000mg sodium/packet), Normalyte (clinical-grade, designed for POTS), or Liquid IV. Avoid Gatorade (too much sugar, not enough sodium). Salt food generously. Some people add ¼ tsp salt to a glass of water.</p>
+<p><strong>When:</strong> First thing in the morning before getting vertical. Before co-op. Before any extended standing. Front-load — don’t wait until she feels bad.</p>
+</div>
+
+<div class="iv">
+<div class="iv-t"><span style="background:var(--teal-light);color:var(--teal);padding:2px 10px;border-radius:12px;font-size:.72rem;font-weight:600;margin-right:8px">DAILY</span> Water — 2 to 3 liters minimum</div>
+<p>Water expands blood volume, but only when paired with electrolytes. Water alone actually dilutes sodium and can make things worse. Always drink with salt or an electrolyte mix.</p>
+</div>
+
+<div class="iv">
+<div class="iv-t"><span style="background:var(--teal-light);color:var(--teal);padding:2px 10px;border-radius:12px;font-size:.72rem;font-weight:600;margin-right:8px">DAILY</span> Lie flat for 15–20 minutes midday</div>
+<p>Not sitting — sitting still pools blood in the legs (her zero-step heart rate averages 83 bpm while seated/standing). Lying flat removes gravity from the equation entirely. Legs elevated is even better. On Tuesdays, this is critical between co-op and the evening commitment.</p>
+</div>
+
+<div class="iv">
+<div class="iv-t"><span style="background:var(--orange-light);color:var(--orange);padding:2px 10px;border-radius:12px;font-size:.72rem;font-weight:600;margin-right:8px">WEEKLY</span> Tuesday protocol</div>
+<p>Tuesday is her worst day by every metric (BB 66.6, 4 crashes, HR 72.4). Co-op alone registers as a HIIT workout on her Garmin.</p>
+<p><strong>Before co-op:</strong> Exercise (even 10 minutes), electrolytes, large glass of salted water. Eat a salty breakfast.</p>
+<p><strong>During co-op:</strong> Sit whenever possible. Avoid prolonged standing — her heart rate hits 102 bpm while motionless at co-op vs 86 on Fridays.</p>
+<p><strong>Between co-op and evening:</strong> Lie flat for 15–20 minutes. More electrolytes. This window is the best chance to prevent Wednesday from being a crash day.</p>
+</div>
+
+<div class="iv">
+<div class="iv-t"><span style="background:#E8E0F0;color:#7B5EA7;padding:2px 10px;border-radius:12px;font-size:.72rem;font-weight:600;margin-right:8px">MONTHLY</span> Track the cycle and plan around it</div>
+<p>Her menstrual cycle is the second-biggest driver of crashes after exercise status. Ovulatory phase (days 15–21) has a 17% crash rate vs 4% in follicular. Period start day crashes 50% of the time.</p>
+<p><strong>Ovulatory week (days 15–21):</strong> Don’t skip exercise. Increase electrolytes. Plan lighter days if possible. This is the vulnerability window.</p>
+<p><strong>Day before expected period:</strong> Pre-load fluids and electrolytes. Plan nothing demanding. Accept the crash may come and structure the day for it.</p>
+<p><strong>Follicular phase (days 8–14):</strong> This is her best window. BB starts at 82, crash rate is 4%. If there’s something hard to schedule, put it here.</p>
+</div>
+
+<div class="iv">
+<div class="iv-t"><span style="background:var(--orange-light);color:var(--orange);padding:2px 10px;border-radius:12px;font-size:.72rem;font-weight:600;margin-right:8px">MEDICAL</span> Iron supplementation</div>
+<p>Get ferritin and CBC drawn now. Given her heavy menstrual bleeding and celiac disease (which impairs gut absorption), IV iron may be more effective than oral supplements. If oral: take with vitamin C on an empty stomach, away from calcium, dairy, and gluten-free grains. Recheck levels every 3–6 months given ongoing blood loss.</p>
+</div>
+
+<div class="iv">
+<div class="iv-t"><span style="background:var(--border-l);color:var(--text-s);padding:2px 10px;border-radius:12px;font-size:.72rem;font-weight:600;margin-right:8px">CONSIDER</span> Compression garments</div>
+<p>Waist-high compression stockings reduce venous pooling in the legs. Given her light touch hypersensitivity, these may or may not be tolerable — firm compression may be OK since she tolerates firm pressure but not light touch. Worth trying, especially on co-op days.</p>
+</div>
+
+<h3 style="margin-top:32px">What not to do</h3>
+<div class="card">
+<p><strong>Don’t rest more on bad days.</strong> The data shows rest costs more energy per stress point than movement (2.0 BB/stress vs 1.63). Sitting still with a heart rate of 83 is harder on her body than gentle walking.</p>
+<p><strong>Don’t skip exercise because she feels bad.</strong> She needs it more on bad days, not less. The exercise buffer is what prevents bad phases from becoming crash cascades.</p>
+<p><strong>Don’t push to maximum effort.</strong> A run at HR 169 during a hormonal transition caused a multi-day crash. She doesn’t need intensity. She needs consistency.</p>
+<p><strong>Don’t ignore the calendar.</strong> Crashes aren’t random. Once you know her cycle phase, most of them are predictable.</p>
+</div>
+</section>
+
+<!-- ====== TAB: WHERE TO START ====== -->
+<section class="tc" id="tab-start">
+<h2>What to investigate</h2>
+<p class="si">These are the medical steps worth pursuing. The daily management items are in the Daily Plan tab. These are the questions to bring to doctors.</p>
+<div class="iv"><div class="iv-t">Check her iron</div><p>A simple blood draw for ferritin and a CBC. The menstrual data now shows her body crashes 50% of the time on day 1 of her period — the day blood loss is heaviest. November 11, the worst crash in five months of data, was exactly day 1: BB plummeted from 91 to 21 overnight. If she's been losing significant blood monthly and not absorbing iron well due to celiac, her body may be running critically low on the raw materials it needs to carry oxygen and maintain blood volume. If ferritin is low, IV iron infusions (which bypass the gut entirely) can replenish stores in one or two sessions.</p></div>
+<div class="iv"><div class="iv-t">Talk to someone about the bleeding</div><p>Her menstrual flow — filling a Diva Cup every two hours, bleeding through extra heavy pads — is significantly heavier than typical. The data now confirms that her menstrual cycle drives crash risk more than almost any other factor: ovulatory phase produces 4× the crash rate of follicular phase. Every month of heavy blood loss directly undermines the blood volume her body is already struggling to maintain.</p></div>
+<div class="iv"><div class="iv-t">Consider seeing a geneticist</div><p>Her combination of chorioretinal coloboma, congenital heart condition, and lifelong autonomic dysfunction — especially with her daughter also having coloboma more extensively — suggests a genetic thread. A geneticist can evaluate whether they share an underlying condition, informing care for both.</p></div>
+<div class="iv"><div class="iv-t">Ask about small fiber neuropathy testing</div><p>A skin punch biopsy is a simple, in-office test that checks whether the small nerve fibers responsible for blood vessel control are intact. This is a conversation to have with a neurologist familiar with dysautonomia.</p></div>
+<p style="margin-top:24px;font-style:italic;color:var(--text-s)">None of these steps require her to be a different person. She has been managing an extraordinarily demanding body her entire life. The goal is to make that work a little easier.</p>
+</section>
+
+<!-- ====== TAB: HER DAY ====== -->
+<section class="tc" id="tab-daily">
+<h2>Her day vs. a typical person's day</h2>
+<p class="si">Garmin's Body Battery estimates energy reserves on a 0–100 scale using heart rate variability, stress, and sleep data. Below is Elyssa's average daily curve compared against three benchmarks: a real healthy individual (796 days from a public dataset), Garmin's global averages from millions of users, and an academic study of 781 university students.</p>
+<div class="cw h3"><canvas id="c_bb"></canvas></div>
+<div class="cl"><span><span class="ld" style="background:var(--teal)"></span>Healthy individual — OpenFitnessDataset (796 days)</span><span><span class="ld" style="background:var(--orange)"></span>Elyssa (140 days)</span></div>
+<div class="sg">
+<div class="sc"><div class="sl">Morning peak</div><div class="sr"><span class="sv vt">84</span><span class="st tt">reference</span></div><div class="sr"><span class="sv vo">75</span><span class="st to">elyssa</span></div></div>
+<div class="sc"><div class="sl">Evening low</div><div class="sr"><span class="sv vt">38</span><span class="st tt">reference</span></div><div class="sr"><span class="sv vo">13</span><span class="st to">elyssa</span></div></div>
+<div class="sc"><div class="sl">Drain / hour</div><div class="sr"><span class="sv vt">2.7</span><span class="st tt">reference</span></div><div class="sr"><span class="sv vo">4.7</span><span class="st to">elyssa</span></div></div>
+</div>
+<p>They start the day within 9 points of each other. By evening the gap is 25 points. The reference individual's curve flattens in late afternoon and starts climbing again by 8 PM — their body shifts into recovery while still awake. This evening recharge pattern is well-documented among healthy Garmin users in online forums and is consistent with normal autonomic function. Elyssa's curve never flattens, never reverses. It's a straight line down until she's asleep.</p>
+<h3>Daytime recharge</h3>
+<div class="cr"><div class="cr-s"><div class="cr-n vt">90%</div><div class="cr-l">of reference individual's days<br>show daytime recharge</div></div><div class="cr-v">vs</div><div class="cr-s"><div class="cr-n vo">36%</div><div class="cr-l">of Elyssa's days<br>show daytime recharge</div></div></div>
+<p>Healthy Garmin users routinely see their Body Battery rise while sitting on the couch or relaxing after lunch — gaining 5 to 30 points during quiet waking hours, according to user reports across Garmin forums and fitness blogs. The reference individual in our comparison dataset shows daytime recharge on 90% of days. On 64% of Elyssa's days, her Body Battery only goes down. Her two best recharge days in five months were her birthday and Thanksgiving.</p>
+<h3>Heart rate: same destination, double the distance</h3>
+<div class="cw h2"><canvas id="c_hr"></canvas></div>
+<div class="cl"><span><span class="ld" style="background:var(--teal)"></span>Reference individual HR</span><span><span class="ld" style="background:var(--orange)"></span>Elyssa HR</span></div>
+<div class="sg">
+<div class="sc"><div class="sl">Resting HR</div><div class="sr"><span class="sv vt">72</span><span class="st tt">reference</span></div><div class="sr"><span class="sv vo">51</span><span class="st to">elyssa</span></div></div>
+<div class="sc"><div class="sl">Daytime HR</div><div class="sr"><span class="sv vt">90</span><span class="st tt">reference</span></div><div class="sr"><span class="sv vo">92</span><span class="st to">elyssa</span></div></div>
+<div class="sc"><div class="sl">HR swing</div><div class="sr"><span class="sv vt">18 bpm</span><span class="st tt">reference</span></div><div class="sr"><span class="sv vo">37 bpm</span><span class="st to">elyssa</span></div></div>
+</div>
+<p>Both reach ~90 bpm during the day. But the reference individual starts from 72 at night and climbs 18. Elyssa starts from 57 and climbs 37 — double the distance. Her heart does twice the work every morning to reach the same functional level.</p>
+<h3>Activity doesn't change the drain</h3>
+<table class="dt">
+<thead><tr><th>Activity</th><th>Days</th><th>BB drain</th><th>Drain/hr</th><th>BB per stress pt</th></tr></thead>
+<tbody>
+<tr><td>Rest (&lt;4k steps)</td><td>34</td><td>61.9</td><td>4.7</td><td style="color:var(--orange);font-weight:600">2.00</td></tr>
+<tr><td>Moderate (4–8k)</td><td>71</td><td>69.6</td><td>4.9</td><td>1.77</td></tr>
+<tr><td>Active (8k+)</td><td>34</td><td>66.2</td><td>4.6</td><td style="color:var(--teal);font-weight:600">1.63</td></tr>
+</tbody></table>
+<p>Her drain rate is identical regardless of activity. And these are averages across all cycle phases — during ovulatory phase, the gap is even wider: she starts 15 points lower and her 3 PM heart rate is 10 bpm higher. But she burns <strong style="color:var(--orange)">2.0</strong> BB per unit of stress at rest versus <strong style="color:var(--teal)">1.63</strong> when active. Exercise is literally a more efficient use of her energy.</p>
+<p class="dn">Reference individual: OpenFitnessDataset (GitHub, CC-BY-4.0), 796 days, single person, Garmin vivoactive3. BB extracted from FIT msg 233 (inverted encoding, confirmed by stress/HR correlation r = −0.28/−0.29). This individual has above-average stress scores (~55 daily avg vs. Garmin global 30), making this a conservative comparison — a healthier individual would likely show an even larger gap from Elyssa. Garmin 2024 global avg: morning 71, evening 22, drain 49. WARN-D academic study (Siepe et al. 2025, N=781 students): morning ~72, midday ~57, afternoon ~43, evening ~33.</p>
+</section>
+
+<!-- ====== TAB: EXERCISE ====== -->
+<section class="tc" id="tab-exercise">
+<h2>What exercise does</h2>
+<p class="si">When Elyssa exercises, her leg and core muscles physically squeeze her veins, mechanically forcing blood back to her heart and brain. No nerve signal required. Her muscles do the job her blood vessels can't.</p>
+<h3>With CrossFit vs. without</h3>
+<p>She stopped CrossFit on February 18, 2026. The gym was an hour's drive away and she homeschools her children.</p>
+<table class="dt">
+<thead><tr><th>Metric</th><th>With CrossFit<br><small>(121 days)</small></th><th>Without<br><small>(19 days)</small></th><th>Change</th></tr></thead>
+<tbody>
+<tr><td>BB morning peak</td><td>78.8</td><td>63.6</td><td style="color:var(--orange);font-weight:600">−15.2</td></tr>
+<tr><td>Average HR</td><td>68.1</td><td>77.9</td><td style="color:var(--orange);font-weight:600">+9.8 bpm</td></tr>
+<tr><td>Resting HR</td><td>50.8</td><td>52.8</td><td>+2.0</td></tr>
+<tr><td>Sleep hours</td><td>9.9</td><td>9.0</td><td>−0.9</td></tr>
+<tr><td>Crash days</td><td>7.4%</td><td>31.6%</td><td style="color:var(--orange);font-weight:600">4.3× worse</td></tr>
+</tbody></table>
+<p class="dn">Only 19 days in the “without” period. Her decline began in late January before she stopped. Stopping exercise didn't start the decline but appears to have prevented recovery.</p>
+<h3>Day-of-week collapse</h3>
+<div class="cw h2"><canvas id="c_cf"></canvas></div>
+<div class="cl"><span><span class="ld" style="background:var(--teal)"></span>With CrossFit</span><span><span class="ld" style="background:var(--orange)"></span>Without CrossFit</span></div>
+<p>Monday went from her strongest day (BB 87) to her weakest (BB 37). Sunday collapsed from 84 to 53. Friday and Saturday slightly improved — but the tradeoff is devastating.</p>
+<h3>Why rest doesn't work</h3>
+<div class="cr"><div class="cr-s"><div class="cr-n vo">62</div><div class="cr-l">BB drained on<br>rest days (&lt;4k steps)</div></div><div class="cr-v">vs</div><div class="cr-s"><div class="cr-n vo">66</div><div class="cr-l">BB drained on<br>active days (8k+)</div></div></div>
+<p>Almost the same cost regardless of activity. And overnight recovery is identical either way. Exercise provides mechanical circulatory support without any meaningful additional energy cost.</p>
+<h3>The next-day effect</h3>
+<div class="cr"><div class="cr-s"><div class="cr-n vt">66</div><div class="cr-l">resting HR the day<br>after exercise</div></div><div class="cr-v">vs</div><div class="cr-s"><div class="cr-n vo">72</div><div class="cr-l">resting HR the day<br>after rest</div></div></div>
+<p>Exercise doesn’t just help on the day it happens. The day after exercise, her resting heart rate is 6 bpm lower and stress is lower. Her autonomic system runs calmer for 24 hours after muscle activation. This is why daily exercise matters — it’s not about fitness, it’s about maintaining vascular tone that her nervous system can’t provide on its own. And it matters most during ovulatory phase, when her system is most vulnerable. The six-crash Feb–Mar cascade happened when CrossFit stopped right as ovulatory phase arrived.</p>
+</section>
+
+<!-- ====== TAB: HER MONTH ====== -->
+<section class="tc" id="tab-month">
+<h2>Her month: how the menstrual cycle reshapes everything</h2>
+<p class="si">Her body runs on three overlapping systems. The autonomic baseline (constant drain). The hormonal cycle (monthly shifts in recovery). And the exercise buffer (daily mechanical support). The cycle doesn't change her drain rate — it changes where she starts each day.</p>
+
+<h3>Body Battery through the day, by cycle phase</h3>
+<div class="cw h3"><canvas id="c_phase_bb"></canvas></div>
+<div class="cl">
+<span><span class="ld" style="background:#1D9E75"></span>Follicular (best)</span>
+<span><span class="ld" style="background:#4A6FA5"></span>Menstrual</span>
+<span><span class="ld" style="background:#7B5EA7"></span>Luteal</span>
+<span><span class="ld" style="background:#C4663A"></span>Ovulatory (worst)</span>
+</div>
+
+<p>The shape of the curve is identical across all four phases — same slope, same linear drain. What changes is the starting point. During follicular phase she wakes up at 82. During ovulatory phase she wakes up at 67. That 15-point deficit exists before she's even gotten out of bed.</p>
+
+<p>To put those numbers in perspective: the Garmin global average morning Body Battery is 71, and a healthy person typically wakes up between 85 and 100 after 7–8 hours of sleep. A Body Battery of 80+ means "ready for a full day" — the feeling of waking up rested. At 67, she's starting her day where most people arrive by mid-morning after several hours of activity. It's the difference between getting out of bed with a full tank and getting out of bed already running on fumes. By early afternoon, an ovulatory day puts her in the 25–30 range — a level that a healthy person might only reach at the very end of a long, hard day. By evening, she's at 11. That's not tired. That's a body that has nothing left to give.</p>
+
+<div class="sg">
+<div class="sc"><div class="sl">Crash rate</div>
+<div class="sr"><span class="sv vt">4.3%</span><span class="st tt">follicular</span></div>
+<div class="sr"><span class="sv vo">17.1%</span><span class="st to">ovulatory</span></div></div>
+<div class="sc"><div class="sl">Morning BB</div>
+<div class="sr"><span class="sv vt">85</span><span class="st tt">follicular</span></div>
+<div class="sr"><span class="sv vo">72</span><span class="st to">ovulatory</span></div></div>
+<div class="sc"><div class="sl">3 PM heart rate</div>
+<div class="sr"><span class="sv vt">87</span><span class="st tt">follicular</span></div>
+<div class="sr"><span class="sv vo">97.5</span><span class="st to">ovulatory</span></div></div>
+</div>
+
+<h3>Heart rate by cycle phase</h3>
+<div class="cw h2"><canvas id="c_phase_hr"></canvas></div>
+<div class="cl">
+<span><span class="ld" style="background:#1D9E75"></span>Follicular</span>
+<span><span class="ld" style="background:#4A6FA5"></span>Menstrual</span>
+<span><span class="ld" style="background:#7B5EA7"></span>Luteal</span>
+<span><span class="ld" style="background:#C4663A"></span>Ovulatory</span>
+</div>
+
+<p>During ovulatory phase, her heart rate at 3 PM averages 97.5 bpm — 10 beats per minute higher than follicular at the same hour. Luteal phase runs hottest in the mornings (73 at 7 AM vs 62.5 follicular). The three highest-HR crashes in the entire dataset (Jan 27: 97, Feb 19: 95, Feb 25: 95) were all during ovulatory phase.</p>
+
+<h3>Phase comparison</h3>
+<table class="dt">
+<thead><tr><th>Phase</th><th>Days</th><th>BB Peak</th><th>HR</th><th>Stress</th><th>Crash %</th></tr></thead>
+<tbody>
+<tr><td>Follicular</td><td>23</td><td style="color:var(--teal);font-weight:600">85.0</td><td style="color:var(--teal);font-weight:600">62.9</td><td>40.3</td><td style="color:var(--teal);font-weight:600">4.3%</td></tr>
+<tr><td>Luteal</td><td>50</td><td>76.4</td><td>76.0</td><td>40.8</td><td>8.0%</td></tr>
+<tr><td>Menstrual</td><td>32</td><td>76.3</td><td>69.9</td><td>39.0</td><td>12.5%</td></tr>
+<tr class="hl"><td>Ovulatory</td><td>35</td><td style="color:var(--orange);font-weight:600">72.2</td><td>63.9</td><td style="color:var(--orange);font-weight:600">42.2</td><td style="color:var(--orange);font-weight:600">17.1%</td></tr>
+</tbody></table>
+
+<h3>The two danger zones</h3>
+<p><strong style="color:var(--orange)">Day 1 (period start):</strong> Average BB of 52.3. Crashes 50% of the time. This is when she's losing the most blood volume most rapidly. The Nov 11 crash — the worst single day in the dataset — was exactly day 1. She went from BB 91 to 21 overnight on the day her period started.</p>
+<p><strong style="color:var(--orange)">Days 20-21 (late ovulatory):</strong> The second danger zone. Jan 27 (BB 20, her first co-op day) was cycle day 20. Jan 28 (BB 31) was day 21. The hormonal shift peaks here and overnight recovery is at its weakest.</p>
+
+<h3>Every crash mapped to the cycle</h3>
+<table class="dt">
+<thead><tr><th>Date</th><th>BB</th><th>Cycle Day</th><th>Phase</th><th>Trigger</th></tr></thead>
+<tbody>
+<tr><td>Oct 18</td><td>18</td><td>6</td><td>menstrual</td><td>Active bleeding</td></tr>
+<tr><td>Nov 4</td><td>48</td><td>23</td><td>luteal</td><td>Pre-menstrual</td></tr>
+<tr class="hl"><td>Nov 11</td><td style="color:var(--orange);font-weight:600">21</td><td style="color:var(--orange);font-weight:600">1</td><td>menstrual</td><td>Period start (BB 91→21)</td></tr>
+<tr><td>Nov 12</td><td>7</td><td>2</td><td>menstrual</td><td>Continued bleeding</td></tr>
+<tr><td>Dec 24</td><td>28</td><td>13</td><td>ovulatory</td><td>Holiday + phase</td></tr>
+<tr><td>Jan 21</td><td>33</td><td>14</td><td>follicular→ov</td><td>Running HR 169 + transition</td></tr>
+<tr class="hl"><td>Jan 27</td><td style="color:var(--orange);font-weight:600">20</td><td style="color:var(--orange);font-weight:600">20</td><td>ovulatory</td><td>First co-op + peak ovulatory</td></tr>
+<tr><td>Jan 28</td><td>31</td><td>21</td><td>ovulatory</td><td>Still recovering</td></tr>
+<tr><td>Jan 31</td><td>39</td><td>24</td><td>luteal</td><td>Cascade from ov crashes</td></tr>
+<tr><td>Feb 19</td><td>40</td><td>11</td><td>ovulatory</td><td>First ov without CrossFit</td></tr>
+<tr><td>Feb 23</td><td>48</td><td>15</td><td>ovulatory</td><td>No exercise buffer</td></tr>
+<tr><td>Feb 25</td><td>37</td><td>17</td><td>ovulatory</td><td>No exercise buffer</td></tr>
+<tr><td>Mar 3</td><td>16</td><td>23</td><td>luteal</td><td>Deconditioning</td></tr>
+<tr><td>Mar 8</td><td>23</td><td>28</td><td>luteal</td><td>Late luteal</td></tr>
+<tr class="hl"><td>Mar 9</td><td>25</td><td style="color:var(--orange);font-weight:600">1</td><td>menstrual</td><td>Period start</td></tr>
+</tbody></table>
+<p>Zero unexplained crashes. Every single one maps to a combination of hormonal phase, activity load, and exercise status. Six of fifteen crashes occurred during ovulatory phase. Four during menstrual. The three highest-HR crashes were all ovulatory.</p>
+
+<h3>The Feb–Mar cascade: what happens without the exercise buffer</h3>
+<p>CrossFit stopped February 18. She immediately entered ovulatory phase. Without daily exercise maintaining her vascular tone, the ovulatory hormone shift was unprotected. The result: six crashes in 19 days spanning ovulatory → luteal → menstrual. She didn't stabilize until cycle day 3 of the next period.</p>
+<table class="dt">
+<thead><tr><th>Date</th><th>BB</th><th>Phase</th><th>Day</th><th>Event</th></tr></thead>
+<tbody>
+<tr><td>Feb 18</td><td>71</td><td>follicular</td><td>10</td><td>CrossFit stops</td></tr>
+<tr class="hl"><td>Feb 19</td><td style="color:var(--orange);font-weight:600">40</td><td>ovulatory</td><td>11</td><td>CRASH — first ov without exercise</td></tr>
+<tr><td>Feb 21</td><td>100</td><td>ovulatory</td><td>13</td><td>Brief recovery</td></tr>
+<tr class="hl"><td>Feb 23</td><td style="color:var(--orange);font-weight:600">48</td><td>ovulatory</td><td>15</td><td>CRASH</td></tr>
+<tr class="hl"><td>Feb 25</td><td style="color:var(--orange);font-weight:600">37</td><td>ovulatory</td><td>17</td><td>CRASH</td></tr>
+<tr class="hl"><td>Mar 3</td><td style="color:var(--orange);font-weight:600">16</td><td>luteal</td><td>23</td><td>CRASH — deepest</td></tr>
+<tr><td>Mar 6</td><td>90</td><td>luteal</td><td>26</td><td>Recovery</td></tr>
+<tr class="hl"><td>Mar 8</td><td style="color:var(--orange);font-weight:600">23</td><td>luteal</td><td>28</td><td>CRASH</td></tr>
+<tr class="hl"><td>Mar 9</td><td style="color:var(--orange);font-weight:600">25</td><td>menstrual</td><td>1</td><td>CRASH — period starts</td></tr>
+<tr><td>Mar 11</td><td>100</td><td>menstrual</td><td>3</td><td>Finally stable</td></tr>
+</tbody></table>
+
+<h3>What co-op looks like to her watch</h3>
+<p>On January 27 — her first day at co-op, cycle day 20 (peak ovulatory) — her Garmin classified 140 minutes of standing and managing children as a HIIT workout. Average heart rate 123. Max heart rate 185. On February 17, the second co-op, her watch recorded max heart rate of 199 — the highest reading in the entire dataset. Not at CrossFit. Not running. Standing at co-op.</p>
+<div class="cr"><div class="cr-s"><div class="cr-n vo">123-136</div><div class="cr-l">avg HR at co-op<br>(classified as HIIT)</div></div><div class="cr-v">vs</div><div class="cr-s"><div class="cr-n vt">117</div><div class="cr-l">avg HR during<br>actual CrossFit</div></div></div>
+<p>Her heart works harder standing at co-op than most people's hearts work during high-intensity interval training. That single misclassification is the POTS story in a data point.</p>
+
+<h3>The stillness finding</h3>
+<p>During waking hours when she takes zero steps — completely still — her heart rate averages 83.5 bpm. When walking 500+ steps, it's 89.3. A difference of only 6 bpm across the entire range of human movement. Her cardiovascular cost is almost entirely postural and autonomic, not movement-driven. On co-op Tuesdays, her zero-step heart rate averages 102 bpm. On Fridays (her best day), the same stillness averages 86. She's 16 bpm higher at co-op while motionless.</p>
+
+<p class="dn">Menstrual data from Garmin menstrual_cycle table (152 days, 6 cycles). Activity classifications: 52 CrossFit sessions, 2 co-op sessions (Jan 27, Feb 17) misclassified as HIIT. Co-op started Jan 27, 2026.</p>
+</section>
+
+<!-- ====== TAB: TUESDAY ====== -->
+<section class="tc" id="tab-tuesday">
+<h2>Her week</h2>
+<p class="si">Early morning co-op, managing drained kids, then church youth volunteering until 9 PM. That's 14+ hours of standing, talking, managing, and driving — every one of which hits her hardest systems.</p>
+<h3>Body Battery through the day, by day of week</h3>
+<div class="cw h3"><canvas id="c_dow"></canvas></div>
+<p>Tuesday starts 12–15 points behind Thursday and Friday. By noon she's at 37 — where those days don't arrive until 3 PM. Wednesday starts lowest of all (65 at 7 AM), paying for Tuesday.</p>
+<h3>Day-of-week summary</h3>
+<table class="dt">
+<thead><tr><th>Day</th><th>BB Peak</th><th>BB Low</th><th>Avg HR</th><th>Stress</th><th>Steps</th><th>Crashes</th></tr></thead>
+<tbody>
+<tr><td>Friday</td><td style="color:var(--teal);font-weight:600">83.2</td><td>13.3</td><td>66.8</td><td>39.3</td><td>5,726</td><td style="color:var(--teal);font-weight:600">0</td></tr>
+<tr><td>Monday</td><td>81.5</td><td>9.7</td><td>69.9</td><td>41.2</td><td>6,488</td><td>2</td></tr>
+<tr><td>Sunday</td><td>80.5</td><td>11.8</td><td>67.1</td><td>40.5</td><td>4,258</td><td>1</td></tr>
+<tr><td>Thursday</td><td>79.3</td><td>11.8</td><td>68.8</td><td>36.9</td><td>6,273</td><td>1</td></tr>
+<tr><td>Saturday</td><td>77.1</td><td>7.3</td><td>71.2</td><td>45.0</td><td>7,418</td><td>2</td></tr>
+<tr class="hl"><td><strong>Wednesday</strong></td><td>70.5</td><td>9.7</td><td>69.3</td><td>37.2</td><td>7,458</td><td style="color:var(--orange);font-weight:600">5</td></tr>
+<tr class="hl"><td><strong>Tuesday</strong></td><td style="color:var(--orange);font-weight:600">66.6</td><td>7.1</td><td style="color:var(--orange);font-weight:600">72.4</td><td>44.3</td><td>6,719</td><td style="color:var(--orange);font-weight:600">4</td></tr>
+</tbody></table>
+<p>Tuesday and Wednesday: 9 of 15 total crashes (60%). Friday: zero crashes, ever.</p>
+
+<h3>What co-op costs her</h3>
+<p>Her Garmin classified co-op as a HIIT workout. Not because she was exercising — because her heart rate while standing and managing children averaged 123–136 bpm with spikes to 185–199. During zero-step intervals at co-op, her HR averages 102 bpm. On Fridays, the same stillness averages 86. She’s 16 bpm higher on co-op Tuesdays while motionless. Her watch literally cannot tell the difference between Elyssa at co-op and a healthy person doing CrossFit.</p>
+<div class="cr"><div class="cr-s"><div class="cr-n vo">102</div><div class="cr-l">HR at co-op<br>while standing still</div></div><div class="cr-v">vs</div><div class="cr-s"><div class="cr-n vt">86</div><div class="cr-l">HR on Friday<br>while standing still</div></div></div>
+
+<h3>When CrossFit was active, Tuesday was also her longest workout day</h3>
+<p>Tuesday CrossFit sessions averaged 107 minutes — nearly double her Thursday sessions (68 min). So the old Tuesday problem was actually three problems stacked: a 107-minute CrossFit session in the morning, co-op (once it started in January), and youth group until 9 PM. Now that CrossFit has stopped, Tuesday’s crash pattern is driven by co-op and the evening commitment — a different problem with different solutions.</p>
+</section>
+
+<!-- ====== TAB: SLEEP ====== -->
+<section class="tc" id="tab-sleep">
+<h2>Sleep: lots of it, not the right kind</h2>
+<p class="si">She sleeps nearly 10 hours. That's not laziness. It's compensation. Her body needs that long because the recovery it gets per hour is roughly half of what a healthy person gets.</p>
+<h3>Sleep architecture</h3>
+<div class="cw h2"><canvas id="c_sleep"></canvas></div>
+<div class="cl"><span><span class="ld" style="background:var(--teal)"></span>Normal range midpoint</span><span><span class="ld" style="background:var(--orange)"></span>Elyssa</span></div>
+<div class="sg">
+<div class="sc"><div class="sl">Deep sleep</div><div class="sr"><span class="sv vt">20%</span><span class="st tt">normal</span></div><div class="sr"><span class="sv vo">9.9%</span><span class="st to">elyssa</span></div></div>
+<div class="sc"><div class="sl">REM sleep</div><div class="sr"><span class="sv vt">22%</span><span class="st tt">normal</span></div><div class="sr"><span class="sv vo">32.6%</span><span class="st to">elyssa</span></div></div>
+<div class="sc"><div class="sl">Total sleep</div><div class="sr"><span class="sv vt">7.5 hr</span><span class="st tt">typical</span></div><div class="sr"><span class="sv vo">9.8 hr</span><span class="st to">elyssa</span></div></div>
+</div>
+<p>Deep sleep is roughly half the minimum normal. She gets 64 minutes per night — what a healthy person gets in 6–7 hours. Her REM (vivid dreaming) is a third of the night, well above normal.</p>
+<h3>Sleep recovery efficiency</h3>
+<div class="cr"><div class="cr-s"><div class="cr-n vt">12–14</div><div class="cr-l">BB points recovered<br>per hour (healthy)</div></div><div class="cr-v">vs</div><div class="cr-s"><div class="cr-n vo">6.9</div><div class="cr-l">BB points recovered<br>per hour (Elyssa)</div></div></div>
+<p>She sleeps 30% longer and recovers at half the rate. That's why she needs 10 hours to reach a morning peak of 75 that healthy individuals reach in 7.</p>
+</section>
+
+<!-- ====== TAB: BIGGER PICTURE ====== -->
+<section class="tc" id="tab-picture">
+<h2>The bigger picture</h2>
+<p class="si">POTS (lifelong), congenital heart condition, chorioretinal coloboma, celiac disease, chronic anemia, heavy menstrual bleeding, light touch hypersensitivity, medication sensitivity, language difficulty, anxiety, and depression. None of these exist in isolation.</p>
+<h3>The congenital foundation</h3>
+<p>Her coloboma affects the back of her right eye where retina and choroid sit — structures built by neural crest cells during embryonic development. The same cells build parts of the heart and the autonomic nerves controlling blood vessels. Two of those systems have structural differences. The third (autonomic nerves) may also have developed differently.</p>
+<p>Her daughter also has coloboma — more extensively, in both the retina and iris (visibly apparent). This familial pattern strongly suggests a genetic basis and raises important questions for the daughter's cardiac and autonomic health.</p>
+<h3>The autoimmune layer</h3>
+<p>Celiac disease generates inflammation that can damage small nerve fibers — the exact fibers that tell blood vessels to squeeze. This may explain why symptoms worsened at 21 and again in her late 20s: autoimmune damage on a system with limited margin.</p>
+<h3>Light touch</h3>
+<p>She cannot tolerate light touch but handles firm pressure. These use different nerve fiber types. Light touch uses the same small fibers that control blood vessel constriction. A skin punch biopsy could test whether these fibers are damaged.</p>
+<h3>Blood loss</h3>
+<p>Heavy bleeding reduces blood volume monthly. Anemia means less oxygen per unit of blood. Celiac may prevent iron absorption. Every month is a setback her body may not fully recover from before the next one.</p>
+<h3>Language and cognition</h3>
+<p>She has significant difficulty with reading, writing, and speaking, but strong visual-spatial abilities. This fluctuates with her condition — on good days, speaking is better. Language processing is one of the brain's most energy-intensive tasks. When the brain is underfueled, language degrades first.</p>
+<h3>Anxiety and mood</h3>
+<p>Some anxiety may be her body's chemical attempt to maintain blood pressure (adrenaline). But chronic illness is also a legitimate source of psychological distress. It is likely both. Iron deficiency, poor sleep, and chronic illness are all independently associated with depression.</p>
+</section>
+
+<!-- ====== TAB: WHAT WE KNOW ====== -->
+<section class="tc" id="tab-known">
+<h2>What we know, suspect, and don't know</h2>
+<h3>Confirmed by data</h3>
+<div class="card">
+<p>Daily BB drain (67) is 37% above global average (49). Drain rate (4.7/hr) is 74% faster than healthy comparison (2.7/hr).</p>
+<p>Drain rate identical from 2,000 to 10,000+ steps. Healthy individuals show dramatic rest-vs-active variation.</p>
+<p>64% of days have zero daytime recharge (vs 10% for reference individual). Her system rarely enters the recovery zone while awake.</p>
+<p>HR swings 37 bpm sleep-to-day — double the reference individual's 18 bpm — despite similar daytime HR.</p>
+<p>Exercise costs no additional recovery but stopping it caused 4.3× more crashes. She's more energy-efficient active (1.63 BB/stress) than at rest (2.00).</p>
+<p>Tuesday + Wednesday = 60% of all crashes. Sleep recovery efficiency (6.9 BB/hr) is ~half of healthy (12–14).</p>
+<p>Deep sleep 9.9% (normal 15–25%). REM 32.6% (normal 20–25%). Sleeps 9.8 hrs for what healthy individuals achieve in 7.</p>
+<p><strong>Menstrual cycle modulates everything:</strong> Ovulatory phase has 17.1% crash rate (vs 4.3% follicular). She starts ovulatory days 15 BB points behind follicular. The drain rate is the same — recovery capacity is impaired. Day 1 (period start) crashes 50% of the time.</p>
+<p><strong>Every crash has an identifiable trigger</strong> once menstrual and activity data are overlaid. 6 of 15 crashes occurred during ovulatory phase. 4 during menstrual. Zero unexplained.</p>
+<p><strong>Late January decline explained:</strong> Running at HR 169 on cycle day 14 (follicular→ovulatory transition) + first co-op on cycle day 20 (peak ovulatory). Co-op started Jan 27.</p>
+<p><strong>Feb–Mar cascade explained:</strong> CrossFit stopped Feb 18 → ovulatory phase arrived unprotected → 6 crashes in 19 days spanning ovulatory→luteal→menstrual.</p>
+<p>HR at zero steps averages 83.5 bpm. At 500+ steps: 89.3. Only 6 bpm difference. Cardiovascular cost is postural and autonomic, not movement-driven.</p>
+<p>Garmin classified co-op as HIIT (avg HR 123-136, max 185-199). Her standing HR at co-op exceeds most people's exercise HR.</p>
+</div>
+<h3>Reasonably suspected</h3>
+<div class="card">
+<p>Small fiber neuropathy may explain both blood vessel dysfunction and light touch sensitivity.</p>
+<p>Chronic anemia from heavy bleeding + celiac malabsorption may be worsening POTS, fatigue, cognition, and mood.</p>
+<p>Congenital conditions may share a developmental origin with autonomic dysfunction. Familial coloboma strengthens genetic basis.</p>
+<p>Language difficulties may be partially driven by fluctuating cerebral perfusion.</p>
+<p>Mast cell activation may be contributing but this is speculative.</p>
+</div>
+<h3>Unknown</h3>
+<div class="card">
+<p><strong>Ferritin/iron</strong> — pending. Most actionable unknown.</p>
+<p><strong>Small fiber neuropathy</strong> — skin punch biopsy (neurologist).</p>
+<p><strong>MCAS</strong> — specific testing (immunologist).</p>
+<p><strong>Ehlers-Danlos / hypermobility</strong> — never assessed.</p>
+<p><strong>Genetic testing</strong> — neither patient nor daughter tested.</p>
+<p><strong>Heart defect type</strong> — not confirmed.</p>
+<p><strong>Heavy bleeding cause</strong> — unknown if investigated.</p>
+<p><strong>Summer heat response</strong> — no warm-weather data.</p>
+<p><strong>Daughter's cardiac/autonomic status</strong> — not evaluated.</p>
+</div>
+</section>
+
+<!-- ====== TAB: THE DATA ====== -->
+<section class="tc" id="tab-data">
+<h2>The data</h2>
+<p class="si">All tables and raw numbers referenced in this document. Data from Garmin wearable via Garmy MCP, Oct 2025 – Mar 2026. Garmin is a consumer wearable, not a clinical instrument.</p>
+<p><button class="dl-btn" onclick="dlCSV('elyssa')">⬇ Download Elyssa's daily data (CSV)</button><button class="dl-btn" onclick="dlCSV('healthy')">⬇ Download reference individual hourly (CSV)</button></p>
+
+<details>
+<summary>Diagnosed conditions</summary>
+<p>POTS: Lifelong. Celiac: significant in late 20s. Congenital heart condition: worsened at 21, type not confirmed. Coloboma: chorioretinal, right eye, inferior, with astigmatism. Daughter has coloboma (chorioretinal + iris). Anemia: “often anemic,” labs pending. Casein sensitivity: identified Jan 2026.</p>
+</details>
+
+<details>
+<summary>Complete daily timeline (140 days with data)</summary>
+<div style="overflow-x:auto">
+<table class="dt" id="dailyTable">
+<thead><tr><th>Date</th><th>Day</th><th>Period</th><th>BB High</th><th>BB Low</th><th>RHR</th><th>Avg HR</th><th>Stress</th><th>Steps</th><th>Sleep Hrs</th><th>Deep%</th><th>REM%</th></tr></thead>
+<tbody id="dailyBody"></tbody>
+</table>
+</div>
+</details>
+
+<details>
+<summary>Body Battery by hour — Elyssa vs. reference individual</summary>
+<table class="dt">
+<thead><tr><th>Hour</th><th>Elyssa</th><th>Healthy</th><th>Gap</th></tr></thead>
+<tbody id="hourlyBody"></tbody>
+</table>
+</details>
+
+<details>
+<summary>Sleep architecture (124 nights)</summary>
+<table class="dt">
+<thead><tr><th>Metric</th><th>Elyssa</th><th>Normal</th></tr></thead>
+<tbody>
+<tr><td>Total sleep</td><td>9.82 hrs</td><td>7–8 hrs</td></tr>
+<tr><td>Deep sleep</td><td>64.1 min (9.9%)</td><td>15–25%</td></tr>
+<tr><td>Light sleep</td><td>337.3 min (57.5%)</td><td>40–60%</td></tr>
+<tr><td>REM sleep</td><td>195.0 min (32.6%)</td><td>20–25%</td></tr>
+<tr><td>Awake</td><td>1.0%</td><td>&lt;5%</td></tr>
+</tbody></table>
+</details>
+
+<details>
+<summary>Resting heart rate (140 days)</summary>
+<table class="dt">
+<thead><tr><th>Metric</th><th>Value</th></tr></thead>
+<tbody>
+<tr><td>Average</td><td>51.0 bpm</td></tr>
+<tr><td>Min / Max</td><td>40 / 67 bpm</td></tr>
+<tr><td>Below 50</td><td>46 days (33%)</td></tr>
+<tr><td>50–59</td><td>92 days (66%)</td></tr>
+<tr><td>60+</td><td>2 days (1%)</td></tr>
+</tbody></table>
+</details>
+
+<details>
+<summary>Monthly trends</summary>
+<table class="dt">
+<thead><tr><th>Month</th><th>RHR</th><th>Avg HR</th><th>Stress</th><th>BB Peak</th><th>BB Low</th><th>Steps</th><th>Sleep</th></tr></thead>
+<tbody>
+<tr><td>Oct 2025</td><td>53.9</td><td>—</td><td>37.1</td><td>82.7</td><td>10.5</td><td>8,094</td><td>10.4</td></tr>
+<tr><td>Nov</td><td>49.8</td><td>77.1</td><td>41.4</td><td>78.8</td><td>9.4</td><td>6,403</td><td>9.9</td></tr>
+<tr><td>Dec</td><td>49.6</td><td>76.5</td><td>39.4</td><td>82.2</td><td>9.4</td><td>6,211</td><td>10.1</td></tr>
+<tr><td>Jan 2026</td><td>49.7</td><td>76.4</td><td>40.4</td><td>77.7</td><td>11.4</td><td>5,295</td><td>9.9</td></tr>
+<tr class="hl"><td>Feb</td><td>53.6</td><td>79.9</td><td>44.0</td><td>68.8</td><td>8.3</td><td>7,573</td><td>9.0</td></tr>
+<tr><td>Mar*</td><td>52.3</td><td>73.8</td><td>38.9</td><td>63.8</td><td>13.3</td><td>4,307</td><td>9.9</td></tr>
+</tbody></table>
+<p class="dn">*March is 10 days. February worst across most metrics. CrossFit stopped Feb 18.</p>
+</details>
+
+<details>
+<summary>Body Battery drain by step count</summary>
+<table class="dt">
+<thead><tr><th>Steps</th><th>Days</th><th>Drain</th><th>BB Peak</th><th>BB Low</th><th>Stress</th><th>Drain/hr</th></tr></thead>
+<tbody>
+<tr><td>&lt;2k</td><td>11</td><td>45.5</td><td>66.5</td><td>21.0</td><td>36.5</td><td>3.32</td></tr>
+<tr><td>2–4k</td><td>23</td><td>69.8</td><td>84.7</td><td>14.9</td><td>36.8</td><td>5.32</td></tr>
+<tr><td>4–6k</td><td>42</td><td>69.8</td><td>78.5</td><td>8.8</td><td>41.6</td><td>4.89</td></tr>
+<tr><td>6–8k</td><td>29</td><td>69.4</td><td>77.0</td><td>7.6</td><td>41.6</td><td>4.94</td></tr>
+<tr><td>8–10k</td><td>14</td><td>68.4</td><td>74.3</td><td>5.9</td><td>43.8</td><td>4.89</td></tr>
+<tr><td>10k+</td><td>20</td><td>64.7</td><td>71.0</td><td>6.3</td><td>42.8</td><td>4.48</td></tr>
+</tbody></table>
+<p class="dn">&lt;2k bucket represents crash/bedbound days (BB peak 66.5). From 2k–10k+, drain/hr is flat at 4.5–5.3.</p>
+</details>
+
+<details>
+<summary>Crash events (BB peak &lt; 50)</summary>
+<table class="dt">
+<thead><tr><th>Date</th><th>BB</th><th>Day Before BB</th><th>Before Steps</th><th>Before Stress</th><th>2 Days BB</th></tr></thead>
+<tbody>
+<tr><td>Nov 11</td><td>21</td><td>91</td><td>3,779</td><td>52</td><td>86</td></tr>
+<tr><td>Nov 12</td><td>7</td><td>21</td><td>702</td><td>71</td><td>91</td></tr>
+<tr><td>Dec 24</td><td>28</td><td>51</td><td>5,744</td><td>55</td><td>62</td></tr>
+<tr><td>Jan 21</td><td>33</td><td>81</td><td>7,422</td><td>47</td><td>90</td></tr>
+<tr><td>Jan 27</td><td>20</td><td>87</td><td>950</td><td>20</td><td>93</td></tr>
+<tr><td>Mar 8</td><td>23</td><td>78</td><td>453</td><td>67</td><td>90</td></tr>
+</tbody></table>
+<p class="dn">Jan 27: First co-op day, cycle day 20 (peak ovulatory). Garmin classified co-op as HIIT (avg HR 123, max 185). BB crashed to 20 the next morning. Every crash in the dataset has an identifiable trigger once menstrual and activity data are overlaid.</p>
+</details>
+
+<details>
+<summary>Daytime recharge analysis</summary>
+<table class="dt">
+<thead><tr><th>Pattern</th><th>Days</th><th>%</th></tr></thead>
+<tbody>
+<tr><td>No daytime recharge</td><td>79</td><td>63.7%</td></tr>
+<tr><td>1 recharge hour</td><td>25</td><td>20.2%</td></tr>
+<tr><td>2 recharge hours</td><td>12</td><td>9.7%</td></tr>
+<tr><td>3+ recharge hours</td><td>8</td><td>6.5%</td></tr>
+</tbody></table>
+<table class="dt" style="margin-top:16px">
+<thead><tr><th>Day type</th><th>Days</th><th>Steps</th><th>Stress</th><th>HR</th><th>BB Peak</th><th>BB Low</th></tr></thead>
+<tbody>
+<tr><td>Has recharge</td><td>45</td><td>4,712</td><td>35.5</td><td>73</td><td>80.5</td><td>14.9</td></tr>
+<tr><td>No recharge</td><td>79</td><td>7,047</td><td>44.8</td><td>80</td><td>73.7</td><td>6.8</td></tr>
+</tbody></table>
+</details>
+
+<details>
+<summary>Population comparison</summary>
+<table class="dt">
+<thead><tr><th>Metric</th><th>Garmin Global</th><th>WARN-D<br><small>(N=781)</small></th><th>Reference Individual<br><small>(796 days)</small></th><th>Elyssa</th></tr></thead>
+<tbody>
+<tr><td>Morning BB</td><td>71</td><td>~72</td><td>84</td><td>75</td></tr>
+<tr><td>Midday BB</td><td>—</td><td>~57</td><td>60</td><td>45</td></tr>
+<tr><td>Afternoon BB</td><td>—</td><td>~43</td><td>47</td><td>29</td></tr>
+<tr><td>Evening BB</td><td>22</td><td>~33</td><td>38</td><td>13</td></tr>
+<tr><td>Daily drain</td><td>49</td><td>~38</td><td>59</td><td>67</td></tr>
+<tr><td>Avg stress</td><td>30</td><td>—</td><td>~55</td><td>40</td></tr>
+<tr><td>Drain/hr</td><td>—</td><td>—</td><td>2.7</td><td>4.7</td></tr>
+<tr><td>Days w/ recharge</td><td>—</td><td>—</td><td>90%</td><td>36%</td></tr>
+<tr><td>Sleep recovery</td><td>—</td><td>—</td><td>5.2 BB/hr</td><td>6.9 BB/hr</td></tr>
+<tr><td>HR swing</td><td>—</td><td>—</td><td>18 bpm</td><td>37 bpm</td></tr>
+</tbody></table>
+<p class="dn">Garmin Global: 2024 Connect Data Report (millions of users). WARN-D: Siepe et al. 2025 (N=781 students, Vivosmart 4, model estimates). Reference individual: OpenFitnessDataset (GitHub, 796 days, vivoactive3, above-avg stress). Sleep recovery 12–14 BB/hr from healthy forum users with good sleep quality.</p>
+</details>
+
+<details>
+<summary>Data gaps and suggested next steps</summary>
+<p><strong>Not available:</strong> HRV (not extracted), activity/workout details (0 synced), menstrual dates, blood pressure, ferritin/iron, food log, symptom log, sleep fragmentation counts, summer data.</p>
+<p><strong>Not yet tested:</strong> Genetic testing (patient + daughter), Ehlers-Danlos/hypermobility, small fiber neuropathy (biopsy), MCAS, tilt table, sleep study, gynecological evaluation, cause of late January collapse.</p>
+<p><strong>Suggested going forward:</strong> Menstrual cycle tracking (highest priority — enables crash correlation), daily symptom log (even 1–5 scale), ferritin results, dietary log (gluten/casein), fluid/sodium intake, daily exercise log, ambient temperature data, genetic evaluation for both patient and daughter.</p>
+</details>
+
+</section>
+
+<!-- ====== TAB: DEFINITIONS ====== -->
+<section class="tc" id="tab-defs">
+<h2>Definitions</h2>
+<p class="si">Terms used throughout this document. These are explained in plain language, not clinical definitions.</p>
+
+<div class="iv">
+<div class="iv-t" id="def-body-battery">Body Battery</div>
+<p>A Garmin metric that estimates energy reserves on a 0–100 scale, calculated from heart rate variability, stress, and sleep data. It’s not measuring calories or blood sugar — it’s measuring how much capacity the autonomic nervous system has available. Think of it like a phone battery: 100 means fully charged, 5 means the phone is about to shut off. A healthy person typically wakes up at 85–100 and ends the day around 30–40. Elyssa averages 75 in the morning and 13 by evening.</p>
+</div>
+
+<div class="iv">
+<div class="iv-t" id="def-crash">Crash</div>
+<p>A day where Elyssa’s Body Battery starts the day below 50 — meaning she never reached even half capacity at any point in the day. On crash days, her body has so little reserve that basic functioning becomes extremely difficult. Crashes aren’t just “tired days” — they’re days where the system has fundamentally failed to recharge overnight. She had 15 crash days in 140 days of tracking. Every crash maps to a combination of menstrual cycle phase, activity load, and exercise status.</p>
+</div>
+
+<div class="iv">
+<div class="iv-t" id="def-drain-rate">Drain rate</div>
+<p>How fast Body Battery drops per hour during waking time. Elyssa’s averages 4.7 points per hour regardless of what she does. A healthy person’s varies from 2–3/hr on rest days to 5–6/hr on active days. The fact that hers is flat — the same whether she walks 11,000 steps or 95 — means her energy is being consumed by something other than physical activity: the constant cardiovascular effort of maintaining blood pressure.</p>
+</div>
+
+<div class="iv">
+<div class="iv-t" id="def-daytime-recharge">Daytime recharge</div>
+<p>A period during waking hours where Body Battery actually goes up — meaning the body shifted into recovery mode while still awake. Healthy people experience this on ~90% of days (sitting on the couch after lunch, relaxing in the afternoon). Elyssa gets zero daytime recharge on 64% of her days. Her system doesn’t downshift into recovery while she’s conscious.</p>
+</div>
+
+<div class="iv">
+<div class="iv-t" id="def-pots">POTS (Postural Orthostatic Tachycardia Syndrome)</div>
+<p>A condition where the body can’t properly regulate blood flow when upright. Normally, when you stand, your blood vessels squeeze to push blood back up to the brain. In POTS, they don’t squeeze properly, so blood pools in the legs and the heart has to beat much faster to compensate. Elyssa’s heart rate jumps 37 bpm from sleeping to standing (a healthy person: 18 bpm). She’s had this her entire life.</p>
+</div>
+
+<div class="iv">
+<div class="iv-t" id="def-hr-swing">HR swing</div>
+<p>The difference between sleeping heart rate and daytime heart rate. Elyssa’s is 37 bpm (sleeping 57, daytime ~92). A healthy comparison individual’s is 18 bpm. This swing represents how hard her heart has to work just to be upright — it’s the cardiovascular cost of POTS made visible.</p>
+</div>
+
+<div class="iv">
+<div class="iv-t" id="def-cycle-phases">Menstrual cycle phases</div>
+<p><strong>Menstrual (days 1–7):</strong> Period. Active bleeding. Day 1 is the highest-risk single day — Elyssa crashes 50% of the time.<br>
+<strong>Follicular (days 8–14):</strong> Her best phase. Body recharges well overnight. Morning BB averages 85. Crash rate 4.3%.<br>
+<strong>Ovulatory (days 15–21):</strong> Her worst phase. Overnight recovery is impaired. Morning BB averages 72 — starting 13 points behind follicular. Crash rate 17.1%. The three worst crashes in the dataset were all ovulatory.<br>
+<strong>Luteal (days 22+):</strong> Mixed. HR runs highest in the mornings. Crash rate 8%.</p>
+</div>
+
+<div class="iv">
+<div class="iv-t" id="def-cascade">Cascade</div>
+<p>Imagine a bank account where she deposits a fixed amount each night (sleep) and withdraws all day (being alive). Normally, the deposit covers the withdrawal and she breaks even. But if she has a particularly hard day — say, co-op during ovulatory phase — she overdrafts. The problem is that when she starts the next day already in the red, her body can’t recover as efficiently that night either. So the next deposit is smaller. Which means the next day starts even lower. Which means the next night’s recovery is even worse. Each day digs the hole deeper.</p>
+<p>This is a cascade: a self-reinforcing decline where one bad day makes the next day worse, which makes the day after that worse still. It doesn’t stop on its own. It stops when something breaks the cycle — a better hormonal phase arrives, she gets a genuinely restful day with no demands, or exercise re-establishes her vascular baseline. Without intervention, cascades can last over a week. The worst one in her data ran from Feb 23 to Mar 9: 11 days, 6 crashes, spanning three cycle phases, and it only ended when her body finally stabilized on cycle day 3 of the next period.</p>
+</div>
+
+<div class="iv">
+<div class="iv-t" id="def-exercise-buffer">Exercise buffer</div>
+<p>The protective effect of daily exercise on Elyssa’s system. When she exercises, her skeletal muscles physically pump blood back to her heart (the “muscle pump”), doing the job her blood vessels can’t. This lowers her next-day resting heart rate by 6 bpm and reduces crash risk from 31.6% to 7.4%. It’s not fitness training — it’s mechanical circulatory support. Without it, vulnerable cycle phases produce cascading crashes.</p>
+</div>
+
+<div class="iv">
+<div class="iv-t" id="def-coop">Co-op</div>
+<p>A Tuesday homeschool co-operative that Elyssa attends with her children, starting January 27, 2026. Her Garmin classified co-op as a HIIT workout because her heart rate averaged 123–136 bpm with spikes to 185–199 — just from standing and managing children. This single misclassification demonstrates the invisible cost of POTS: her body at co-op is working as hard as a healthy person doing high-intensity interval training.</p>
+</div>
+
+<div class="iv">
+<div class="iv-t" id="def-rhr">Resting heart rate (RHR)</div>
+<p>The lowest heart rate recorded during sleep. Elyssa’s averages 51 bpm (range 40–67). This is actually low, which is significant: it means her POTS is likely neuropathic or hypovolemic (nerve or blood volume related), not hyperadrenergic (adrenaline-driven). The type matters for treatment.</p>
+</div>
+
+<div class="iv">
+<div class="iv-t" id="def-deep-sleep">Deep sleep</div>
+<p>The sleep phase where the body physically repairs itself — tissue growth, immune function, cellular restoration. Normal is 15–25% of sleep time (about 70–120 minutes). Elyssa gets 9.9% (about 64 minutes). Half of her nights have deep sleep below 10%. This means her body gets less physical repair time despite sleeping nearly 10 hours.</p>
+</div>
+
+<div class="iv">
+<div class="iv-t" id="def-reference">Reference individual</div>
+<p>A single anonymous person from the OpenFitnessDataset (GitHub, CC-BY-4.0 license) who wore a Garmin vivoactive3 for 796 days. Their data provides an individual-level comparison for Body Battery patterns. This person has above-average stress scores, so the comparison is conservative — a healthier individual would show an even larger gap from Elyssa. Population-level comparisons come from Garmin’s 2024 global report (millions of users) and an academic study (Siepe et al. 2025, N=781).</p>
+</div>
+</section>
+</div><!-- /main -->
+</div><!-- /layout -->
+</div><!-- /ctr -->
+
+<script>
+// Navigation
+function switchTab(id){
+document.querySelectorAll('.sidebar a').forEach(x=>x.classList.remove('a'));
+document.querySelectorAll('.tc').forEach(x=>x.classList.remove('a'));
+const sideLink=document.querySelector('.sidebar a[data-t="'+id+'"]');
+if(sideLink) sideLink.classList.add('a');
+document.getElementById('tab-'+id).classList.add('a');
+document.getElementById('nav-select').value=id;
+const mainEl=document.querySelector('.main');
+if(mainEl) mainEl.scrollTop=0;
+window.scrollTo({top:document.querySelector('.ph').offsetTop,behavior:'smooth'});
+}
+document.querySelectorAll('.sidebar a').forEach(a=>{
+a.addEventListener('click',e=>{e.preventDefault();switchTab(a.dataset.t);});
+});
+document.getElementById('nav-select').addEventListener('change',e=>{
+switchTab(e.target.value);
+});
+
+// Data
+const hrs=['12am','1am','2am','3am','4am','5am','6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm','8pm','9pm','10pm','11pm'];
+const hBB=[63.1,67.4,70.7,73.9,76.9,79.0,79.8,79.1,77.2,73.2,68.9,64.7,59.9,55.9,51.5,47.0,43.1,41.2,39.4,38.4,39.5,44.6,51.4,58.0];
+const eBB=[28.3,37.6,47.0,55.7,63.5,69.6,73.5,74.7,71.7,64.8,57.3,50.6,44.5,38.6,33.3,28.6,24.3,20.7,17.9,15.4,13.7,13.2,15.1,20.2];
+const hHR=[74.4,72.6,71.4,70.9,71.1,72.8,75.0,79.1,82.8,86.6,89.3,89.7,90.0,90.0,90.4,89.7,91.9,94.1,93.2,90.9,90.7,88.5,82.6,77.6];
+const eHR=[59,58,57,57,57,57,58,69,78,90,93,94,93,93,92,91,90,89,88,84,79,71,67,62];
+const cfDays=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+const cfW=[83.6,86.6,70.8,70.6,81.9,82.8,75.8];
+const cfN=[52.5,36.5,41.3,70.0,69.0,86.0,89.0];
+const dowT=['7am','12pm','3pm','6pm','9pm'];
+const dowD={
+'Friday':[80,50,33,24,18],
+'Thursday':[80,51,36,24,18],
+'Sunday':[79,48,31,18,15],
+'Monday':[77,42,26,15,10],
+'Saturday':[76,45,27,14,9],
+'Tuesday':[68,37,23,14,10],
+'Wednesday':[65,39,26,17,14]
+};
+
+// Chart config
+const dk=matchMedia('(prefers-color-scheme:dark)').matches;
+const T=dk?'#5DCAA5':'#1D9E75',O=dk?'#E8956A':'#C4663A',G=dk?'rgba(255,255,255,.06)':'rgba(0,0,0,.05)',TC=dk?'#737168':'#9A9A94';
+const Tf=dk?'rgba(93,202,165,.1)':'rgba(29,158,117,.06)',Of=dk?'rgba(232,149,106,.1)':'rgba(196,102,58,.06)';
+Chart.defaults.font.family="'DM Sans',sans-serif";
+Chart.defaults.plugins.legend.display=false;
+Chart.defaults.plugins.tooltip.backgroundColor=dk?'#E0DED6':'#2C2C2A';
+Chart.defaults.plugins.tooltip.titleColor=dk?'#141413':'#FFF';
+Chart.defaults.plugins.tooltip.bodyColor=dk?'#141413':'#FFF';
+Chart.defaults.plugins.tooltip.cornerRadius=8;
+Chart.defaults.plugins.tooltip.padding=10;
+
+function dual(id,labels,d1,d2,yLbl,mn,mx,ht){
+const el=document.getElementById(id);
+el.parentElement.style.height=(ht||320)+'px';
+new Chart(el,{type:'line',data:{labels,datasets:[
+{data:d1,borderColor:T,backgroundColor:Tf,fill:true,borderWidth:2.5,pointRadius:0,tension:.3},
+{data:d2,borderColor:O,backgroundColor:Of,fill:true,borderWidth:2.5,pointRadius:0,tension:.3}
+]},options:{responsive:true,maintainAspectRatio:false,interaction:{intersect:false,mode:'index'},scales:{
+x:{grid:{color:G},ticks:{color:TC,font:{size:11},maxRotation:0,autoSkip:true,maxTicksLimit:12}},
+y:{grid:{color:G},ticks:{color:TC,font:{size:11}},suggestedMin:mn,suggestedMax:mx,title:{display:!!yLbl,text:yLbl||'',color:TC,font:{size:12}}}
+}}});
+}
+
+// BB & HR charts
+dual('c_bb',hrs,hBB,eBB,'Body Battery',0,100,320);
+dual('c_hr',hrs,hHR,eHR,'Heart Rate (bpm)',45,100,260);
+
+// CrossFit day-of-week chart
+dual('c_cf',cfDays,cfW,cfN,'BB Peak',20,100,260);
+
+// Phase BB chart
+(function(){
+const el=document.getElementById('c_phase_bb');
+if(!el) return;
+el.parentElement.style.height='320px';
+const pT=['7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm','8pm','9pm'];
+const fol=[81.6,78.0,70.3,62.0,54.0,47.0,41.0,35.0,29.1,25.0,21.0,17.3,14.0,13.0,12.7];
+const men=[75.6,72.0,65.9,58.0,52.0,46.9,41.0,36.0,31.4,27.0,24.0,19.8,17.0,16.0,15.9];
+const lut=[75.8,72.0,64.9,57.0,50.0,44.5,38.0,33.0,28.7,25.0,21.0,18.3,15.0,13.5,13.0];
+const ovu=[66.6,63.0,59.6,52.0,46.0,39.9,34.0,29.0,24.8,21.0,18.0,15.4,13.0,11.5,10.9];
+const Fol=dk?'#5DCAA5':'#1D9E75';
+const Men=dk?'#7BA5D0':'#4A6FA5';
+const Lut=dk?'#A98BD0':'#7B5EA7';
+const Ovu=dk?'#E8956A':'#C4663A';
+new Chart(el,{type:'line',data:{labels:pT,datasets:[
+{label:'Follicular',data:fol,borderColor:Fol,borderWidth:3,pointRadius:0,tension:.3},
+{label:'Menstrual',data:men,borderColor:Men,borderWidth:2,pointRadius:0,tension:.3,borderDash:[4,4]},
+{label:'Luteal',data:lut,borderColor:Lut,borderWidth:2,pointRadius:0,tension:.3,borderDash:[4,4]},
+{label:'Ovulatory',data:ovu,borderColor:Ovu,borderWidth:3,pointRadius:0,tension:.3}
+]},options:{responsive:true,maintainAspectRatio:false,interaction:{intersect:false,mode:'index'},
+plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){return c.dataset.label+': '+c.parsed.y}}}},
+scales:{
+x:{grid:{color:G},ticks:{color:TC,font:{size:11},maxRotation:0}},
+y:{grid:{color:G},ticks:{color:TC,font:{size:11}},suggestedMin:0,suggestedMax:100,title:{display:true,text:'Body Battery',color:TC,font:{size:12}}}
+}}});
+})();
+
+// Phase HR chart
+(function(){
+const el=document.getElementById('c_phase_hr');
+if(!el) return;
+el.parentElement.style.height='260px';
+const pT=['7am','9am','12pm','3pm','6pm','9pm'];
+const fHR=[62.5,86.6,88.8,87.2,86.8,70.4];
+const mHR=[64.8,88.4,87.8,86.5,85.8,70.6];
+const lHR=[73.0,91.9,93.8,89.4,88.2,70.7];
+const oHR=[70.7,86.6,96.4,97.5,90.5,74.5];
+const Fol=dk?'#5DCAA5':'#1D9E75';
+const Men=dk?'#7BA5D0':'#4A6FA5';
+const Lut=dk?'#A98BD0':'#7B5EA7';
+const Ovu=dk?'#E8956A':'#C4663A';
+new Chart(el,{type:'line',data:{labels:pT,datasets:[
+{label:'Follicular',data:fHR,borderColor:Fol,borderWidth:3,pointRadius:3,tension:.3},
+{label:'Menstrual',data:mHR,borderColor:Men,borderWidth:2,pointRadius:2,tension:.3,borderDash:[4,4]},
+{label:'Luteal',data:lHR,borderColor:Lut,borderWidth:2,pointRadius:2,tension:.3,borderDash:[4,4]},
+{label:'Ovulatory',data:oHR,borderColor:Ovu,borderWidth:3,pointRadius:3,tension:.3}
+]},options:{responsive:true,maintainAspectRatio:false,interaction:{intersect:false,mode:'index'},
+plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){return c.dataset.label+': '+c.parsed.y+' bpm'}}}},
+scales:{
+x:{grid:{color:G},ticks:{color:TC,font:{size:11}}},
+y:{grid:{color:G},ticks:{color:TC,font:{size:11}},suggestedMin:55,suggestedMax:105,title:{display:true,text:'Heart Rate (bpm)',color:TC,font:{size:12}}}
+}}});
+})();
+
+// Tuesday checkpoint chart — multiline
+(function(){
+const el=document.getElementById('c_dow');
+el.parentElement.style.height='320px';
+const colors={
+'Friday':dk?'#5DCAA5':'#1D9E75','Thursday':dk?'#9FE1CB':'#5DCAA5','Sunday':dk?'#C5EDE0':'#9FE1CB','Monday':dk?'#B4B2A9':'#B4B2A9',
+'Saturday':dk?'#888780':'#888780','Tuesday':dk?'#E8956A':'#C4663A','Wednesday':dk?'#F0B898':'#D85A30'
+};
+const datasets=Object.entries(dowD).map(([day,vals])=>({
+label:day,data:vals,borderColor:colors[day],
+borderWidth:day==='Tuesday'||day==='Wednesday'?3:1.5,
+pointRadius:day==='Tuesday'||day==='Wednesday'?4:2,
+tension:.3,borderDash:day==='Tuesday'||day==='Wednesday'?[]:[4,4]
+}));
+new Chart(el,{type:'line',data:{labels:dowT,datasets},options:{
+responsive:true,maintainAspectRatio:false,
+interaction:{intersect:false,mode:'index'},
+plugins:{legend:{display:true,position:'bottom',labels:{color:TC,usePointStyle:true,pointStyle:'circle',padding:12,font:{size:11,family:"'DM Sans'"}}}},
+scales:{
+x:{grid:{color:G},ticks:{color:TC,font:{size:11}}},
+y:{grid:{color:G},ticks:{color:TC,font:{size:11}},suggestedMin:0,suggestedMax:100,title:{display:true,text:'Body Battery',color:TC,font:{size:12}}}
+}
+}});
+})();
+
+// Sleep chart
+(function(){
+const el=document.getElementById('c_sleep');
+el.parentElement.style.height='260px';
+new Chart(el,{type:'bar',data:{
+labels:['Deep','Light','REM','Awake'],
+datasets:[
+{label:'Normal',data:[20,50,22.5,2.5],backgroundColor:dk?'rgba(93,202,165,.2)':'rgba(29,158,117,.25)',borderColor:T,borderWidth:1.5},
+{label:'Elyssa',data:[9.9,57.5,32.6,1.0],backgroundColor:dk?'rgba(232,149,106,.2)':'rgba(196,102,58,.25)',borderColor:O,borderWidth:1.5}
+]
+},options:{
+responsive:true,maintainAspectRatio:false,
+plugins:{legend:{display:true,position:'bottom',labels:{color:TC,usePointStyle:true,pointStyle:'rect',padding:12,font:{size:11}}}},
+scales:{
+x:{grid:{display:false},ticks:{color:TC,font:{size:11}}},
+y:{grid:{color:G},ticks:{color:TC,font:{size:11},callback:v=>v+'%'},suggestedMax:65,title:{display:true,text:'% of sleep time',color:TC,font:{size:12}}}
+}
+}});
+})();
+
+// Populate daily table
+const daily=[{"date": "2025-10-18", "rhr": 67.0, "avg_hr": null, "max_hr": null, "bb_high": 18.0, "bb_low": 5.0, "stress": 50.0, "steps": 6367, "sleep_hrs": null, "deep_pct": null, "light_pct": null, "rem_pct": null, "period": "with_crossfit", "day": "Sat"}, {"date": "2025-10-19", "rhr": 54.0, "avg_hr": null, "max_hr": null, "bb_high": 95.0, "bb_low": 16.0, "stress": 29.0, "steps": 4396, "sleep_hrs": 10.1, "deep_pct": 18.0, "light_pct": 57.0, "rem_pct": 25.0, "period": "with_crossfit", "day": "Sun"}, {"date": "2025-10-20", "rhr": 50.0, "avg_hr": null, "max_hr": null, "bb_high": 100.0, "bb_low": 7.0, "stress": 39.0, "steps": 7890, "sleep_hrs": 11.4, "deep_pct": 6.1, "light_pct": 52.4, "rem_pct": 41.5, "period": "with_crossfit", "day": "Mon"}, {"date": "2025-10-21", "rhr": 51.0, "avg_hr": null, "max_hr": null, "bb_high": 86.0, "bb_low": 5.0, "stress": 36.0, "steps": 15698, "sleep_hrs": 9.7, "deep_pct": 0.0, "light_pct": 65.6, "rem_pct": 34.4, "period": "with_crossfit", "day": "Tue"}, {"date": "2025-10-22", "rhr": 50.0, "avg_hr": null, "max_hr": null, "bb_high": 91.0, "bb_low": 10.0, "stress": 34.0, "steps": 7542, "sleep_hrs": 11.8, "deep_pct": 18.5, "light_pct": 45.1, "rem_pct": 36.5, "period": "with_crossfit", "day": "Wed"}, {"date": "2025-10-23", "rhr": 55.0, "avg_hr": null, "max_hr": null, "bb_high": 86.0, "bb_low": 9.0, "stress": 36.0, "steps": 8811, "sleep_hrs": 10.5, "deep_pct": 10.8, "light_pct": 51.6, "rem_pct": 37.5, "period": "with_crossfit", "day": "Thu"}, {"date": "2025-10-24", "rhr": 58.0, "avg_hr": null, "max_hr": null, "bb_high": 83.0, "bb_low": 12.0, "stress": 43.0, "steps": 6532, "sleep_hrs": null, "deep_pct": null, "light_pct": null, "rem_pct": null, "period": "with_crossfit", "day": "Fri"}, {"date": "2025-10-25", "rhr": 52.0, "avg_hr": null, "max_hr": null, "bb_high": 87.0, "bb_low": 5.0, "stress": 42.0, "steps": 14961, "sleep_hrs": 8.8, "deep_pct": 18.7, "light_pct": 37.5, "rem_pct": 43.6, "period": "with_crossfit", "day": "Sat"}, {"date": "2025-10-26", "rhr": 54.0, "avg_hr": null, "max_hr": null, "bb_high": 95.0, "bb_low": 24.0, "stress": 34.0, "steps": 2806, "sleep_hrs": 12.2, "deep_pct": 14.1, "light_pct": 55.4, "rem_pct": 30.5, "period": "with_crossfit", "day": "Sun"}, {"date": "2025-10-27", "rhr": 51.0, "avg_hr": null, "max_hr": null, "bb_high": 95.0, "bb_low": 8.0, "stress": 39.0, "steps": 7830, "sleep_hrs": 8.9, "deep_pct": 16.4, "light_pct": 59.3, "rem_pct": 24.3, "period": "with_crossfit", "day": "Mon"}, {"date": "2025-10-28", "rhr": 52.0, "avg_hr": null, "max_hr": null, "bb_high": 72.0, "bb_low": 18.0, "stress": 26.0, "steps": 2947, "sleep_hrs": 10.4, "deep_pct": 3.7, "light_pct": 78.3, "rem_pct": 18.0, "period": "with_crossfit", "day": "Tue"}, {"date": "2025-10-29", "rhr": 53.0, "avg_hr": null, "max_hr": null, "bb_high": 95.0, "bb_low": 7.0, "stress": 40.0, "steps": 7934, "sleep_hrs": 9.7, "deep_pct": 4.8, "light_pct": 63.6, "rem_pct": 31.6, "period": "with_crossfit", "day": "Wed"}, {"date": "2025-10-30", "rhr": 55.0, "avg_hr": null, "max_hr": null, "bb_high": 65.0, "bb_low": 5.0, "stress": 39.0, "steps": 13846, "sleep_hrs": 11.0, "deep_pct": 21.8, "light_pct": 53.0, "rem_pct": 25.3, "period": "with_crossfit", "day": "Thu"}, {"date": "2025-10-31", "rhr": 52.0, "avg_hr": null, "max_hr": null, "bb_high": 90.0, "bb_low": 16.0, "stress": 33.0, "steps": 5753, "sleep_hrs": 9.7, "deep_pct": 13.2, "light_pct": 52.7, "rem_pct": 34.0, "period": "with_crossfit", "day": "Fri"}, {"date": "2025-11-01", "rhr": 57.0, "avg_hr": 93.4, "max_hr": 144.0, "bb_high": 80.0, "bb_low": 5.0, "stress": 64.0, "steps": 12299, "sleep_hrs": null, "deep_pct": null, "light_pct": null, "rem_pct": null, "period": "with_crossfit", "day": "Sat"}, {"date": "2025-11-02", "rhr": 48.0, "avg_hr": 76.4, "max_hr": 145.0, "bb_high": 86.0, "bb_low": 5.0, "stress": 41.0, "steps": 4793, "sleep_hrs": 9.8, "deep_pct": 14.5, "light_pct": 64.1, "rem_pct": 21.4, "period": "with_crossfit", "day": "Sun"}, {"date": "2025-11-03", "rhr": 50.0, "avg_hr": 88.4, "max_hr": 156.0, "bb_high": 87.0, "bb_low": 5.0, "stress": 41.0, "steps": 10647, "sleep_hrs": 9.9, "deep_pct": 0.0, "light_pct": 75.7, "rem_pct": 24.3, "period": "with_crossfit", "day": "Mon"}, {"date": "2025-11-04", "rhr": 54.0, "avg_hr": 87.0, "max_hr": 186.0, "bb_high": 48.0, "bb_low": 5.0, "stress": 50.0, "steps": 12555, "sleep_hrs": 8.5, "deep_pct": 6.5, "light_pct": 76.3, "rem_pct": 17.2, "period": "with_crossfit", "day": "Tue"}, {"date": "2025-11-05", "rhr": 56.0, "avg_hr": 79.8, "max_hr": 141.0, "bb_high": 82.0, "bb_low": 5.0, "stress": 41.0, "steps": 6410, "sleep_hrs": 8.4, "deep_pct": 0.0, "light_pct": 59.7, "rem_pct": 40.3, "period": "with_crossfit", "day": "Wed"}, {"date": "2025-11-06", "rhr": 52.0, "avg_hr": 76.9, "max_hr": 147.0, "bb_high": 70.0, "bb_low": 10.0, "stress": 40.0, "steps": 5552, "sleep_hrs": 10.9, "deep_pct": 6.1, "light_pct": 69.1, "rem_pct": 24.8, "period": "with_crossfit", "day": "Thu"}, {"date": "2025-11-07", "rhr": 54.0, "avg_hr": 74.6, "max_hr": 115.0, "bb_high": 81.0, "bb_low": 6.0, "stress": 40.0, "steps": 5929, "sleep_hrs": 9.8, "deep_pct": 12.5, "light_pct": 53.7, "rem_pct": 33.7, "period": "with_crossfit", "day": "Fri"}, {"date": "2025-11-08", "rhr": 52.0, "avg_hr": 75.2, "max_hr": 130.0, "bb_high": 78.0, "bb_low": 10.0, "stress": 39.0, "steps": 7200, "sleep_hrs": 7.7, "deep_pct": 21.2, "light_pct": 47.8, "rem_pct": 31.0, "period": "with_crossfit", "day": "Sat"}, {"date": "2025-11-09", "rhr": 53.0, "avg_hr": 77.5, "max_hr": 137.0, "bb_high": 86.0, "bb_low": 8.0, "stress": 45.0, "steps": 3608, "sleep_hrs": 10.2, "deep_pct": 24.1, "light_pct": 56.1, "rem_pct": 19.8, "period": "with_crossfit", "day": "Sun"}, {"date": "2025-11-10", "rhr": 48.0, "avg_hr": 77.5, "max_hr": 144.0, "bb_high": 91.0, "bb_low": 9.0, "stress": 52.0, "steps": 3779, "sleep_hrs": null, "deep_pct": null, "light_pct": null, "rem_pct": null, "period": "with_crossfit", "day": "Mon"}, {"date": "2025-11-11", "rhr": 57.0, "avg_hr": 85.5, "max_hr": 119.0, "bb_high": 21.0, "bb_low": 5.0, "stress": 71.0, "steps": 702, "sleep_hrs": 10.3, "deep_pct": 10.0, "light_pct": 75.9, "rem_pct": 14.1, "period": "with_crossfit", "day": "Tue"}, {"date": "2025-11-12", "rhr": 57.0, "avg_hr": 82.6, "max_hr": 128.0, "bb_high": 7.0, "bb_low": 5.0, "stress": 51.0, "steps": 702, "sleep_hrs": 9.3, "deep_pct": 10.5, "light_pct": 79.5, "rem_pct": 10.1, "period": "with_crossfit", "day": "Wed"}, {"date": "2025-11-13", "rhr": 57.0, "avg_hr": 85.0, "max_hr": 125.0, "bb_high": 51.0, "bb_low": 5.0, "stress": 40.0, "steps": 7831, "sleep_hrs": 11.0, "deep_pct": 9.9, "light_pct": 69.3, "rem_pct": 20.8, "period": "with_crossfit", "day": "Thu"}, {"date": "2025-11-14", "rhr": 57.0, "avg_hr": 77.6, "max_hr": 123.0, "bb_high": 63.0, "bb_low": 5.0, "stress": 38.0, "steps": 8803, "sleep_hrs": 9.3, "deep_pct": 14.1, "light_pct": 62.5, "rem_pct": 23.4, "period": "with_crossfit", "day": "Fri"}, {"date": "2025-11-15", "rhr": 45.0, "avg_hr": 73.3, "max_hr": 153.0, "bb_high": 93.0, "bb_low": 13.0, "stress": 35.0, "steps": 10090, "sleep_hrs": 9.4, "deep_pct": 13.7, "light_pct": 40.4, "rem_pct": 45.9, "period": "with_crossfit", "day": "Sat"}, {"date": "2025-11-16", "rhr": 44.0, "avg_hr": 63.7, "max_hr": 123.0, "bb_high": 100.0, "bb_low": 32.0, "stress": 25.0, "steps": 5387, "sleep_hrs": 10.5, "deep_pct": 8.8, "light_pct": 40.9, "rem_pct": 50.3, "period": "with_crossfit", "day": "Sun"}, {"date": "2025-11-17", "rhr": 40.0, "avg_hr": 64.0, "max_hr": 126.0, "bb_high": 100.0, "bb_low": 21.0, "stress": 29.0, "steps": 3602, "sleep_hrs": 11.1, "deep_pct": 11.3, "light_pct": 44.7, "rem_pct": 44.0, "period": "with_crossfit", "day": "Mon"}, {"date": "2025-11-18", "rhr": 45.0, "avg_hr": 75.7, "max_hr": 188.0, "bb_high": 98.0, "bb_low": 5.0, "stress": 41.0, "steps": 11482, "sleep_hrs": 11.3, "deep_pct": 10.9, "light_pct": 64.5, "rem_pct": 24.6, "period": "with_crossfit", "day": "Tue"}, {"date": "2025-11-19", "rhr": 50.0, "avg_hr": 70.2, "max_hr": 118.0, "bb_high": 78.0, "bb_low": 8.0, "stress": 34.0, "steps": 3289, "sleep_hrs": 10.7, "deep_pct": 13.5, "light_pct": 54.5, "rem_pct": 32.1, "period": "with_crossfit", "day": "Wed"}, {"date": "2025-11-20", "rhr": 48.0, "avg_hr": 76.6, "max_hr": 118.0, "bb_high": 100.0, "bb_low": 8.0, "stress": 45.0, "steps": 5197, "sleep_hrs": 7.7, "deep_pct": 12.1, "light_pct": 53.4, "rem_pct": 34.5, "period": "with_crossfit", "day": "Thu"}, {"date": "2025-11-21", "rhr": 49.0, "avg_hr": 81.2, "max_hr": 119.0, "bb_high": 75.0, "bb_low": 7.0, "stress": 52.0, "steps": 8829, "sleep_hrs": null, "deep_pct": null, "light_pct": null, "rem_pct": null, "period": "with_crossfit", "day": "Fri"}, {"date": "2025-11-22", "rhr": 44.0, "avg_hr": 73.4, "max_hr": 184.0, "bb_high": 100.0, "bb_low": 10.0, "stress": 29.0, "steps": 12984, "sleep_hrs": 9.9, "deep_pct": 2.5, "light_pct": 57.7, "rem_pct": 39.7, "period": "with_crossfit", "day": "Sat"}, {"date": "2025-11-23", "rhr": 44.0, "avg_hr": 70.2, "max_hr": 125.0, "bb_high": 99.0, "bb_low": 14.0, "stress": 32.0, "steps": 4786, "sleep_hrs": 9.7, "deep_pct": 7.9, "light_pct": 46.1, "rem_pct": 46.0, "period": "with_crossfit", "day": "Sun"}, {"date": "2025-11-24", "rhr": 47.0, "avg_hr": 75.9, "max_hr": 148.0, "bb_high": 96.0, "bb_low": 6.0, "stress": 42.0, "steps": 4272, "sleep_hrs": 10.1, "deep_pct": 10.6, "light_pct": 47.6, "rem_pct": 41.8, "period": "with_crossfit", "day": "Mon"}, {"date": "2025-11-25", "rhr": 50.0, "avg_hr": 74.5, "max_hr": 143.0, "bb_high": 88.0, "bb_low": 9.0, "stress": 37.0, "steps": 4675, "sleep_hrs": 9.2, "deep_pct": 4.6, "light_pct": 45.4, "rem_pct": 50.1, "period": "with_crossfit", "day": "Tue"}, {"date": "2025-11-26", "rhr": 51.0, "avg_hr": 80.7, "max_hr": 139.0, "bb_high": 80.0, "bb_low": 10.0, "stress": 34.0, "steps": 6876, "sleep_hrs": 10.5, "deep_pct": 6.3, "light_pct": 55.9, "rem_pct": 37.7, "period": "with_crossfit", "day": "Wed"}, {"date": "2025-11-27", "rhr": 48.0, "avg_hr": 81.7, "max_hr": 190.0, "bb_high": 88.0, "bb_low": 11.0, "stress": 39.0, "steps": 11027, "sleep_hrs": 8.6, "deep_pct": 15.7, "light_pct": 67.1, "rem_pct": 17.2, "period": "with_crossfit", "day": "Thu"}, {"date": "2025-11-28", "rhr": 49.0, "avg_hr": 64.4, "max_hr": 107.0, "bb_high": 75.0, "bb_low": 21.0, "stress": 26.0, "steps": 1579, "sleep_hrs": 11.9, "deep_pct": 14.6, "light_pct": 61.2, "rem_pct": 24.3, "period": "with_crossfit", "day": "Fri"}, {"date": "2025-11-29", "rhr": 45.0, "avg_hr": 71.9, "max_hr": 118.0, "bb_high": 100.0, "bb_low": 14.0, "stress": 34.0, "steps": 4343, "sleep_hrs": 10.9, "deep_pct": 12.0, "light_pct": 57.2, "rem_pct": 30.8, "period": "with_crossfit", "day": "Sat"}, {"date": "2025-11-30", "rhr": 43.0, "avg_hr": 79.6, "max_hr": 117.0, "bb_high": 62.0, "bb_low": 6.0, "stress": 55.0, "steps": 2864, "sleep_hrs": null, "deep_pct": null, "light_pct": null, "rem_pct": null, "period": "with_crossfit", "day": "Sun"}, {"date": "2025-12-01", "rhr": 47.0, "avg_hr": 73.7, "max_hr": 138.0, "bb_high": 97.0, "bb_low": 12.0, "stress": 32.0, "steps": 5334, "sleep_hrs": 9.6, "deep_pct": 4.2, "light_pct": 61.3, "rem_pct": 34.5, "period": "with_crossfit", "day": "Mon"}, {"date": "2025-12-02", "rhr": 44.0, "avg_hr": 71.9, "max_hr": 134.0, "bb_high": 100.0, "bb_low": 11.0, "stress": 35.0, "steps": 5349, "sleep_hrs": 10.0, "deep_pct": 2.8, "light_pct": 62.6, "rem_pct": 34.6, "period": "with_crossfit", "day": "Tue"}, {"date": "2025-12-03", "rhr": 48.0, "avg_hr": 74.3, "max_hr": 136.0, "bb_high": 84.0, "bb_low": 7.0, "stress": 40.0, "steps": 4893, "sleep_hrs": 11.0, "deep_pct": 13.5, "light_pct": 61.3, "rem_pct": 25.2, "period": "with_crossfit", "day": "Wed"}, {"date": "2025-12-04", "rhr": 47.0, "avg_hr": 80.6, "max_hr": 142.0, "bb_high": 93.0, "bb_low": 5.0, "stress": 35.0, "steps": 8848, "sleep_hrs": 11.8, "deep_pct": 0.8, "light_pct": 59.3, "rem_pct": 39.8, "period": "with_crossfit", "day": "Thu"}, {"date": "2025-12-05", "rhr": 47.0, "avg_hr": 80.7, "max_hr": 153.0, "bb_high": 83.0, "bb_low": 5.0, "stress": 44.0, "steps": 7754, "sleep_hrs": 10.1, "deep_pct": 2.3, "light_pct": 52.9, "rem_pct": 44.8, "period": "with_crossfit", "day": "Fri"}, {"date": "2025-12-06", "rhr": 53.0, "avg_hr": 79.1, "max_hr": 136.0, "bb_high": 55.0, "bb_low": 5.0, "stress": 47.0, "steps": 5956, "sleep_hrs": 8.0, "deep_pct": 13.2, "light_pct": 71.1, "rem_pct": 15.7, "period": "with_crossfit", "day": "Sat"}, {"date": "2025-12-07", "rhr": 50.0, "avg_hr": 78.6, "max_hr": 126.0, "bb_high": 75.0, "bb_low": 7.0, "stress": 46.0, "steps": 4323, "sleep_hrs": 9.9, "deep_pct": 0.0, "light_pct": 58.2, "rem_pct": 41.8, "period": "with_crossfit", "day": "Sun"}, {"date": "2025-12-08", "rhr": 50.0, "avg_hr": 81.9, "max_hr": 187.0, "bb_high": 80.0, "bb_low": 5.0, "stress": 46.0, "steps": 8990, "sleep_hrs": 10.7, "deep_pct": 13.1, "light_pct": 49.7, "rem_pct": 37.2, "period": "with_crossfit", "day": "Mon"}, {"date": "2025-12-09", "rhr": 52.0, "avg_hr": 77.4, "max_hr": 136.0, "bb_high": 73.0, "bb_low": 5.0, "stress": 44.0, "steps": 5048, "sleep_hrs": 10.8, "deep_pct": 8.4, "light_pct": 46.3, "rem_pct": 45.4, "period": "with_crossfit", "day": "Tue"}, {"date": "2025-12-10", "rhr": 51.0, "avg_hr": 57.9, "max_hr": 67.0, "bb_high": 72.0, "bb_low": 19.0, "stress": 14.0, "steps": 19, "sleep_hrs": 7.6, "deep_pct": 9.7, "light_pct": 43.5, "rem_pct": 46.8, "period": "with_crossfit", "day": "Wed"}, {"date": "2025-12-13", "rhr": 62.0, "avg_hr": 78.8, "max_hr": 116.0, "bb_high": 92.0, "bb_low": 5.0, "stress": 58.0, "steps": 3349, "sleep_hrs": null, "deep_pct": null, "light_pct": null, "rem_pct": null, "period": "with_crossfit", "day": "Sat"}, {"date": "2025-12-14", "rhr": 49.0, "avg_hr": 72.5, "max_hr": 119.0, "bb_high": 70.0, "bb_low": 5.0, "stress": 39.0, "steps": 5753, "sleep_hrs": 10.0, "deep_pct": 16.7, "light_pct": 57.0, "rem_pct": 26.3, "period": "with_crossfit", "day": "Sun"}, {"date": "2025-12-15", "rhr": 47.0, "avg_hr": 72.6, "max_hr": 152.0, "bb_high": 93.0, "bb_low": 11.0, "stress": 37.0, "steps": 4636, "sleep_hrs": 10.4, "deep_pct": 16.7, "light_pct": 47.3, "rem_pct": 36.0, "period": "with_crossfit", "day": "Mon"}, {"date": "2025-12-16", "rhr": 50.0, "avg_hr": 80.1, "max_hr": 169.0, "bb_high": 84.0, "bb_low": 5.0, "stress": 37.0, "steps": 11133, "sleep_hrs": 10.8, "deep_pct": 16.6, "light_pct": 58.8, "rem_pct": 24.7, "period": "with_crossfit", "day": "Tue"}, {"date": "2025-12-17", "rhr": 44.0, "avg_hr": 74.3, "max_hr": 124.0, "bb_high": 100.0, "bb_low": 7.0, "stress": 38.0, "steps": 7889, "sleep_hrs": 10.5, "deep_pct": 9.2, "light_pct": 44.8, "rem_pct": 46.0, "period": "with_crossfit", "day": "Wed"}, {"date": "2025-12-18", "rhr": 42.0, "avg_hr": 69.6, "max_hr": 119.0, "bb_high": 90.0, "bb_low": 13.0, "stress": 35.0, "steps": 6961, "sleep_hrs": 10.6, "deep_pct": 3.9, "light_pct": 51.8, "rem_pct": 44.3, "period": "with_crossfit", "day": "Thu"}, {"date": "2025-12-19", "rhr": 47.0, "avg_hr": 71.9, "max_hr": 120.0, "bb_high": 100.0, "bb_low": 10.0, "stress": 40.0, "steps": 4521, "sleep_hrs": 10.6, "deep_pct": 2.8, "light_pct": 58.2, "rem_pct": 38.8, "period": "with_crossfit", "day": "Fri"}, {"date": "2025-12-20", "rhr": 45.0, "avg_hr": 75.8, "max_hr": 167.0, "bb_high": 87.0, "bb_low": 5.0, "stress": 42.0, "steps": 9064, "sleep_hrs": 9.8, "deep_pct": 15.0, "light_pct": 41.0, "rem_pct": 44.0, "period": "with_crossfit", "day": "Sat"}, {"date": "2025-12-21", "rhr": 50.0, "avg_hr": 73.4, "max_hr": 114.0, "bb_high": 69.0, "bb_low": 5.0, "stress": 45.0, "steps": 3226, "sleep_hrs": 12.0, "deep_pct": 7.0, "light_pct": 62.3, "rem_pct": 30.7, "period": "with_crossfit", "day": "Sun"}, {"date": "2025-12-22", "rhr": 50.0, "avg_hr": 82.9, "max_hr": 184.0, "bb_high": 62.0, "bb_low": 5.0, "stress": 52.0, "steps": 8275, "sleep_hrs": 10.0, "deep_pct": 13.3, "light_pct": 59.5, "rem_pct": 27.2, "period": "with_crossfit", "day": "Mon"}, {"date": "2025-12-23", "rhr": 50.0, "avg_hr": 83.3, "max_hr": 168.0, "bb_high": 51.0, "bb_low": 5.0, "stress": 55.0, "steps": 5744, "sleep_hrs": 8.7, "deep_pct": 19.7, "light_pct": 46.1, "rem_pct": 34.2, "period": "with_crossfit", "day": "Tue"}, {"date": "2025-12-24", "rhr": 51.0, "avg_hr": 83.5, "max_hr": 126.0, "bb_high": 28.0, "bb_low": 5.0, "stress": 45.0, "steps": 11020, "sleep_hrs": 6.5, "deep_pct": 21.4, "light_pct": 69.9, "rem_pct": 8.7, "period": "with_crossfit", "day": "Wed"}, {"date": "2025-12-25", "rhr": 51.0, "avg_hr": 76.9, "max_hr": 123.0, "bb_high": 90.0, "bb_low": 5.0, "stress": 29.0, "steps": 4719, "sleep_hrs": 8.3, "deep_pct": 5.0, "light_pct": 66.6, "rem_pct": 28.4, "period": "with_crossfit", "day": "Thu"}, {"date": "2025-12-26", "rhr": 52.0, "avg_hr": 80.0, "max_hr": 131.0, "bb_high": 98.0, "bb_low": 26.0, "stress": 33.0, "steps": 6724, "sleep_hrs": 11.8, "deep_pct": 18.2, "light_pct": 55.4, "rem_pct": 26.3, "period": "with_crossfit", "day": "Fri"}, {"date": "2025-12-27", "rhr": 55.0, "avg_hr": 87.2, "max_hr": 136.0, "bb_high": 75.0, "bb_low": 11.0, "stress": 42.0, "steps": 10691, "sleep_hrs": null, "deep_pct": null, "light_pct": null, "rem_pct": null, "period": "with_crossfit", "day": "Sat"}, {"date": "2025-12-28", "rhr": 52.0, "avg_hr": 79.9, "max_hr": 116.0, "bb_high": 94.0, "bb_low": 16.0, "stress": 41.0, "steps": 4053, "sleep_hrs": 7.5, "deep_pct": 13.7, "light_pct": 60.0, "rem_pct": 26.3, "period": "with_crossfit", "day": "Sun"}, {"date": "2025-12-29", "rhr": 51.0, "avg_hr": 72.8, "max_hr": 118.0, "bb_high": 100.0, "bb_low": 21.0, "stress": 33.0, "steps": 3442, "sleep_hrs": 12.6, "deep_pct": 16.3, "light_pct": 31.9, "rem_pct": 51.8, "period": "with_crossfit", "day": "Mon"}, {"date": "2025-12-30", "rhr": 46.0, "avg_hr": 65.1, "max_hr": 113.0, "bb_high": 100.0, "bb_low": 24.0, "stress": 24.0, "steps": 2208, "sleep_hrs": 12.4, "deep_pct": 14.6, "light_pct": 48.7, "rem_pct": 36.8, "period": "with_crossfit", "day": "Tue"}, {"date": "2025-12-31", "rhr": 54.0, "avg_hr": 82.1, "max_hr": 184.0, "bb_high": 90.0, "bb_low": 7.0, "stress": 35.0, "steps": 10205, "sleep_hrs": 10.9, "deep_pct": 23.4, "light_pct": 47.9, "rem_pct": 28.6, "period": "with_crossfit", "day": "Wed"}, {"date": "2026-01-01", "rhr": 49.0, "avg_hr": 71.0, "max_hr": 140.0, "bb_high": 92.0, "bb_low": 26.0, "stress": 25.0, "steps": 2702, "sleep_hrs": 11.3, "deep_pct": 7.8, "light_pct": 68.6, "rem_pct": 23.6, "period": "with_crossfit", "day": "Thu"}, {"date": "2026-01-02", "rhr": 53.0, "avg_hr": 68.8, "max_hr": 110.0, "bb_high": 100.0, "bb_low": 26.0, "stress": 28.0, "steps": 3177, "sleep_hrs": 11.8, "deep_pct": 7.9, "light_pct": 55.1, "rem_pct": 37.0, "period": "with_crossfit", "day": "Fri"}, {"date": "2026-01-03", "rhr": 49.0, "avg_hr": 83.3, "max_hr": 187.0, "bb_high": 84.0, "bb_low": 5.0, "stress": 42.0, "steps": 12270, "sleep_hrs": 6.4, "deep_pct": 0.0, "light_pct": 59.9, "rem_pct": 40.1, "period": "with_crossfit", "day": "Sat"}, {"date": "2026-01-04", "rhr": 54.0, "avg_hr": 74.2, "max_hr": 120.0, "bb_high": 69.0, "bb_low": 13.0, "stress": 38.0, "steps": 4130, "sleep_hrs": 8.7, "deep_pct": 1.3, "light_pct": 57.6, "rem_pct": 41.1, "period": "with_crossfit", "day": "Sun"}, {"date": "2026-01-05", "rhr": 51.0, "avg_hr": 71.1, "max_hr": 104.0, "bb_high": 74.0, "bb_low": 20.0, "stress": 35.0, "steps": 2941, "sleep_hrs": 11.6, "deep_pct": 4.0, "light_pct": 62.1, "rem_pct": 33.9, "period": "with_crossfit", "day": "Mon"}, {"date": "2026-01-06", "rhr": 51.0, "avg_hr": 77.8, "max_hr": 129.0, "bb_high": 100.0, "bb_low": 5.0, "stress": 45.0, "steps": 4358, "sleep_hrs": 9.4, "deep_pct": 1.9, "light_pct": 58.9, "rem_pct": 39.1, "period": "with_crossfit", "day": "Tue"}, {"date": "2026-01-07", "rhr": 50.0, "avg_hr": 81.3, "max_hr": 183.0, "bb_high": 78.0, "bb_low": 11.0, "stress": 34.0, "steps": 8857, "sleep_hrs": 10.5, "deep_pct": 0.5, "light_pct": 48.1, "rem_pct": 51.4, "period": "with_crossfit", "day": "Wed"}, {"date": "2026-01-08", "rhr": 44.0, "avg_hr": 60.6, "max_hr": 91.0, "bb_high": 100.0, "bb_low": 31.0, "stress": 18.0, "steps": 810, "sleep_hrs": 9.5, "deep_pct": 1.6, "light_pct": 51.8, "rem_pct": 46.6, "period": "with_crossfit", "day": "Thu"}, {"date": "2026-01-09", "rhr": 41.0, "avg_hr": 60.8, "max_hr": 104.0, "bb_high": 100.0, "bb_low": 40.0, "stress": 25.0, "steps": 1056, "sleep_hrs": 11.0, "deep_pct": 9.0, "light_pct": 47.9, "rem_pct": 43.2, "period": "with_crossfit", "day": "Fri"}, {"date": "2026-01-10", "rhr": 43.0, "avg_hr": 72.6, "max_hr": 123.0, "bb_high": 100.0, "bb_low": 8.0, "stress": 38.0, "steps": 5795, "sleep_hrs": 9.0, "deep_pct": 0.0, "light_pct": 63.8, "rem_pct": 36.2, "period": "with_crossfit", "day": "Sat"}, {"date": "2026-01-11", "rhr": 48.0, "avg_hr": 69.3, "max_hr": 118.0, "bb_high": 92.0, "bb_low": 14.0, "stress": 35.0, "steps": 3908, "sleep_hrs": 10.2, "deep_pct": 0.0, "light_pct": 56.5, "rem_pct": 43.5, "period": "with_crossfit", "day": "Sun"}, {"date": "2026-01-12", "rhr": 49.0, "avg_hr": 79.7, "max_hr": 128.0, "bb_high": 99.0, "bb_low": 5.0, "stress": 41.0, "steps": 8201, "sleep_hrs": 9.1, "deep_pct": 5.9, "light_pct": 58.5, "rem_pct": 35.7, "period": "with_crossfit", "day": "Mon"}, {"date": "2026-01-13", "rhr": 46.0, "avg_hr": 80.5, "max_hr": 171.0, "bb_high": 69.0, "bb_low": 5.0, "stress": 45.0, "steps": 6481, "sleep_hrs": 9.4, "deep_pct": 14.2, "light_pct": 49.6, "rem_pct": 36.2, "period": "with_crossfit", "day": "Tue"}, {"date": "2026-01-14", "rhr": 46.0, "avg_hr": 72.3, "max_hr": 118.0, "bb_high": 82.0, "bb_low": 10.0, "stress": 40.0, "steps": 4405, "sleep_hrs": 11.2, "deep_pct": 3.1, "light_pct": 52.4, "rem_pct": 44.5, "period": "with_crossfit", "day": "Wed"}, {"date": "2026-01-15", "rhr": 47.0, "avg_hr": 73.7, "max_hr": 172.0, "bb_high": 96.0, "bb_low": 11.0, "stress": 37.0, "steps": 4386, "sleep_hrs": 9.8, "deep_pct": 0.0, "light_pct": 49.6, "rem_pct": 50.4, "period": "with_crossfit", "day": "Thu"}, {"date": "2026-01-16", "rhr": 46.0, "avg_hr": 78.0, "max_hr": 165.0, "bb_high": 96.0, "bb_low": 7.0, "stress": 43.0, "steps": 6313, "sleep_hrs": 9.3, "deep_pct": 14.4, "light_pct": 50.4, "rem_pct": 35.1, "period": "with_crossfit", "day": "Fri"}, {"date": "2026-01-17", "rhr": 50.0, "avg_hr": 88.1, "max_hr": 176.0, "bb_high": 79.0, "bb_low": 5.0, "stress": 62.0, "steps": 5044, "sleep_hrs": null, "deep_pct": null, "light_pct": null, "rem_pct": null, "period": "with_crossfit", "day": "Sat"}, {"date": "2026-01-18", "rhr": 47.0, "avg_hr": 73.9, "max_hr": 133.0, "bb_high": 89.0, "bb_low": 10.0, "stress": 40.0, "steps": 3587, "sleep_hrs": 9.2, "deep_pct": 0.0, "light_pct": 61.6, "rem_pct": 38.4, "period": "with_crossfit", "day": "Sun"}, {"date": "2026-01-19", "rhr": 51.0, "avg_hr": 73.0, "max_hr": 121.0, "bb_high": 90.0, "bb_low": 14.0, "stress": 43.0, "steps": 2552, "sleep_hrs": 10.5, "deep_pct": 2.8, "light_pct": 58.9, "rem_pct": 38.3, "period": "with_crossfit", "day": "Mon"}, {"date": "2026-01-20", "rhr": 48.0, "avg_hr": 81.5, "max_hr": 139.0, "bb_high": 81.0, "bb_low": 5.0, "stress": 47.0, "steps": 7422, "sleep_hrs": 9.7, "deep_pct": 19.3, "light_pct": 51.4, "rem_pct": 29.3, "period": "with_crossfit", "day": "Tue"}, {"date": "2026-01-21", "rhr": 52.0, "avg_hr": 88.4, "max_hr": 185.0, "bb_high": 33.0, "bb_low": 5.0, "stress": 51.0, "steps": 15957, "sleep_hrs": 10.3, "deep_pct": 13.9, "light_pct": 58.9, "rem_pct": 27.3, "period": "with_crossfit", "day": "Wed"}, {"date": "2026-01-22", "rhr": 53.0, "avg_hr": 79.9, "max_hr": 152.0, "bb_high": 70.0, "bb_low": 5.0, "stress": 42.0, "steps": 7018, "sleep_hrs": 9.3, "deep_pct": 1.1, "light_pct": 61.0, "rem_pct": 38.0, "period": "with_crossfit", "day": "Thu"}, {"date": "2026-01-23", "rhr": 54.0, "avg_hr": 77.4, "max_hr": 119.0, "bb_high": 63.0, "bb_low": 5.0, "stress": 37.0, "steps": 7668, "sleep_hrs": 8.1, "deep_pct": 0.6, "light_pct": 65.8, "rem_pct": 33.6, "period": "with_crossfit", "day": "Fri"}, {"date": "2026-01-24", "rhr": 52.0, "avg_hr": 76.3, "max_hr": 116.0, "bb_high": 67.0, "bb_low": 7.0, "stress": 38.0, "steps": 5888, "sleep_hrs": 7.1, "deep_pct": 11.7, "light_pct": 60.2, "rem_pct": 28.1, "period": "with_crossfit", "day": "Sat"}, {"date": "2026-01-25", "rhr": 45.0, "avg_hr": 70.7, "max_hr": 119.0, "bb_high": 93.0, "bb_low": 14.0, "stress": 37.0, "steps": 2714, "sleep_hrs": 12.8, "deep_pct": 3.2, "light_pct": 69.4, "rem_pct": 27.4, "period": "with_crossfit", "day": "Sun"}, {"date": "2026-01-26", "rhr": 52.0, "avg_hr": 62.9, "max_hr": 111.0, "bb_high": 87.0, "bb_low": 20.0, "stress": 20.0, "steps": 950, "sleep_hrs": 9.3, "deep_pct": 5.7, "light_pct": 68.3, "rem_pct": 26.0, "period": "with_crossfit", "day": "Mon"}, {"date": "2026-01-27", "rhr": 55.0, "avg_hr": 97.4, "max_hr": 175.0, "bb_high": 20.0, "bb_low": 5.0, "stress": 75.0, "steps": 5046, "sleep_hrs": null, "deep_pct": null, "light_pct": null, "rem_pct": null, "period": "with_crossfit", "day": "Tue"}, {"date": "2026-01-28", "rhr": 56.0, "avg_hr": 83.5, "max_hr": 150.0, "bb_high": 31.0, "bb_low": 5.0, "stress": 53.0, "steps": 6387, "sleep_hrs": 10.6, "deep_pct": 16.5, "light_pct": 56.7, "rem_pct": 26.8, "period": "with_crossfit", "day": "Wed"}, {"date": "2026-01-29", "rhr": 54.0, "avg_hr": 76.7, "max_hr": 131.0, "bb_high": 54.0, "bb_low": 5.0, "stress": 38.0, "steps": 5131, "sleep_hrs": 8.7, "deep_pct": 10.9, "light_pct": 60.6, "rem_pct": 28.5, "period": "with_crossfit", "day": "Thu"}, {"date": "2026-01-30", "rhr": 50.0, "avg_hr": 78.7, "max_hr": 159.0, "bb_high": 83.0, "bb_low": 5.0, "stress": 48.0, "steps": 4420, "sleep_hrs": 12.4, "deep_pct": 3.5, "light_pct": 57.7, "rem_pct": 38.8, "period": "with_crossfit", "day": "Fri"}, {"date": "2026-01-31", "rhr": 56.0, "avg_hr": 86.0, "max_hr": 121.0, "bb_high": 39.0, "bb_low": 5.0, "stress": 53.0, "steps": 4566, "sleep_hrs": 10.3, "deep_pct": 1.6, "light_pct": 76.3, "rem_pct": 22.1, "period": "with_crossfit", "day": "Sat"}, {"date": "2026-02-01", "rhr": 53.0, "avg_hr": 78.1, "max_hr": 127.0, "bb_high": 75.0, "bb_low": 5.0, "stress": 44.0, "steps": 5611, "sleep_hrs": 8.5, "deep_pct": 8.0, "light_pct": 57.7, "rem_pct": 34.2, "period": "with_crossfit", "day": "Sun"}, {"date": "2026-02-02", "rhr": 53.0, "avg_hr": 81.4, "max_hr": 163.0, "bb_high": 65.0, "bb_low": 5.0, "stress": 47.0, "steps": 6408, "sleep_hrs": 8.4, "deep_pct": 4.8, "light_pct": 67.6, "rem_pct": 27.6, "period": "with_crossfit", "day": "Mon"}, {"date": "2026-02-03", "rhr": 55.0, "avg_hr": 76.9, "max_hr": 115.0, "bb_high": 67.0, "bb_low": 5.0, "stress": 43.0, "steps": 4527, "sleep_hrs": 8.8, "deep_pct": 0.0, "light_pct": 57.4, "rem_pct": 42.6, "period": "with_crossfit", "day": "Tue"}, {"date": "2026-02-04", "rhr": 51.0, "avg_hr": 67.5, "max_hr": 108.0, "bb_high": 69.0, "bb_low": 29.0, "stress": 30.0, "steps": 1669, "sleep_hrs": 10.3, "deep_pct": 9.9, "light_pct": 57.9, "rem_pct": 32.3, "period": "with_crossfit", "day": "Wed"}, {"date": "2026-02-05", "rhr": 56.0, "avg_hr": 79.2, "max_hr": 156.0, "bb_high": 90.0, "bb_low": 5.0, "stress": 44.0, "steps": 4412, "sleep_hrs": 11.6, "deep_pct": 19.3, "light_pct": 57.0, "rem_pct": 23.7, "period": "with_crossfit", "day": "Thu"}, {"date": "2026-02-06", "rhr": 57.0, "avg_hr": 93.3, "max_hr": 172.0, "bb_high": 59.0, "bb_low": 5.0, "stress": 63.0, "steps": 9915, "sleep_hrs": null, "deep_pct": null, "light_pct": null, "rem_pct": null, "period": "with_crossfit", "day": "Fri"}, {"date": "2026-02-07", "rhr": 56.0, "avg_hr": 73.6, "max_hr": 113.0, "bb_high": 61.0, "bb_low": 10.0, "stress": 39.0, "steps": 3332, "sleep_hrs": 10.7, "deep_pct": 12.2, "light_pct": 62.8, "rem_pct": 25.0, "period": "with_crossfit", "day": "Sat"}, {"date": "2026-02-08", "rhr": 55.0, "avg_hr": 74.5, "max_hr": 120.0, "bb_high": 70.0, "bb_low": 15.0, "stress": 41.0, "steps": 3351, "sleep_hrs": 10.7, "deep_pct": 4.0, "light_pct": 68.8, "rem_pct": 27.1, "period": "with_crossfit", "day": "Sun"}, {"date": "2026-02-09", "rhr": 56.0, "avg_hr": 83.7, "max_hr": 133.0, "bb_high": 63.0, "bb_low": 5.0, "stress": 50.0, "steps": 7149, "sleep_hrs": 12.7, "deep_pct": 16.6, "light_pct": 65.7, "rem_pct": 17.7, "period": "with_crossfit", "day": "Mon"}, {"date": "2026-02-10", "rhr": 57.0, "avg_hr": 76.4, "max_hr": 110.0, "bb_high": 52.0, "bb_low": 8.0, "stress": 41.0, "steps": 2088, "sleep_hrs": 3.4, "deep_pct": 8.4, "light_pct": 91.6, "rem_pct": 0.0, "period": "with_crossfit", "day": "Tue"}, {"date": "2026-02-11", "rhr": 47.0, "avg_hr": 79.7, "max_hr": 152.0, "bb_high": 100.0, "bb_low": 5.0, "stress": 42.0, "steps": 6481, "sleep_hrs": 10.3, "deep_pct": 9.8, "light_pct": 48.5, "rem_pct": 41.7, "period": "with_crossfit", "day": "Wed"}, {"date": "2026-02-12", "rhr": 54.0, "avg_hr": 76.5, "max_hr": 150.0, "bb_high": 75.0, "bb_low": 7.0, "stress": 39.0, "steps": 5803, "sleep_hrs": 8.9, "deep_pct": 10.4, "light_pct": 62.0, "rem_pct": 27.6, "period": "with_crossfit", "day": "Thu"}, {"date": "2026-02-13", "rhr": 51.0, "avg_hr": 79.0, "max_hr": 123.0, "bb_high": 76.0, "bb_low": 5.0, "stress": 53.0, "steps": 6135, "sleep_hrs": 8.6, "deep_pct": 14.0, "light_pct": 45.4, "rem_pct": 40.6, "period": "with_crossfit", "day": "Fri"}, {"date": "2026-02-14", "rhr": 54.0, "avg_hr": 77.8, "max_hr": 172.0, "bb_high": 69.0, "bb_low": 6.0, "stress": 42.0, "steps": 6651, "sleep_hrs": 8.6, "deep_pct": 0.0, "light_pct": 64.8, "rem_pct": 35.2, "period": "with_crossfit", "day": "Sat"}, {"date": "2026-02-15", "rhr": 53.0, "avg_hr": 72.9, "max_hr": 131.0, "bb_high": 85.0, "bb_low": 15.0, "stress": 35.0, "steps": 6336, "sleep_hrs": 11.4, "deep_pct": 16.1, "light_pct": 61.8, "rem_pct": 22.2, "period": "with_crossfit", "day": "Sun"}, {"date": "2026-02-16", "rhr": 51.0, "avg_hr": 82.2, "max_hr": 183.0, "bb_high": 79.0, "bb_low": 5.0, "stress": 47.0, "steps": 8314, "sleep_hrs": 9.5, "deep_pct": 11.1, "light_pct": 53.0, "rem_pct": 36.0, "period": "with_crossfit", "day": "Mon"}, {"date": "2026-02-17", "rhr": 55.0, "avg_hr": 82.5, "max_hr": 190.0, "bb_high": 64.0, "bb_low": 5.0, "stress": 46.0, "steps": 6539, "sleep_hrs": 9.5, "deep_pct": 6.5, "light_pct": 48.5, "rem_pct": 45.0, "period": "with_crossfit", "day": "Tue"}, {"date": "2026-02-18", "rhr": 51.0, "avg_hr": 64.3, "max_hr": 77.0, "bb_high": 71.0, "bb_low": 32.0, "stress": 21.0, "steps": null, "sleep_hrs": null, "deep_pct": null, "light_pct": null, "rem_pct": null, "period": "without_crossfit", "day": "Wed"}, {"date": "2026-02-19", "rhr": 57.0, "avg_hr": 94.8, "max_hr": 108.0, "bb_high": 40.0, "bb_low": 7.0, "stress": 67.0, "steps": 5588, "sleep_hrs": null, "deep_pct": null, "light_pct": null, "rem_pct": null, "period": "without_crossfit", "day": "Thu"}, {"date": "2026-02-20", "rhr": 53.0, "avg_hr": 70.3, "max_hr": 110.0, "bb_high": 82.0, "bb_low": 7.0, "stress": 34.0, "steps": 4319, "sleep_hrs": 7.2, "deep_pct": 5.8, "light_pct": 66.5, "rem_pct": 27.7, "period": "without_crossfit", "day": "Fri"}, {"date": "2026-02-21", "rhr": 48.0, "avg_hr": 77.4, "max_hr": 123.0, "bb_high": 100.0, "bb_low": 6.0, "stress": 38.0, "steps": 7048, "sleep_hrs": 8.2, "deep_pct": 12.2, "light_pct": 59.3, "rem_pct": 28.5, "period": "without_crossfit", "day": "Sat"}, {"date": "2026-02-22", "rhr": 48.0, "avg_hr": 76.8, "max_hr": 123.0, "bb_high": 82.0, "bb_low": 5.0, "stress": 50.0, "steps": 9428, "sleep_hrs": 8.9, "deep_pct": 4.9, "light_pct": 55.2, "rem_pct": 39.9, "period": "without_crossfit", "day": "Sun"}, {"date": "2026-02-23", "rhr": 55.0, "avg_hr": 89.3, "max_hr": 145.0, "bb_high": 48.0, "bb_low": 5.0, "stress": 57.0, "steps": 15213, "sleep_hrs": 6.9, "deep_pct": 12.3, "light_pct": 47.2, "rem_pct": 40.4, "period": "without_crossfit", "day": "Mon"}, {"date": "2026-02-24", "rhr": 56.0, "avg_hr": 87.6, "max_hr": 179.0, "bb_high": 52.0, "bb_low": 5.0, "stress": 49.0, "steps": 14997, "sleep_hrs": 9.7, "deep_pct": 24.5, "light_pct": 56.1, "rem_pct": 19.4, "period": "without_crossfit", "day": "Tue"}, {"date": "2026-02-25", "rhr": 57.0, "avg_hr": 95.2, "max_hr": 186.0, "bb_high": 37.0, "bb_low": 5.0, "stress": 49.0, "steps": 27351, "sleep_hrs": 7.5, "deep_pct": 17.9, "light_pct": 57.7, "rem_pct": 24.3, "period": "without_crossfit", "day": "Wed"}, {"date": "2026-02-26", "rhr": 55.0, "avg_hr": 85.8, "max_hr": 171.0, "bb_high": 58.0, "bb_low": 5.0, "stress": 33.0, "steps": 10662, "sleep_hrs": 7.9, "deep_pct": 11.0, "light_pct": 47.8, "rem_pct": 41.2, "period": "without_crossfit", "day": "Thu"}, {"date": "2026-03-03", "rhr": 57.0, "avg_hr": 82.2, "max_hr": 109.0, "bb_high": 16.0, "bb_low": 5.0, "stress": 48.0, "steps": 4948, "sleep_hrs": null, "deep_pct": null, "light_pct": null, "rem_pct": null, "period": "without_crossfit", "day": "Tue"}, {"date": "2026-03-04", "rhr": 51.0, "avg_hr": 75.4, "max_hr": 113.0, "bb_high": 72.0, "bb_low": 6.0, "stress": 35.0, "steps": 8374, "sleep_hrs": 9.6, "deep_pct": 16.5, "light_pct": 53.0, "rem_pct": 30.5, "period": "without_crossfit", "day": "Wed"}, {"date": "2026-03-05", "rhr": 51.0, "avg_hr": 71.2, "max_hr": 125.0, "bb_high": 78.0, "bb_low": 14.0, "stress": 34.0, "steps": 5258, "sleep_hrs": 9.6, "deep_pct": 9.8, "light_pct": 62.7, "rem_pct": 27.5, "period": "without_crossfit", "day": "Thu"}, {"date": "2026-03-06", "rhr": 50.0, "avg_hr": 66.6, "max_hr": 114.0, "bb_high": 90.0, "bb_low": 32.0, "stress": 27.0, "steps": 3649, "sleep_hrs": 9.8, "deep_pct": 7.0, "light_pct": 70.8, "rem_pct": 22.2, "period": "without_crossfit", "day": "Fri"}, {"date": "2026-03-07", "rhr": 55.0, "avg_hr": 81.4, "max_hr": 125.0, "bb_high": 78.0, "bb_low": 5.0, "stress": 67.0, "steps": 453, "sleep_hrs": 11.3, "deep_pct": 14.1, "light_pct": 58.8, "rem_pct": 27.1, "period": "without_crossfit", "day": "Sat"}, {"date": "2026-03-08", "rhr": 57.0, "avg_hr": 79.6, "max_hr": 103.0, "bb_high": 23.0, "bb_low": 6.0, "stress": 58.0, "steps": 95, "sleep_hrs": null, "deep_pct": null, "light_pct": null, "rem_pct": null, "period": "without_crossfit", "day": "Sun"}, {"date": "2026-03-09", "rhr": 58.0, "avg_hr": 84.1, "max_hr": 121.0, "bb_high": 25.0, "bb_low": 5.0, "stress": 42.0, "steps": 9336, "sleep_hrs": null, "deep_pct": null, "light_pct": null, "rem_pct": null, "period": "without_crossfit", "day": "Mon"}, {"date": "2026-03-10", "rhr": 53.0, "avg_hr": 78.0, "max_hr": 120.0, "bb_high": 56.0, "bb_low": 5.0, "stress": 36.0, "steps": 7160, "sleep_hrs": 8.5, "deep_pct": 21.3, "light_pct": 61.8, "rem_pct": 16.9, "period": "without_crossfit", "day": "Tue"}, {"date": "2026-03-11", "rhr": 45.0, "avg_hr": 61.4, "max_hr": 111.0, "bb_high": 100.0, "bb_low": 5.0, "stress": 20.0, "steps": 2896, "sleep_hrs": 10.3, "deep_pct": 14.0, "light_pct": 43.3, "rem_pct": 42.8, "period": "without_crossfit", "day": "Wed"}, {"date": "2026-03-12", "rhr": 46.0, "avg_hr": 58.5, "max_hr": 94.0, "bb_high": 100.0, "bb_low": 50.0, "stress": 22.0, "steps": 903, "sleep_hrs": 10.5, "deep_pct": 17.0, "light_pct": 55.9, "rem_pct": 27.1, "period": "without_crossfit", "day": "Thu"}];
+const db=document.getElementById('dailyBody');
+daily.forEach(r=>{
+const tr=document.createElement('tr');
+if(r.bb_high!==null&&r.bb_high<50) tr.className='hl';
+const v=x=>x!==null&&x!==undefined?x:'—';
+const n=(x,d)=>x!==null&&x!==undefined?Number(x).toFixed(d||0):'—';
+tr.innerHTML=`<td>${r.date}</td><td>${r.day}</td><td>${r.period==='with_crossfit'?'CF':'No CF'}</td><td>${n(r.bb_high)}</td><td>${n(r.bb_low)}</td><td>${n(r.rhr)}</td><td>${n(r.avg_hr)}</td><td>${n(r.stress,1)}</td><td>${v(r.steps)}</td><td>${n(r.sleep_hrs,1)}</td><td>${n(r.deep_pct,1)}</td><td>${n(r.rem_pct,1)}</td>`;
+db.appendChild(tr);
+});
+
+// Populate hourly comparison table
+const hb=document.getElementById('hourlyBody');
+for(let i=0;i<24;i++){
+const tr=document.createElement('tr');
+const gap=(eBB[i]-hBB[i]).toFixed(1);
+const gc=parseFloat(gap)<-15?'color:var(--orange);font-weight:600':'';
+tr.innerHTML=`<td>${hrs[i]}</td><td>${eBB[i]}</td><td>${hBB[i]}</td><td style="${gc}">${gap}</td>`;
+hb.appendChild(tr);
+}
+
+// CSV download functions
+function dlCSV(type){
+let content,filename;
+if(type==='elyssa'){
+content=`metric_date,resting_heart_rate,avg_heart_rate,max_heart_rate,body_battery_high,body_battery_low,avg_stress_level,total_steps,sleep_duration_hours,deep_sleep_hours,deep_sleep_pct,light_sleep_hours,light_sleep_pct,rem_sleep_hours,rem_sleep_pct,exercise_period,day_name
+2025-03-13,,0.0,,,,,,,,,,,,,with_crossfit,Thu
+2025-03-14,,0.0,,,,,,,,,,,,,with_crossfit,Fri
+2025-03-15,,0.0,,,,,,,,,,,,,with_crossfit,Sat
+2025-03-16,,0.0,,,,,,,,,,,,,with_crossfit,Sun
+2025-03-17,,0.0,,,,,,,,,,,,,with_crossfit,Mon
+2025-03-18,,0.0,,,,,,,,,,,,,with_crossfit,Tue
+2025-03-19,,0.0,,,,,,,,,,,,,with_crossfit,Wed
+2025-03-20,,0.0,,,,,,,,,,,,,with_crossfit,Thu
+2025-03-21,,0.0,,,,,,,,,,,,,with_crossfit,Fri
+2025-03-22,,0.0,,,,,,,,,,,,,with_crossfit,Sat
+2025-03-23,,0.0,,,,,,,,,,,,,with_crossfit,Sun
+2025-03-24,,0.0,,,,,,,,,,,,,with_crossfit,Mon
+2025-03-25,,0.0,,,,,,,,,,,,,with_crossfit,Tue
+2025-03-26,,0.0,,,,,,,,,,,,,with_crossfit,Wed
+2025-03-27,,0.0,,,,,,,,,,,,,with_crossfit,Thu
+2025-03-28,,0.0,,,,,,,,,,,,,with_crossfit,Fri
+2025-03-29,,0.0,,,,,,,,,,,,,with_crossfit,Sat
+2025-03-30,,0.0,,,,,,,,,,,,,with_crossfit,Sun
+2025-03-31,,0.0,,,,,,,,,,,,,with_crossfit,Mon
+2025-04-01,,0.0,,,,,,,,,,,,,with_crossfit,Tue
+2025-04-02,,0.0,,,,,,,,,,,,,with_crossfit,Wed
+2025-04-03,,0.0,,,,,,,,,,,,,with_crossfit,Thu
+2025-04-04,,0.0,,,,,,,,,,,,,with_crossfit,Fri
+2025-04-05,,0.0,,,,,,,,,,,,,with_crossfit,Sat
+2025-04-06,,0.0,,,,,,,,,,,,,with_crossfit,Sun
+2025-04-07,,0.0,,,,,,,,,,,,,with_crossfit,Mon
+2025-04-08,,0.0,,,,,,,,,,,,,with_crossfit,Tue
+2025-04-09,,0.0,,,,,,,,,,,,,with_crossfit,Wed
+2025-04-10,,0.0,,,,,,,,,,,,,with_crossfit,Thu
+2025-04-11,,0.0,,,,,,,,,,,,,with_crossfit,Fri
+2025-04-12,,0.0,,,,,,,,,,,,,with_crossfit,Sat
+2025-04-13,,0.0,,,,,,,,,,,,,with_crossfit,Sun
+2025-04-14,,0.0,,,,,,,,,,,,,with_crossfit,Mon
+2025-04-15,,0.0,,,,,,,,,,,,,with_crossfit,Tue
+2025-04-16,,0.0,,,,,,,,,,,,,with_crossfit,Wed
+2025-04-17,,0.0,,,,,,,,,,,,,with_crossfit,Thu
+2025-04-18,,0.0,,,,,,,,,,,,,with_crossfit,Fri
+2025-04-19,,0.0,,,,,,,,,,,,,with_crossfit,Sat
+2025-04-20,,0.0,,,,,,,,,,,,,with_crossfit,Sun
+2025-04-21,,0.0,,,,,,,,,,,,,with_crossfit,Mon
+2025-04-22,,0.0,,,,,,,,,,,,,with_crossfit,Tue
+2025-04-23,,0.0,,,,,,,,,,,,,with_crossfit,Wed
+2025-04-24,,0.0,,,,,,,,,,,,,with_crossfit,Thu
+2025-04-25,,0.0,,,,,,,,,,,,,with_crossfit,Fri
+2025-04-26,,0.0,,,,,,,,,,,,,with_crossfit,Sat
+2025-04-27,,0.0,,,,,,,,,,,,,with_crossfit,Sun
+2025-04-28,,0.0,,,,,,,,,,,,,with_crossfit,Mon
+2025-04-29,,0.0,,,,,,,,,,,,,with_crossfit,Tue
+2025-04-30,,0.0,,,,,,,,,,,,,with_crossfit,Wed
+2025-05-01,,0.0,,,,,,,,,,,,,with_crossfit,Thu
+2025-05-02,,0.0,,,,,,,,,,,,,with_crossfit,Fri
+2025-05-03,,0.0,,,,,,,,,,,,,with_crossfit,Sat
+2025-05-04,,0.0,,,,,,,,,,,,,with_crossfit,Sun
+2025-05-05,,0.0,,,,,,,,,,,,,with_crossfit,Mon
+2025-05-06,,0.0,,,,,,,,,,,,,with_crossfit,Tue
+2025-05-07,,0.0,,,,,,,,,,,,,with_crossfit,Wed
+2025-05-08,,0.0,,,,,,,,,,,,,with_crossfit,Thu
+2025-05-09,,0.0,,,,,,,,,,,,,with_crossfit,Fri
+2025-05-10,,0.0,,,,,,,,,,,,,with_crossfit,Sat
+2025-05-11,,0.0,,,,,,,,,,,,,with_crossfit,Sun
+2025-05-12,,0.0,,,,,,,,,,,,,with_crossfit,Mon
+2025-05-13,,0.0,,,,,,,,,,,,,with_crossfit,Tue
+2025-05-14,,0.0,,,,,,,,,,,,,with_crossfit,Wed
+2025-05-15,,0.0,,,,,,,,,,,,,with_crossfit,Thu
+2025-05-16,,0.0,,,,,,,,,,,,,with_crossfit,Fri
+2025-05-17,,0.0,,,,,,,,,,,,,with_crossfit,Sat
+2025-05-18,,0.0,,,,,,,,,,,,,with_crossfit,Sun
+2025-05-19,,0.0,,,,,,,,,,,,,with_crossfit,Mon
+2025-05-20,,0.0,,,,,,,,,,,,,with_crossfit,Tue
+2025-05-21,,0.0,,,,,,,,,,,,,with_crossfit,Wed
+2025-05-22,,0.0,,,,,,,,,,,,,with_crossfit,Thu
+2025-05-23,,0.0,,,,,,,,,,,,,with_crossfit,Fri
+2025-05-24,,0.0,,,,,,,,,,,,,with_crossfit,Sat
+2025-05-25,,0.0,,,,,,,,,,,,,with_crossfit,Sun
+2025-05-26,,0.0,,,,,,,,,,,,,with_crossfit,Mon
+2025-05-27,,0.0,,,,,,,,,,,,,with_crossfit,Tue
+2025-05-28,,0.0,,,,,,,,,,,,,with_crossfit,Wed
+2025-05-29,,0.0,,,,,,,,,,,,,with_crossfit,Thu
+2025-05-30,,0.0,,,,,,,,,,,,,with_crossfit,Fri
+2025-05-31,,0.0,,,,,,,,,,,,,with_crossfit,Sat
+2025-06-01,,0.0,,,,,,,,,,,,,with_crossfit,Sun
+2025-06-02,,0.0,,,,,,,,,,,,,with_crossfit,Mon
+2025-06-03,,0.0,,,,,,,,,,,,,with_crossfit,Tue
+2025-06-04,,0.0,,,,,,,,,,,,,with_crossfit,Wed
+2025-06-05,,0.0,,,,,,,,,,,,,with_crossfit,Thu
+2025-06-06,,0.0,,,,,,,,,,,,,with_crossfit,Fri
+2025-06-07,,0.0,,,,,,,,,,,,,with_crossfit,Sat
+2025-06-08,,0.0,,,,,,,,,,,,,with_crossfit,Sun
+2025-06-09,,0.0,,,,,,,,,,,,,with_crossfit,Mon
+2025-06-10,,0.0,,,,,,,,,,,,,with_crossfit,Tue
+2025-06-11,,0.0,,,,,,,,,,,,,with_crossfit,Wed
+2025-06-12,,0.0,,,,,,,,,,,,,with_crossfit,Thu
+2025-06-13,,0.0,,,,,,,,,,,,,with_crossfit,Fri
+2025-06-14,,0.0,,,,,,,,,,,,,with_crossfit,Sat
+2025-06-15,,0.0,,,,,,,,,,,,,with_crossfit,Sun
+2025-06-16,,0.0,,,,,,,,,,,,,with_crossfit,Mon
+2025-06-17,,0.0,,,,,,,,,,,,,with_crossfit,Tue
+2025-06-18,,0.0,,,,,,,,,,,,,with_crossfit,Wed
+2025-06-19,,0.0,,,,,,,,,,,,,with_crossfit,Thu
+2025-06-20,,0.0,,,,,,,,,,,,,with_crossfit,Fri
+2025-06-21,,0.0,,,,,,,,,,,,,with_crossfit,Sat
+2025-06-22,,0.0,,,,,,,,,,,,,with_crossfit,Sun
+2025-06-23,,0.0,,,,,,,,,,,,,with_crossfit,Mon
+2025-06-24,,0.0,,,,,,,,,,,,,with_crossfit,Tue
+2025-06-25,,0.0,,,,,,,,,,,,,with_crossfit,Wed
+2025-06-26,,0.0,,,,,,,,,,,,,with_crossfit,Thu
+2025-06-27,,0.0,,,,,,,,,,,,,with_crossfit,Fri
+2025-06-28,,0.0,,,,,,,,,,,,,with_crossfit,Sat
+2025-06-29,,0.0,,,,,,,,,,,,,with_crossfit,Sun
+2025-06-30,,0.0,,,,,,,,,,,,,with_crossfit,Mon
+2025-07-01,,0.0,,,,,,,,,,,,,with_crossfit,Tue
+2025-07-02,,0.0,,,,,,,,,,,,,with_crossfit,Wed
+2025-07-03,,0.0,,,,,,,,,,,,,with_crossfit,Thu
+2025-07-04,,0.0,,,,,,,,,,,,,with_crossfit,Fri
+2025-07-05,,0.0,,,,,,,,,,,,,with_crossfit,Sat
+2025-07-06,,0.0,,,,,,,,,,,,,with_crossfit,Sun
+2025-07-07,,0.0,,,,,,,,,,,,,with_crossfit,Mon
+2025-07-08,,0.0,,,,,,,,,,,,,with_crossfit,Tue
+2025-07-09,,0.0,,,,,,,,,,,,,with_crossfit,Wed
+2025-07-10,,0.0,,,,,,,,,,,,,with_crossfit,Thu
+2025-07-11,,0.0,,,,,,,,,,,,,with_crossfit,Fri
+2025-07-12,,0.0,,,,,,,,,,,,,with_crossfit,Sat
+2025-07-13,,0.0,,,,,,,,,,,,,with_crossfit,Sun
+2025-07-14,,0.0,,,,,,,,,,,,,with_crossfit,Mon
+2025-07-15,,0.0,,,,,,,,,,,,,with_crossfit,Tue
+2025-07-16,,0.0,,,,,,,,,,,,,with_crossfit,Wed
+2025-07-17,,0.0,,,,,,,,,,,,,with_crossfit,Thu
+2025-07-18,,0.0,,,,,,,,,,,,,with_crossfit,Fri
+2025-07-19,,0.0,,,,,,,,,,,,,with_crossfit,Sat
+2025-07-20,,0.0,,,,,,,,,,,,,with_crossfit,Sun
+2025-07-21,,0.0,,,,,,,,,,,,,with_crossfit,Mon
+2025-07-22,,0.0,,,,,,,,,,,,,with_crossfit,Tue
+2025-07-23,,0.0,,,,,,,,,,,,,with_crossfit,Wed
+2025-07-24,,0.0,,,,,,,,,,,,,with_crossfit,Thu
+2025-07-25,,0.0,,,,,,,,,,,,,with_crossfit,Fri
+2025-07-26,,0.0,,,,,,,,,,,,,with_crossfit,Sat
+2025-07-27,,0.0,,,,,,,,,,,,,with_crossfit,Sun
+2025-07-28,,0.0,,,,,,,,,,,,,with_crossfit,Mon
+2025-07-29,,0.0,,,,,,,,,,,,,with_crossfit,Tue
+2025-07-30,,0.0,,,,,,,,,,,,,with_crossfit,Wed
+2025-07-31,,0.0,,,,,,,,,,,,,with_crossfit,Thu
+2025-08-01,,0.0,,,,,,,,,,,,,with_crossfit,Fri
+2025-08-02,,0.0,,,,,,,,,,,,,with_crossfit,Sat
+2025-08-03,,0.0,,,,,,,,,,,,,with_crossfit,Sun
+2025-08-04,,0.0,,,,,,,,,,,,,with_crossfit,Mon
+2025-08-05,,0.0,,,,,,,,,,,,,with_crossfit,Tue
+2025-08-06,,0.0,,,,,,,,,,,,,with_crossfit,Wed
+2025-08-07,,0.0,,,,,,,,,,,,,with_crossfit,Thu
+2025-08-08,,0.0,,,,,,,,,,,,,with_crossfit,Fri
+2025-08-09,,0.0,,,,,,,,,,,,,with_crossfit,Sat
+2025-08-10,,0.0,,,,,,,,,,,,,with_crossfit,Sun
+2025-08-11,,0.0,,,,,,,,,,,,,with_crossfit,Mon
+2025-08-12,,0.0,,,,,,,,,,,,,with_crossfit,Tue
+2025-08-13,,0.0,,,,,,,,,,,,,with_crossfit,Wed
+2025-08-14,,0.0,,,,,,,,,,,,,with_crossfit,Thu
+2025-08-15,,0.0,,,,,,,,,,,,,with_crossfit,Fri
+2025-08-16,,0.0,,,,,,,,,,,,,with_crossfit,Sat
+2025-08-17,,0.0,,,,,,,,,,,,,with_crossfit,Sun
+2025-08-18,,0.0,,,,,,,,,,,,,with_crossfit,Mon
+2025-08-19,,0.0,,,,,,,,,,,,,with_crossfit,Tue
+2025-08-20,,0.0,,,,,,,,,,,,,with_crossfit,Wed
+2025-08-21,,0.0,,,,,,,,,,,,,with_crossfit,Thu
+2025-08-22,,0.0,,,,,,,,,,,,,with_crossfit,Fri
+2025-08-23,,0.0,,,,,,,,,,,,,with_crossfit,Sat
+2025-08-24,,0.0,,,,,,,,,,,,,with_crossfit,Sun
+2025-08-25,,0.0,,,,,,,,,,,,,with_crossfit,Mon
+2025-08-26,,0.0,,,,,,,,,,,,,with_crossfit,Tue
+2025-08-27,,0.0,,,,,,,,,,,,,with_crossfit,Wed
+2025-08-28,,0.0,,,,,,,,,,,,,with_crossfit,Thu
+2025-08-29,,0.0,,,,,,,,,,,,,with_crossfit,Fri
+2025-08-30,,0.0,,,,,,,,,,,,,with_crossfit,Sat
+2025-08-31,,0.0,,,,,,,,,,,,,with_crossfit,Sun
+2025-09-01,,0.0,,,,,,,,,,,,,with_crossfit,Mon
+2025-09-02,,0.0,,,,,,,,,,,,,with_crossfit,Tue
+2025-09-03,,0.0,,,,,,,,,,,,,with_crossfit,Wed
+2025-09-04,,0.0,,,,,,,,,,,,,with_crossfit,Thu
+2025-09-05,,0.0,,,,,,,,,,,,,with_crossfit,Fri
+2025-09-06,,0.0,,,,,,,,,,,,,with_crossfit,Sat
+2025-09-07,,0.0,,,,,,,,,,,,,with_crossfit,Sun
+2025-09-08,,0.0,,,,,,,,,,,,,with_crossfit,Mon
+2025-09-09,,0.0,,,,,,,,,,,,,with_crossfit,Tue
+2025-09-10,,0.0,,,,,,,,,,,,,with_crossfit,Wed
+2025-09-11,,0.0,,,,,,,,,,,,,with_crossfit,Thu
+2025-09-12,,0.0,,,,,,,,,,,,,with_crossfit,Fri
+2025-09-13,,0.0,,,,,,,,,,,,,with_crossfit,Sat
+2025-09-14,,0.0,,,,,,,,,,,,,with_crossfit,Sun
+2025-09-15,,0.0,,,,,,,,,,,,,with_crossfit,Mon
+2025-09-16,,0.0,,,,,,,,,,,,,with_crossfit,Tue
+2025-09-17,,0.0,,,,,,,,,,,,,with_crossfit,Wed
+2025-09-18,,0.0,,,,,,,,,,,,,with_crossfit,Thu
+2025-09-19,,0.0,,,,,,,,,,,,,with_crossfit,Fri
+2025-09-20,,0.0,,,,,,,,,,,,,with_crossfit,Sat
+2025-09-21,,0.0,,,,,,,,,,,,,with_crossfit,Sun
+2025-09-22,,0.0,,,,,,,,,,,,,with_crossfit,Mon
+2025-09-23,,0.0,,,,,,,,,,,,,with_crossfit,Tue
+2025-09-24,,0.0,,,,,,,,,,,,,with_crossfit,Wed
+2025-09-25,,0.0,,,,,,,,,,,,,with_crossfit,Thu
+2025-09-26,,0.0,,,,,,,,,,,,,with_crossfit,Fri
+2025-09-27,,0.0,,,,,,,,,,,,,with_crossfit,Sat
+2025-09-28,,0.0,,,,,,,,,,,,,with_crossfit,Sun
+2025-09-29,,0.0,,,,,,,,,,,,,with_crossfit,Mon
+2025-09-30,,0.0,,,,,,,,,,,,,with_crossfit,Tue
+2025-10-01,,0.0,,,,,,,,,,,,,with_crossfit,Wed
+2025-10-02,,0.0,,,,,,,,,,,,,with_crossfit,Thu
+2025-10-03,,0.0,,,,,,,,,,,,,with_crossfit,Fri
+2025-10-04,,0.0,,,,,,,,,,,,,with_crossfit,Sat
+2025-10-05,,0.0,,,,,,,,,,,,,with_crossfit,Sun
+2025-10-06,,0.0,,,,,,,,,,,,,with_crossfit,Mon
+2025-10-07,,0.0,,,,,,,,,,,,,with_crossfit,Tue
+2025-10-08,,0.0,,,,,,,,,,,,,with_crossfit,Wed
+2025-10-09,,0.0,,,,,,,,,,,,,with_crossfit,Thu
+2025-10-10,,0.0,,,,,,,,,,,,,with_crossfit,Fri
+2025-10-11,,0.0,,,,,,,,,,,,,with_crossfit,Sat
+2025-10-12,,0.0,,,,,,,,,,,,,with_crossfit,Sun
+2025-10-13,,0.0,,,,,,,,,,,,,with_crossfit,Mon
+2025-10-14,,0.0,,,,,,,,,,,,,with_crossfit,Tue
+2025-10-15,,0.0,,,,,,,,,,,,,with_crossfit,Wed
+2025-10-16,,0.0,,,,,,,,,,,,,with_crossfit,Thu
+2025-10-17,,0.0,,,,,,,,,,,,,with_crossfit,Fri
+2025-10-18,67,0.0,,18,5,50,6367,,,,,,,,with_crossfit,Sat
+2025-10-19,54,0.0,,95,16,29,4396,10.1,1.8,18.0,5.8,57.0,2.5,25.0,with_crossfit,Sun
+2025-10-20,50,0.0,,100,7,39,7890,11.4,0.7,6.1,6.0,52.4,4.8,41.5,with_crossfit,Mon
+2025-10-21,51,0.0,,86,5,36,15698,9.7,,0.0,6.4,65.6,3.4,34.4,with_crossfit,Tue
+2025-10-22,50,0.0,,91,10,34,7542,11.8,2.2,18.5,5.3,45.1,4.3,36.5,with_crossfit,Wed
+2025-10-23,55,0.0,,86,9,36,8811,10.5,1.1,10.8,5.4,51.6,3.9,37.5,with_crossfit,Thu
+2025-10-24,58,0.0,,83,12,43,6532,,,,,,,,with_crossfit,Fri
+2025-10-25,52,0.0,,87,5,42,14961,8.8,1.6,18.7,3.3,37.5,3.9,43.6,with_crossfit,Sat
+2025-10-26,54,0.0,,95,24,34,2806,12.2,1.7,14.1,6.7,55.4,3.7,30.5,with_crossfit,Sun
+2025-10-27,51,0.0,,95,8,39,7830,8.9,1.5,16.4,5.3,59.3,2.2,24.3,with_crossfit,Mon
+2025-10-28,52,0.0,,72,18,26,2947,10.4,0.4,3.7,8.1,78.3,1.9,18.0,with_crossfit,Tue
+2025-10-29,53,0.0,,95,7,40,7934,9.7,0.5,4.8,6.1,63.6,3.0,31.6,with_crossfit,Wed
+2025-10-30,55,0.0,,65,5,39,13846,11.0,2.4,21.8,5.8,53.0,2.8,25.3,with_crossfit,Thu
+2025-10-31,52,0.0,,90,16,33,5753,9.7,1.3,13.2,5.1,52.7,3.3,34.0,with_crossfit,Fri
+2025-11-01,57,93.4,144,80,5,64,12299,,,,,,,,with_crossfit,Sat
+2025-11-02,48,76.4,145,86,5,41,4793,9.8,1.4,14.5,6.3,64.1,2.1,21.4,with_crossfit,Sun
+2025-11-03,50,88.4,156,87,5,41,10647,9.9,,0.0,7.5,75.7,2.4,24.3,with_crossfit,Mon
+2025-11-04,54,87.0,186,48,5,50,12555,8.5,0.6,6.5,6.5,76.3,1.5,17.2,with_crossfit,Tue
+2025-11-05,56,79.8,141,82,5,41,6410,8.4,,0.0,5.0,59.7,3.4,40.3,with_crossfit,Wed
+2025-11-06,52,76.9,147,70,10,40,5552,10.9,0.7,6.1,7.5,69.1,2.7,24.8,with_crossfit,Thu
+2025-11-07,54,74.6,115,81,6,40,5929,9.8,1.2,12.5,5.3,53.7,3.3,33.7,with_crossfit,Fri
+2025-11-08,52,75.2,130,78,10,39,7200,7.7,1.6,21.2,3.7,47.8,2.4,31.0,with_crossfit,Sat
+2025-11-09,53,77.5,137,86,8,45,3608,10.2,2.5,24.1,5.7,56.1,2.0,19.8,with_crossfit,Sun
+2025-11-10,48,77.5,144,91,9,52,3779,,,,,,,,with_crossfit,Mon
+2025-11-11,57,85.5,119,21,5,71,702,10.3,1.0,10.0,7.8,75.9,1.4,14.1,with_crossfit,Tue
+2025-11-12,57,82.6,128,7,5,51,702,9.3,1.0,10.5,7.3,79.5,0.9,10.1,with_crossfit,Wed
+2025-11-13,57,85.0,125,51,5,40,7831,11.0,1.1,9.9,7.6,69.3,2.3,20.8,with_crossfit,Thu
+2025-11-14,57,77.6,123,63,5,38,8803,9.3,1.3,14.1,5.8,62.5,2.2,23.4,with_crossfit,Fri
+2025-11-15,45,73.3,153,93,13,35,10090,9.4,1.3,13.7,3.8,40.4,4.3,45.9,with_crossfit,Sat
+2025-11-16,44,63.7,123,100,32,25,5387,10.5,0.9,8.8,4.3,40.9,5.3,50.3,with_crossfit,Sun
+2025-11-17,40,64.0,126,100,21,29,3602,11.1,1.3,11.3,5.0,44.7,4.9,44.0,with_crossfit,Mon
+2025-11-18,45,75.7,188,98,5,41,11482,11.3,1.2,10.9,7.3,64.5,2.8,24.6,with_crossfit,Tue
+2025-11-19,50,70.2,118,78,8,34,3289,10.7,1.4,13.5,5.8,54.5,3.4,32.1,with_crossfit,Wed
+2025-11-20,48,76.6,118,100,8,45,5197,7.7,0.9,12.1,4.1,53.4,2.7,34.5,with_crossfit,Thu
+2025-11-21,49,81.2,119,75,7,52,8829,,,,,,,,with_crossfit,Fri
+2025-11-22,44,73.4,184,100,10,29,12984,9.9,0.3,2.5,5.7,57.7,3.9,39.7,with_crossfit,Sat
+2025-11-23,44,70.2,125,99,14,32,4786,9.7,0.8,7.9,4.5,46.1,4.5,46.0,with_crossfit,Sun
+2025-11-24,47,75.9,148,96,6,42,4272,10.1,1.1,10.6,4.8,47.6,4.2,41.8,with_crossfit,Mon
+2025-11-25,50,74.5,143,88,9,37,4675,9.2,0.4,4.6,4.2,45.4,4.6,50.1,with_crossfit,Tue
+2025-11-26,51,80.7,139,80,10,34,6876,10.5,0.7,6.3,5.9,55.9,4.0,37.7,with_crossfit,Wed
+2025-11-27,48,81.7,190,88,11,39,11027,8.6,1.4,15.7,5.8,67.1,1.5,17.2,with_crossfit,Thu
+2025-11-28,49,64.4,107,75,21,26,1579,11.9,1.7,14.6,7.3,61.2,2.9,24.3,with_crossfit,Fri
+2025-11-29,45,71.9,118,100,14,34,4343,10.9,1.3,12.0,6.2,57.2,3.4,30.8,with_crossfit,Sat
+2025-11-30,43,79.6,117,62,6,55,2864,,,,,,,,with_crossfit,Sun
+2025-12-01,47,73.7,138,97,12,32,5334,9.6,0.4,4.2,5.9,61.3,3.3,34.5,with_crossfit,Mon
+2025-12-02,44,71.9,134,100,11,35,5349,10.0,0.3,2.8,6.3,62.6,3.5,34.6,with_crossfit,Tue
+2025-12-03,48,74.3,136,84,7,40,4893,11.0,1.5,13.5,6.7,61.3,2.8,25.2,with_crossfit,Wed
+2025-12-04,47,80.6,142,93,5,35,8848,11.8,0.1,0.8,7.0,59.3,4.7,39.8,with_crossfit,Thu
+2025-12-05,47,80.7,153,83,5,44,7754,10.1,0.2,2.3,5.3,52.9,4.5,44.8,with_crossfit,Fri
+2025-12-06,53,79.1,136,55,5,47,5956,8.0,1.1,13.2,5.7,71.1,1.3,15.7,with_crossfit,Sat
+2025-12-07,50,78.6,126,75,7,46,4323,9.9,,0.0,5.8,58.2,4.2,41.8,with_crossfit,Sun
+2025-12-08,50,81.9,187,80,5,46,8990,10.7,1.4,13.1,5.3,49.7,4.0,37.2,with_crossfit,Mon
+2025-12-09,52,77.4,136,73,5,44,5048,10.8,0.9,8.4,5.0,46.3,4.9,45.4,with_crossfit,Tue
+2025-12-10,51,57.9,67,72,19,14,19,7.6,0.7,9.7,3.3,43.5,3.5,46.8,with_crossfit,Wed
+2025-12-11,,0.0,,,,-2,,,,,,,,,with_crossfit,Thu
+2025-12-12,,0.0,,,,-1,,,,,,,,,with_crossfit,Fri
+2025-12-13,62,78.8,116,92,5,58,3349,,,,,,,,with_crossfit,Sat
+2025-12-14,49,72.5,119,70,5,39,5753,10.0,1.7,16.7,5.7,57.0,2.6,26.3,with_crossfit,Sun
+2025-12-15,47,72.6,152,93,11,37,4636,10.4,1.7,16.7,4.9,47.3,3.7,36.0,with_crossfit,Mon
+2025-12-16,50,80.1,169,84,5,37,11133,10.8,1.8,16.6,6.3,58.8,2.6,24.7,with_crossfit,Tue
+2025-12-17,44,74.3,124,100,7,38,7889,10.5,1.0,9.2,4.7,44.8,4.8,46.0,with_crossfit,Wed
+2025-12-18,42,69.6,119,90,13,35,6961,10.6,0.4,3.9,5.5,51.8,4.7,44.3,with_crossfit,Thu
+2025-12-19,47,71.9,120,100,10,40,4521,10.6,0.3,2.8,6.2,58.2,4.1,38.8,with_crossfit,Fri
+2025-12-20,45,75.8,167,87,5,42,9064,9.8,1.5,15.0,4.0,41.0,4.3,44.0,with_crossfit,Sat
+2025-12-21,50,73.4,114,69,5,45,3226,12.0,0.8,7.0,7.5,62.3,3.7,30.7,with_crossfit,Sun
+2025-12-22,50,82.9,184,62,5,52,8275,10.0,1.3,13.3,6.0,59.5,2.7,27.2,with_crossfit,Mon
+2025-12-23,50,83.3,168,51,5,55,5744,8.7,1.7,19.7,4.0,46.1,3.0,34.2,with_crossfit,Tue
+2025-12-24,51,83.5,126,28,5,45,11020,6.5,1.4,21.4,4.6,69.9,0.6,8.7,with_crossfit,Wed
+2025-12-25,51,76.9,123,90,5,29,4719,8.3,0.4,5.0,5.5,66.6,2.4,28.4,with_crossfit,Thu
+2025-12-26,52,80.0,131,98,26,33,6724,11.8,2.1,18.2,6.5,55.4,3.1,26.3,with_crossfit,Fri
+2025-12-27,55,87.2,136,75,11,42,10691,,,,,,,,with_crossfit,Sat
+2025-12-28,52,79.9,116,94,16,41,4053,7.5,1.0,13.7,4.5,60.0,2.0,26.3,with_crossfit,Sun
+2025-12-29,51,72.8,118,100,21,33,3442,12.6,2.0,16.3,4.0,31.9,6.5,51.8,with_crossfit,Mon
+2025-12-30,46,65.1,113,100,24,24,2208,12.4,1.8,14.6,6.0,48.7,4.5,36.8,with_crossfit,Tue
+2025-12-31,54,82.1,184,90,7,35,10205,10.9,2.5,23.4,5.2,47.9,3.1,28.6,with_crossfit,Wed
+2026-01-01,49,71.0,140,92,26,25,2702,11.3,0.9,7.8,7.8,68.6,2.7,23.6,with_crossfit,Thu
+2026-01-02,53,68.8,110,100,26,28,3177,11.8,0.9,7.9,6.5,55.1,4.4,37.0,with_crossfit,Fri
+2026-01-03,49,83.3,187,84,5,42,12270,6.4,,0.0,3.8,59.9,2.5,40.1,with_crossfit,Sat
+2026-01-04,54,74.2,120,69,13,38,4130,8.7,0.1,1.3,5.0,57.6,3.6,41.1,with_crossfit,Sun
+2026-01-05,51,71.1,104,74,20,35,2941,11.6,0.5,4.0,7.2,62.1,3.9,33.9,with_crossfit,Mon
+2026-01-06,51,77.8,129,100,5,45,4358,9.4,0.2,1.9,5.5,58.9,3.7,39.1,with_crossfit,Tue
+2026-01-07,50,81.3,183,78,11,34,8857,10.5,0.1,0.5,5.0,48.1,5.4,51.4,with_crossfit,Wed
+2026-01-08,44,60.6,91,100,31,18,810,9.5,0.1,1.6,4.9,51.8,4.4,46.6,with_crossfit,Thu
+2026-01-09,41,60.8,104,100,40,25,1056,11.0,1.0,9.0,5.3,47.9,4.7,43.2,with_crossfit,Fri
+2026-01-10,43,72.6,123,100,8,38,5795,9.0,,0.0,5.8,63.8,3.3,36.2,with_crossfit,Sat
+2026-01-11,48,69.3,118,92,14,35,3908,10.2,,0.0,5.8,56.5,4.5,43.5,with_crossfit,Sun
+2026-01-12,49,79.7,128,99,5,41,8201,9.1,0.5,5.9,5.3,58.5,3.2,35.7,with_crossfit,Mon
+2026-01-13,46,80.5,171,69,5,45,6481,9.4,1.3,14.2,4.7,49.6,3.4,36.2,with_crossfit,Tue
+2026-01-14,46,72.3,118,82,10,40,4405,11.2,0.3,3.1,5.8,52.4,5.0,44.5,with_crossfit,Wed
+2026-01-15,47,73.7,172,96,11,37,4386,9.8,,0.0,4.8,49.6,4.9,50.4,with_crossfit,Thu
+2026-01-16,46,78.0,165,96,7,43,6313,9.3,1.4,14.4,4.7,50.4,3.3,35.1,with_crossfit,Fri
+2026-01-17,50,88.1,176,79,5,62,5044,,,,,,,,with_crossfit,Sat
+2026-01-18,47,73.9,133,89,10,40,3587,9.2,,0.0,5.7,61.6,3.5,38.4,with_crossfit,Sun
+2026-01-19,51,73.0,121,90,14,43,2552,10.5,0.3,2.8,6.2,58.9,4.0,38.3,with_crossfit,Mon
+2026-01-20,48,81.5,139,81,5,47,7422,9.7,1.9,19.3,5.0,51.4,2.9,29.3,with_crossfit,Tue
+2026-01-21,52,88.4,185,33,5,51,15957,10.3,1.4,13.9,6.1,58.9,2.8,27.3,with_crossfit,Wed
+2026-01-22,53,79.9,152,70,5,42,7018,9.3,0.1,1.1,5.7,61.0,3.5,38.0,with_crossfit,Thu
+2026-01-23,54,77.4,119,63,5,37,7668,8.1,0.1,0.6,5.3,65.8,2.7,33.6,with_crossfit,Fri
+2026-01-24,52,76.3,116,67,7,38,5888,7.1,0.8,11.7,4.3,60.2,2.0,28.1,with_crossfit,Sat
+2026-01-25,45,70.7,119,93,14,37,2714,12.8,0.4,3.2,8.9,69.4,3.5,27.4,with_crossfit,Sun
+2026-01-26,52,62.9,111,87,20,20,950,9.3,0.5,5.7,6.4,68.3,2.4,26.0,with_crossfit,Mon
+2026-01-27,55,97.4,175,20,5,75,5046,,,,,,,,with_crossfit,Tue
+2026-01-28,56,83.5,150,31,5,53,6387,10.6,1.8,16.5,6.0,56.7,2.8,26.8,with_crossfit,Wed
+2026-01-29,54,76.7,131,54,5,38,5131,8.7,0.9,10.9,5.3,60.6,2.5,28.5,with_crossfit,Thu
+2026-01-30,50,78.7,159,83,5,48,4420,12.4,0.4,3.5,7.1,57.7,4.8,38.8,with_crossfit,Fri
+2026-01-31,56,86.0,121,39,5,53,4566,10.3,0.2,1.6,7.8,76.3,2.3,22.1,with_crossfit,Sat
+2026-02-01,53,78.1,127,75,5,44,5611,8.5,0.7,8.0,4.9,57.7,2.9,34.2,with_crossfit,Sun
+2026-02-02,53,81.4,163,65,5,47,6408,8.4,0.4,4.8,5.7,67.6,2.3,27.6,with_crossfit,Mon
+2026-02-03,55,76.9,115,67,5,43,4527,8.8,,0.0,5.0,57.4,3.8,42.6,with_crossfit,Tue
+2026-02-04,51,67.5,108,69,29,30,1669,10.3,1.0,9.9,6.0,57.9,3.3,32.3,with_crossfit,Wed
+2026-02-05,56,79.2,156,90,5,44,4412,11.6,2.2,19.3,6.6,57.0,2.7,23.7,with_crossfit,Thu
+2026-02-06,57,93.3,172,59,5,63,9915,,,,,,,,with_crossfit,Fri
+2026-02-07,56,73.6,113,61,10,39,3332,10.7,1.3,12.2,6.7,62.8,2.7,25.0,with_crossfit,Sat
+2026-02-08,55,74.5,120,70,15,41,3351,10.7,0.4,4.0,7.4,68.8,2.9,27.1,with_crossfit,Sun
+2026-02-09,56,83.7,133,63,5,50,7149,12.7,2.1,16.6,8.3,65.7,2.3,17.7,with_crossfit,Mon
+2026-02-10,57,76.4,110,52,8,41,2088,3.4,0.3,8.4,3.1,91.6,,0.0,with_crossfit,Tue
+2026-02-11,47,79.7,152,100,5,42,6481,10.3,1.0,9.8,5.0,48.5,4.3,41.7,with_crossfit,Wed
+2026-02-12,54,76.5,150,75,7,39,5803,8.9,0.9,10.4,5.5,62.0,2.5,27.6,with_crossfit,Thu
+2026-02-13,51,79.0,123,76,5,53,6135,8.6,1.2,14.0,3.9,45.4,3.5,40.6,with_crossfit,Fri
+2026-02-14,54,77.8,172,69,6,42,6651,8.6,,0.0,5.5,64.8,3.0,35.2,with_crossfit,Sat
+2026-02-15,53,72.9,131,85,15,35,6336,11.4,1.8,16.1,7.0,61.8,2.5,22.2,with_crossfit,Sun
+2026-02-16,51,82.2,183,79,5,47,8314,9.5,1.1,11.1,5.0,53.0,3.4,36.0,with_crossfit,Mon
+2026-02-17,55,82.5,190,64,5,46,6539,9.5,0.6,6.5,4.6,48.5,4.3,45.0,with_crossfit,Tue
+2026-02-18,51,64.3,77,71,32,21,,,,,,,,,without_crossfit,Wed
+2026-02-19,57,94.8,108,40,7,67,5588,,,,,,,,without_crossfit,Thu
+2026-02-20,53,70.3,110,82,7,34,4319,7.2,0.4,5.8,4.8,66.5,2.0,27.7,without_crossfit,Fri
+2026-02-21,48,77.4,123,100,6,38,7048,8.2,1.0,12.2,4.9,59.3,2.3,28.5,without_crossfit,Sat
+2026-02-22,48,76.8,123,82,5,50,9428,8.9,0.4,4.9,4.9,55.2,3.6,39.9,without_crossfit,Sun
+2026-02-23,55,89.3,145,48,5,57,15213,6.9,0.8,12.3,3.3,47.2,2.8,40.4,without_crossfit,Mon
+2026-02-24,56,87.6,179,52,5,49,14997,9.7,2.4,24.5,5.5,56.1,1.9,19.4,without_crossfit,Tue
+2026-02-25,57,95.2,186,37,5,49,27351,7.5,1.4,17.9,4.3,57.7,1.8,24.3,without_crossfit,Wed
+2026-02-26,55,85.8,171,58,5,33,10662,7.9,0.9,11.0,3.8,47.8,3.3,41.2,without_crossfit,Thu
+2026-02-27,,0.0,,,,,,,,,,,,,without_crossfit,Fri
+2026-02-28,,0.0,,,,,,,,,,,,,without_crossfit,Sat
+2026-03-01,,0.0,,,,,,,,,,,,,without_crossfit,Sun
+2026-03-02,,0.0,,,,,,,,,,,,,without_crossfit,Mon
+2026-03-03,57,82.2,109,16,5,48,4948,,,,,,,,without_crossfit,Tue
+2026-03-04,51,75.4,113,72,6,35,8374,9.6,1.6,16.5,5.1,53.0,2.9,30.5,without_crossfit,Wed
+2026-03-05,51,71.2,125,78,14,34,5258,9.6,0.9,9.8,6.0,62.7,2.6,27.5,without_crossfit,Thu
+2026-03-06,50,66.6,114,90,32,27,3649,9.8,0.7,7.0,7.0,70.8,2.2,22.2,without_crossfit,Fri
+2026-03-07,55,81.4,125,78,5,67,453,11.3,1.6,14.1,6.7,58.8,3.1,27.1,without_crossfit,Sat
+2026-03-08,57,79.6,103,23,6,58,95,,,,,,,,without_crossfit,Sun
+2026-03-09,58,84.1,121,25,5,42,9336,,,,,,,,without_crossfit,Mon
+2026-03-10,53,78.0,120,56,5,36,7160,8.5,1.8,21.3,5.2,61.8,1.4,16.9,without_crossfit,Tue
+2026-03-11,45,61.4,111,100,5,20,2896,10.3,1.4,14.0,4.4,43.3,4.4,42.8,without_crossfit,Wed
+2026-03-12,46,58.5,94,100,50,22,903,10.5,1.8,17.0,5.9,55.9,2.9,27.1,without_crossfit,Thu
+`;
+filename='elyssa-daily-timeline.csv';
+}else{
+content=`hour,avg_body_battery,avg_stress,avg_heart_rate
+0,63.1,35.5,74.4
+1,67.4,32.8,72.6
+2,70.7,31.1,71.4
+3,73.9,30.3,70.9
+4,76.9,30.5,71.1
+5,79.0,32.9,72.8
+6,79.8,36.5,75.0
+7,79.1,43.7,79.1
+8,77.2,50.3,82.8
+9,73.2,56.8,86.6
+10,68.9,61.9,89.3
+11,64.7,62.3,89.7
+12,59.9,62.7,90.0
+13,55.9,62.9,90.0
+14,51.5,63.8,90.4
+15,47.0,62.5,89.7
+16,43.1,66.8,91.9
+17,41.2,70.7,94.1
+18,39.4,68.9,93.2
+19,38.4,65.2,90.9
+20,39.5,64.2,90.7
+21,44.6,60.6,88.5
+22,51.4,50.1,82.6
+23,58.0,41.3,77.6
+`;
+filename='healthy-hourly-averages.csv';
+}
+const blob=new Blob([content],{type:'text/csv'});
+const a=document.createElement('a');
+a.href=URL.createObjectURL(blob);
+a.download=filename;
+a.click();
+URL.revokeObjectURL(a.href);
+}
+
+// Glossary tooltips
+(function(){
+const terms=[
+{re:/Body Battery/g,tip:"Garmin metric estimating energy reserves (0–100) from heart rate variability, stress, and sleep. Elyssa: 75 morning, 13 evening. Healthy: 84 morning, 38 evening.",anchor:"def-body-battery"},
+{re:/\bcrash(?:es|ed)?\b/gi,tip:"A day where Body Battery starts below 50 — the system failed to recharge overnight. Elyssa had 15 in 140 days. Every one maps to cycle phase + activity + exercise status.",anchor:"def-crash"},
+{re:/\bdrain rate\b/gi,tip:"How fast Body Battery drops per hour while awake. Elyssa: 4.7/hr regardless of activity. Healthy: 2–3/hr at rest, 5–6/hr active.",anchor:"def-drain-rate"},
+{re:/\bdaytime recharge\b/gi,tip:"When Body Battery rises during waking hours. Healthy: 90% of days. Elyssa: 36% of days. Her system rarely enters recovery while awake.",anchor:"def-daytime-recharge"},
+{re:/\bPOTS\b/g,tip:"Postural Orthostatic Tachycardia Syndrome. Blood vessels don’t squeeze properly when upright, so the heart races to compensate. Elyssa’s HR jumps 37 bpm from sleep to standing (healthy: 18).",anchor:"def-pots"},
+{re:/\bHR swing\b/gi,tip:"Difference between sleeping and daytime heart rate. Elyssa: 37 bpm. Healthy: 18 bpm. Represents the cardiovascular cost of being upright.",anchor:"def-hr-swing"},
+{re:/\bcascad(?:e|es|ing)\b/gi,tip:"A self-reinforcing decline: one bad day impairs that night’s recovery, so the next day starts lower, recovers less, and digs deeper. Doesn’t stop on its own. Worst: Feb 23–Mar 9, 6 crashes in 11 days.",anchor:"def-cascade"},
+{re:/\bexercise buffer\b/gi,tip:"The protective effect of daily exercise. Muscles pump blood her veins can’t. Lowers next-day HR by 6 bpm. Without it, crash rate jumps from 7.4% to 31.6%.",anchor:"def-exercise-buffer"},
+{re:/\bco-op\b/gi,tip:"Tuesday homeschool co-op starting Jan 27. Garmin classified it as HIIT (avg HR 123–136, max 199) — just from standing and managing children.",anchor:"def-coop"},
+{re:/\bresting heart rate\b/gi,tip:"Lowest HR during sleep. Elyssa: avg 51 bpm. Low RHR suggests neuropathic/hypovolemic POTS, not hyperadrenergic.",anchor:"def-rhr"},
+{re:/\bdeep sleep\b/gi,tip:"Sleep phase for physical repair. Normal: 15–25%. Elyssa: 9.9%. Half her nights are below 10%.",anchor:"def-deep-sleep"},
+{re:/\bovulatory\b(?! phase)/gi,tip:"Cycle days ~15–21. Her worst phase: BB starts 15 pts lower, 3pm HR hits 97.5, crash rate 17.1%.",anchor:"def-cycle-phases"},
+{re:/\bfollicular\b(?! phase)/gi,tip:"Cycle days ~8–14. Her best phase: BB starts at 85, crash rate 4.3%.",anchor:"def-cycle-phases"},
+];
+// Process each section except definitions
+document.querySelectorAll('.tc:not(#tab-defs)').forEach(section=>{
+const tagged=new Set();
+const walker=document.createTreeWalker(section,NodeFilter.SHOW_TEXT,{
+acceptNode:n=>{
+const p=n.parentElement;
+if(!p) return NodeFilter.FILTER_REJECT;
+const tag=p.tagName;
+if(tag==='SCRIPT'||tag==='STYLE'||tag==='CANVAS') return NodeFilter.FILTER_REJECT;
+if(p.classList.contains('dfn')||p.closest('.dfn')) return NodeFilter.FILTER_REJECT;
+if(tag==='BUTTON'||tag==='SELECT'||tag==='OPTION') return NodeFilter.FILTER_REJECT;
+if(p.closest('.iv-t')||p.closest('h2')||p.closest('h3')) return NodeFilter.FILTER_REJECT;
+return NodeFilter.FILTER_ACCEPT;
+}
+});
+const nodes=[];
+while(walker.nextNode()) nodes.push(walker.currentNode);
+nodes.forEach(node=>{
+let html=node.textContent;
+let changed=false;
+terms.forEach(t=>{
+if(tagged.has(t.anchor)) return;
+const m=html.match(t.re);
+if(m){
+html=html.replace(t.re,function(match){
+if(tagged.has(t.anchor)) return match;
+tagged.add(t.anchor);
+changed=true;
+return '<span class="dfn" data-tip="'+t.tip+'" data-anchor="'+t.anchor+'">'+match+'</span>';
+});
+}
+});
+if(changed){
+const span=document.createElement('span');
+span.innerHTML=html;
+node.parentNode.replaceChild(span,node);
+}
+});
+});
+// Click handler
+document.addEventListener('click',e=>{
+const dfn=e.target.closest('.dfn');
+if(!dfn) return;
+const anchor=dfn.dataset.anchor;
+switchTab('defs');
+setTimeout(()=>{
+const el=document.getElementById(anchor);
+if(el) el.scrollIntoView({behavior:'smooth',block:'center'});
+},100);
+});
+})();
+</script>
+</body>
+</html>
