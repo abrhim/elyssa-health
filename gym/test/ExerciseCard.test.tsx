@@ -50,35 +50,40 @@ function makeResult(overrides: Partial<ExerciseResult> = {}): ExerciseResult {
   };
 }
 
-function renderCard(results: ExerciseResult[] = []) {
+const noop = () => {};
+
+function renderCard(results: ExerciseResult[] = [], expanded = false) {
   return render(
     <MemoryRouter>
-      <ExerciseCard exercise={mockExercise} results={results} />
+      <ExerciseCard
+        exercise={mockExercise}
+        results={results}
+        expanded={expanded}
+        onToggle={noop}
+        onSaved={noop}
+      />
     </MemoryRouter>,
   );
 }
 
 describe("ExerciseCard", () => {
-  it("shows 'Log Sets' when no results exist (pending)", () => {
+  it("shows 'Not started' status when no results exist", () => {
     renderCard([]);
-    expect(screen.getByText("Log Sets")).toBeInTheDocument();
     expect(screen.getByText("Not started")).toBeInTheDocument();
   });
 
-  it("shows 'Edit Sets' when results already logged (in_progress)", () => {
+  it("shows 'In progress' status when some results logged", () => {
     renderCard([makeResult()]);
-    expect(screen.getByText("Edit Sets")).toBeInTheDocument();
     expect(screen.getByText("In progress")).toBeInTheDocument();
   });
 
-  it("shows 'Edit Sets' and 'Logged' when all sets done", () => {
+  it("shows 'Logged' status when all sets done", () => {
     const results = [
       makeResult({ id: "r-1", set_number: 1 }),
       makeResult({ id: "r-2", set_number: 2 }),
       makeResult({ id: "r-3", set_number: 3 }),
     ];
     renderCard(results);
-    expect(screen.getByText("Edit Sets")).toBeInTheDocument();
     expect(screen.getByText("Logged")).toBeInTheDocument();
   });
 
@@ -91,5 +96,16 @@ describe("ExerciseCard", () => {
   it("shows previous performance when available", () => {
     renderCard([]);
     expect(screen.getByText(/Prev: 25 lbs/)).toBeInTheDocument();
+  });
+
+  it("shows set inputs when expanded", () => {
+    renderCard([], true);
+    expect(screen.getByText("Save Sets")).toBeInTheDocument();
+    expect(screen.getByText("+ Add Set")).toBeInTheDocument();
+  });
+
+  it("shows done results when collapsed", () => {
+    renderCard([makeResult()]);
+    expect(screen.getByText("Done: 30×12")).toBeInTheDocument();
   });
 });

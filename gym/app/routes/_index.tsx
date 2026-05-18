@@ -32,17 +32,17 @@ export default function TodayWorkout() {
   const [results, setResults] = useState<ExerciseResult[]>([]);
   const [schedule, setSchedule] = useState<WeekSchedule[]>([]);
   const [loading, setLoading] = useState(true);
+  const [expandedExId, setExpandedExId] = useState<string | null>(null);
+  const [savedMessage, setSavedMessage] = useState<string | null>(null);
 
-  const savedExercise = searchParams.get("saved");
   const workoutFinished = searchParams.get("finished") === "true";
   const confirmationMessage = workoutFinished
     ? "Workout finished and saved"
-    : savedExercise
-      ? `${savedExercise} sets saved`
-      : null;
+    : savedMessage;
 
   function dismissConfirmation() {
-    setSearchParams({}, { replace: true });
+    setSavedMessage(null);
+    if (workoutFinished) setSearchParams({}, { replace: true });
   }
 
   const today = new Date().toISOString().split("T")[0];
@@ -63,6 +63,17 @@ export default function TodayWorkout() {
     load();
     return () => { cancelled = true; };
   }, [today]);
+
+  async function handleSaved(exerciseName: string) {
+    setExpandedExId(null);
+    setSavedMessage(`${exerciseName} sets saved`);
+    if (plan) {
+      const planData = await fetchTodayPlan(today);
+      if (planData.plan) {
+        setResults(planData.results);
+      }
+    }
+  }
 
   if (loading) {
     return (
@@ -121,6 +132,9 @@ export default function TodayWorkout() {
               key={ex.id}
               exercise={ex}
               results={exerciseResults(ex.exercise_id)}
+              expanded={expandedExId === ex.id}
+              onToggle={() => setExpandedExId(expandedExId === ex.id ? null : ex.id)}
+              onSaved={handleSaved}
             />
           ))}
         </div>
