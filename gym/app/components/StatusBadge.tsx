@@ -1,7 +1,7 @@
 const STATUS_CONFIG = {
   done: { dot: "bg-status-done", text: "text-status-done", label: "Logged" },
   in_progress: { dot: "bg-status-progress", text: "text-status-progress", label: "In progress" },
-  pending: { dot: "bg-status-pending", text: "text-zinc-500", label: "Not started" },
+  pending: { dot: "bg-status-pending", text: "text-ink-muted", label: "Not started" },
 };
 
 export function StatusBadge({ status }: { status: "pending" | "in_progress" | "done" }) {
@@ -16,7 +16,7 @@ export function StatusBadge({ status }: { status: "pending" | "in_progress" | "d
 
 export function WorkoutStatusBadge({ status }: { status: string }) {
   const styles: Record<string, string> = {
-    planned: "bg-zinc-800 text-zinc-400",
+    planned: "bg-cream-dark text-ink-muted",
     completed: "bg-accent/15 text-accent",
     partial: "bg-note/15 text-note",
     skipped: "bg-phase-menstrual/15 text-phase-menstrual",

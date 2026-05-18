@@ -60,7 +60,7 @@ export default function History() {
     return (
       <>
         <div className="flex-1 flex items-center justify-center">
-          <div className="text-zinc-500 text-sm">Loading workout history…</div>
+          <div className="text-ink-muted text-sm">Loading workout history…</div>
         </div>
         <Nav />
       </>
@@ -72,12 +72,12 @@ export default function History() {
       <div className="flex-1 overflow-y-auto">
         <div className="px-4 pt-5 pb-3">
           <h1 className="text-xl font-bold">History</h1>
-          <p className="text-xs text-zinc-500 mt-1">Last 14 days</p>
+          <p className="text-xs text-ink-muted mt-1">Last 14 days</p>
         </div>
 
         <div className="px-4 pb-4 space-y-2">
           {workouts.length === 0 && (
-            <div className="text-center text-zinc-500 text-sm py-12">No workouts yet</div>
+            <div className="text-center text-ink-muted text-sm py-12">No workouts yet</div>
           )}
 
           {workouts.map((w) => {
@@ -90,15 +90,15 @@ export default function History() {
             });
 
             return (
-              <div key={w.id} className="bg-zinc-900 border border-zinc-800 rounded-xl overflow-hidden">
+              <div key={w.id} className="bg-white border border-cream-border rounded-xl overflow-hidden">
                 <button
                   onClick={() => toggleExpand(w.id)}
-                  className="w-full text-left px-4 py-3 active:bg-zinc-800 transition-colors"
+                  className="w-full text-left px-4 py-3 active:bg-cream-dark transition-colors"
                 >
                   <div className="flex items-center justify-between">
                     <div>
                       <div className="text-sm font-medium">{dateLabel}</div>
-                      <div className="text-xs text-zinc-500 mt-0.5">
+                      <div className="text-xs text-ink-muted mt-0.5">
                         {SESSION_LABELS[w.session_type] ?? w.session_type} · {exCount} exercises
                       </div>
                     </div>
@@ -107,7 +107,7 @@ export default function History() {
                 </button>
 
                 {detail && (
-                  <div className="border-t border-zinc-800 px-4 py-2 space-y-0.5">
+                  <div className="border-t border-cream-border px-4 py-2 space-y-0.5">
                     {detail.exercises.map((pe) => {
                       const exResults = detail.results.filter((r) => r.exercise_id === pe.exercise_id).sort((a, b) => a.set_number - b.set_number);
                       const workingSets = exResults.filter((r) => r.set_type === "working" || r.set_type === "test_set");
@@ -116,35 +116,35 @@ export default function History() {
                         <div key={pe.id}>
                           <button
                             onClick={(e) => { e.stopPropagation(); setExpandedExercise(isExpanded ? null : pe.id); }}
-                            className="w-full flex items-center justify-between py-1.5 active:bg-zinc-800/50"
+                            className="w-full flex items-center justify-between py-1.5 active:bg-cream-dark/50"
                           >
-                            <span className="text-sm text-zinc-300">{pe.exercise.name}</span>
-                            <span className="text-xs text-zinc-500">
+                            <span className="text-sm text-ink-light">{pe.exercise.name}</span>
+                            <span className="text-xs text-ink-muted">
                               {workingSets.length > 0
                                 ? workingSets.map((s) => `${s.weight ?? 0}×${s.reps}`).join(", ")
                                 : "—"}
                             </span>
                           </button>
                           {isExpanded && exResults.length > 0 && (
-                            <div className="ml-2 mb-2 pl-2 border-l border-zinc-700 space-y-1">
+                            <div className="ml-2 mb-2 pl-2 border-l border-cream-border space-y-1">
                               {exResults.map((r) => (
                                 <div key={r.id} className="flex items-center gap-3 text-xs">
-                                  <span className="text-zinc-600 w-4">{r.set_number}</span>
-                                  <span className={`w-10 ${r.set_type === "working" ? "text-zinc-400" : "text-zinc-600"}`}>
+                                  <span className="text-ink-muted w-4">{r.set_number}</span>
+                                  <span className={`w-10 ${r.set_type === "working" ? "text-ink-muted" : "text-ink-muted"}`}>
                                     {r.set_type === "working" ? "Work" : r.set_type === "warmup" ? "Warm" : r.set_type === "test_set" ? "Test" : r.set_type === "drop_set" ? "Drop" : r.set_type}
                                   </span>
-                                  <span className="text-zinc-300">{r.weight ?? 0} lbs</span>
-                                  <span className="text-zinc-300">×{r.reps}</span>
-                                  {r.rpe && <span className="text-zinc-500">RPE {r.rpe}</span>}
+                                  <span className="text-ink-light">{r.weight ?? 0} lbs</span>
+                                  <span className="text-ink-light">×{r.reps}</span>
+                                  {r.rpe && <span className="text-ink-muted">RPE {r.rpe}</span>}
                                 </div>
                               ))}
-                              <div className="text-xs text-zinc-600 pt-0.5">
+                              <div className="text-xs text-ink-muted pt-0.5">
                                 Vol: {workingSets.reduce((sum, s) => sum + (s.weight ?? 0) * s.reps, 0).toLocaleString()} lbs
                               </div>
                             </div>
                           )}
                           {isExpanded && exResults.length === 0 && (
-                            <div className="ml-2 mb-2 pl-2 border-l border-zinc-700 text-xs text-zinc-600">
+                            <div className="ml-2 mb-2 pl-2 border-l border-cream-border text-xs text-ink-muted">
                               No sets logged
                             </div>
                           )}

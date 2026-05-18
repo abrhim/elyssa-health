@@ -1,21 +1,27 @@
 @import "tailwindcss";
 
 @theme {
-  --color-phase-menstrual: #c97a7a;
-  --color-phase-follicular: #7aaa8c;
-  --color-phase-ovulatory: #c4a46d;
-  --color-phase-luteal: #9b8ab8;
-  --color-layer-1: #7a9bb5;
-  --color-layer-2: #8a8a8f;
-  --color-status-done: #7aaa8c;
-  --color-status-progress: #c4a46d;
-  --color-status-pending: #3f3f46;
-  --color-accent: #7aaa8c;
-  --color-accent-hover: #6b9b7d;
-  --color-accent-active: #5c8c6e;
-  --color-action: #7a9bb5;
-  --color-action-hover: #6b8ca6;
-  --color-note: #c4a46d;
+  --color-cream: #faf6f1;
+  --color-cream-dark: #f0ebe4;
+  --color-cream-border: #e2ddd6;
+  --color-ink: #2c2825;
+  --color-ink-light: #5c5650;
+  --color-ink-muted: #8a837b;
+  --color-phase-menstrual: #b5696b;
+  --color-phase-follicular: #5e9572;
+  --color-phase-ovulatory: #b08f4f;
+  --color-phase-luteal: #8574a3;
+  --color-layer-1: #5e87a0;
+  --color-layer-2: #7a7a7f;
+  --color-status-done: #5e9572;
+  --color-status-progress: #b08f4f;
+  --color-status-pending: #c8c2ba;
+  --color-accent: #5e9572;
+  --color-accent-hover: #4f8663;
+  --color-accent-active: #407754;
+  --color-action: #5e87a0;
+  --color-action-hover: #4f7891;
+  --color-note: #b08f4f;
 }
 
 body {

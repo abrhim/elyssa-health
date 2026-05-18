@@ -18,11 +18,11 @@ export function EmptyState({ schedule }: { schedule: WeekSchedule[] }) {
   return (
     <div className="flex-1 flex flex-col items-center justify-center px-6 py-12">
       <div className="text-4xl mb-4">🏋️</div>
-      <h2 className="text-lg font-semibold text-zinc-300 mb-2">No workout planned</h2>
-      <p className="text-sm text-zinc-500 text-center mb-8">Ask Claude to build today's workout</p>
+      <h2 className="text-lg font-semibold text-ink-light mb-2">No workout planned</h2>
+      <p className="text-sm text-ink-muted text-center mb-8">Ask Claude to build today's workout</p>
 
       <div className="w-full max-w-sm">
-        <h3 className="text-xs font-medium text-zinc-500 uppercase tracking-wider mb-3">This Week</h3>
+        <h3 className="text-xs font-medium text-ink-muted uppercase tracking-wider mb-3">This Week</h3>
         <div className="space-y-1">
           {schedule.map((s) => {
             const dow = s.day_of_week % 7;
@@ -30,7 +30,7 @@ export function EmptyState({ schedule }: { schedule: WeekSchedule[] }) {
             return (
               <div
                 key={s.day_of_week}
-                className={`flex justify-between items-center px-3 py-2 rounded-lg text-sm ${isToday ? "bg-zinc-800 text-zinc-100 font-medium" : "text-zinc-500"}`}
+                className={`flex justify-between items-center px-3 py-2 rounded-lg text-sm ${isToday ? "bg-cream-dark text-ink font-medium" : "text-ink-muted"}`}
               >
                 <span>{DAY_NAMES[dow]}{isToday ? " (today)" : ""}</span>
                 <span>{SESSION_LABELS[s.session_type] ?? s.session_type}</span>

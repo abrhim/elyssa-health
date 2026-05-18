@@ -8,7 +8,7 @@ const PHASE_COLORS: Record<string, string> = {
 
 export function PhaseBadge({ phase, day }: { phase: string | null; day: number | null }) {
   if (!phase) return null;
-  const colors = PHASE_COLORS[phase] ?? "bg-zinc-800 text-zinc-400";
+  const colors = PHASE_COLORS[phase] ?? "bg-cream-dark text-ink-muted";
   const label = phase.charAt(0).toUpperCase() + phase.slice(1);
   return (
     <span className={`px-2.5 py-1 rounded-full text-xs font-medium ${colors}`}>

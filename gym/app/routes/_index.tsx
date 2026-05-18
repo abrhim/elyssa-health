@@ -67,7 +67,7 @@ export default function TodayWorkout() {
   if (loading) {
     return (
       <div className="flex-1 flex items-center justify-center">
-        <div className="text-zinc-500 text-sm">Loading today's workout…</div>
+        <div className="text-ink-muted text-sm">Loading today's workout…</div>
       </div>
     );
   }
@@ -96,18 +96,18 @@ export default function TodayWorkout() {
         {/* Header */}
         <div className="px-4 pt-5 pb-3">
           <div className="flex items-center gap-2 flex-wrap mb-2">
-            <span className="px-3 py-1 bg-zinc-800 rounded-lg text-sm font-semibold">
+            <span className="px-3 py-1 bg-cream-dark rounded-lg text-sm font-semibold">
               {SESSION_LABELS[plan.session_type] ?? plan.session_type}
             </span>
             <PhaseBadge phase={plan.cycle_phase} day={plan.cycle_day} />
             {plan.training_mode && (
-              <span className="px-2 py-1 bg-zinc-800/50 rounded text-xs text-zinc-400">
+              <span className="px-2 py-1 bg-cream-dark rounded text-xs text-ink-muted">
                 {MODE_LABELS[plan.training_mode] ?? plan.training_mode}
               </span>
             )}
           </div>
           {plan.rir_target && (
-            <div className="text-xs text-zinc-500 mb-1">RIR target: {plan.rir_target}</div>
+            <div className="text-xs text-ink-muted mb-1">RIR target: {plan.rir_target}</div>
           )}
           {plan.coach_notes && (
             <div className="text-sm text-note/80 italic whitespace-pre-line">{plan.coach_notes.replace(/\\n/g, "\n")}</div>

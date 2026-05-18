@@ -113,7 +113,7 @@ export default function LogExercise() {
   if (loading || !exercise) {
     return (
       <div className="flex-1 flex items-center justify-center">
-        <div className="text-zinc-500 text-sm">Loading exercise…</div>
+        <div className="text-ink-muted text-sm">Loading exercise…</div>
       </div>
     );
   }
@@ -127,14 +127,14 @@ export default function LogExercise() {
   return (
     <div className="flex-1 flex flex-col">
       {/* Header */}
-      <div className="px-4 pt-5 pb-3 border-b border-zinc-800">
-        <button onClick={() => navigate("/")} className="inline-flex items-center gap-1.5 text-sm text-zinc-400 mb-2 py-1 active:text-zinc-200">
+      <div className="px-4 pt-5 pb-3 border-b border-cream-border">
+        <button onClick={() => navigate("/")} className="inline-flex items-center gap-1.5 text-sm text-ink-muted mb-2 py-1 active:text-ink">
           <span className="text-base leading-none">‹</span> Back to workout
         </button>
         <h1 className="text-xl font-bold">{ex.name}</h1>
-        <div className="text-sm text-zinc-400 mt-1">Goal: {goalStr}</div>
+        <div className="text-sm text-ink-muted mt-1">Goal: {goalStr}</div>
         {exercise.previous_weight && (
-          <div className="text-xs text-zinc-500 mt-0.5">
+          <div className="text-xs text-ink-muted mt-0.5">
             Prev: {exercise.previous_weight} lbs{perHand} × {exercise.previous_reps}
             {exercise.previous_best_note && ` — ${exercise.previous_best_note}`}
           </div>
@@ -144,8 +144,8 @@ export default function LogExercise() {
         )}
         {ex.form_cues && ex.form_cues.length > 0 && (
           <details className="mt-2">
-            <summary className="text-xs text-zinc-500 cursor-pointer">Form cues</summary>
-            <ul className="text-xs text-zinc-400 mt-1 space-y-0.5 pl-4 list-disc">
+            <summary className="text-xs text-ink-muted cursor-pointer">Form cues</summary>
+            <ul className="text-xs text-ink-light mt-1 space-y-0.5 pl-4 list-disc">
               {ex.form_cues.map((cue, i) => <li key={i}>{cue}</li>)}
             </ul>
           </details>
@@ -154,7 +154,7 @@ export default function LogExercise() {
 
       {/* Set Labels */}
       <div className="px-4 pt-3">
-        <div className="flex items-center gap-2 text-[10px] text-zinc-600 uppercase tracking-wider">
+        <div className="flex items-center gap-2 text-[10px] text-ink-muted uppercase tracking-wider">
           <div className="w-8 text-center">#</div>
           <div className="w-20">Type</div>
           <div className="flex-1 text-center">Weight</div>
@@ -181,14 +181,14 @@ export default function LogExercise() {
         <button
           type="button"
           onClick={addSet}
-          className="w-full py-2.5 mt-2 border border-dashed border-zinc-700 rounded-xl text-sm text-zinc-500 active:bg-zinc-800"
+          className="w-full py-2.5 mt-2 border border-dashed border-cream-border rounded-xl text-sm text-ink-muted active:bg-cream-dark"
         >
           + Add Set
         </button>
       </div>
 
       {/* Save */}
-      <div className="px-4 py-4 border-t border-zinc-800">
+      <div className="px-4 py-4 border-t border-cream-border">
         {error && (
           <div className="flex items-start gap-2 bg-phase-menstrual/10 border border-phase-menstrual/30 rounded-lg px-3 py-2.5 mb-3">
             <span className="text-phase-menstrual text-sm shrink-0">!</span>
@@ -198,7 +198,7 @@ export default function LogExercise() {
         <button
           onClick={handleSave}
           disabled={saving}
-          className="w-full py-3.5 bg-action hover:bg-action-hover active:bg-action-hover disabled:bg-zinc-700 disabled:text-zinc-500 text-white font-semibold rounded-xl text-base transition-colors"
+          className="w-full py-3.5 bg-action hover:bg-action-hover active:bg-action-hover disabled:bg-cream-dark disabled:text-ink-muted text-white font-semibold rounded-xl text-base transition-colors"
         >
           {saving ? "Saving sets…" : "Save Sets and Go Back"}
         </button>
