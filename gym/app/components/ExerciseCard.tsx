@@ -67,7 +67,7 @@ export function ExerciseCard({ exercise, results }: Props) {
       )}
 
       {exercise.coaching_note && (
-        <div className="text-xs text-note mt-1.5 italic whitespace-pre-line">
+        <div className="text-xs text-ink-light mt-1.5 italic whitespace-pre-line">
           {exercise.coaching_note.replace(/\\n/g, "\n")}
         </div>
       )}

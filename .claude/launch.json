@@ -4,8 +4,8 @@
     {
       "name": "gym",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "--prefix", "gym", "dev"],
-      "port": 5173
+      "runtimeArgs": ["run", "--prefix", "gym", "dev", "--", "--port", "5174"],
+      "port": 5174
     }
   ]
 }

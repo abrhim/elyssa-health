@@ -140,7 +140,7 @@ export default function LogExercise() {
           </div>
         )}
         {exercise.coaching_note && (
-          <div className="text-xs text-note/80 mt-1 italic whitespace-pre-line">{exercise.coaching_note.replace(/\\n/g, "\n")}</div>
+          <div className="text-xs text-ink-light mt-1 italic whitespace-pre-line">{exercise.coaching_note.replace(/\\n/g, "\n")}</div>
         )}
         {ex.form_cues && ex.form_cues.length > 0 && (
           <details className="mt-2">

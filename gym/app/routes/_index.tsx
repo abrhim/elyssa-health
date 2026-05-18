@@ -110,7 +110,7 @@ export default function TodayWorkout() {
             <div className="text-xs text-ink-muted mb-1">RIR target: {plan.rir_target}</div>
           )}
           {plan.coach_notes && (
-            <div className="text-sm text-note/80 italic whitespace-pre-line">{plan.coach_notes.replace(/\\n/g, "\n")}</div>
+            <div className="text-sm text-ink-light italic whitespace-pre-line">{plan.coach_notes.replace(/\\n/g, "\n")}</div>
           )}
         </div>
 
