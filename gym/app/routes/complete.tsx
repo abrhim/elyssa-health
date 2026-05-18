@@ -39,7 +39,7 @@ export default function CompleteWorkout() {
   if (loading || !plan) {
     return (
       <div className="flex-1 flex items-center justify-center">
-        <div className="text-ink-muted text-sm">Loading workout summary…</div>
+        <div className="text-ink-muted text-base">Loading workout summary…</div>
       </div>
     );
   }
@@ -70,11 +70,11 @@ export default function CompleteWorkout() {
   return (
     <div className="flex-1 flex flex-col">
       <div className="px-4 pt-5 pb-3 border-b border-cream-border">
-        <button onClick={() => navigate("/")} className="inline-flex items-center gap-1.5 text-sm text-ink-muted mb-2 py-1 active:text-ink">
-          <span className="text-base leading-none">‹</span> Back to workout
+        <button onClick={() => navigate("/")} className="inline-flex items-center gap-1.5 text-base text-ink-muted mb-2 py-1 active:text-ink min-h-[44px]">
+          <span className="text-lg leading-none">‹</span> Back to workout
         </button>
-        <h1 className="text-xl font-bold">Workout Summary</h1>
-        <div className="flex gap-4 mt-2 text-sm">
+        <h1 className="text-2xl font-bold leading-tight">Workout Summary</h1>
+        <div className="flex gap-4 mt-2 text-base">
           <div>
             <span className="text-ink-muted">Exercises: </span>
             <span className="text-ink">{exercisesDone}/{plan.planned_exercises.length}</span>
@@ -90,13 +90,13 @@ export default function CompleteWorkout() {
         {exerciseSummary.map((e) => (
           <div key={e.name} className="flex items-center justify-between py-2 border-b border-cream-border/50">
             <div>
-              <div className="text-sm font-medium">{e.name}</div>
-              <div className="text-xs text-ink-muted">
+              <div className="text-base font-medium">{e.name}</div>
+              <div className="text-sm text-ink-muted">
                 {e.loggedSets}/{e.goalSets} sets
                 {e.bestWeight > 0 && ` · best ${e.bestWeight} lbs`}
               </div>
             </div>
-            <div className="text-xs text-ink-muted">
+            <div className="text-sm text-ink-muted">
               {e.volume > 0 ? `${e.volume.toLocaleString()} lbs` : "—"}
             </div>
           </div>
@@ -109,7 +109,7 @@ export default function CompleteWorkout() {
             <button
               key={s}
               onClick={() => setStatus(s)}
-              className={`flex-1 py-2 rounded-lg text-sm font-medium transition-colors ${
+              className={`flex-1 py-2.5 rounded-lg text-base font-medium transition-colors min-h-[44px] ${
                 status === s
                   ? s === "completed" ? "bg-accent text-white"
                     : s === "partial" ? "bg-note text-white"
@@ -127,32 +127,32 @@ export default function CompleteWorkout() {
           onChange={(e) => setNotes(e.target.value)}
           placeholder="Notes (optional)"
           rows={2}
-          className="w-full bg-cream-card border border-cream-border rounded-xl px-3 py-2.5 text-sm text-ink placeholder:text-ink-muted focus:border-action focus:outline-none resize-none"
+          className="w-full bg-cream-card border border-cream-border rounded-xl px-3 py-2.5 text-base text-ink placeholder:text-ink-muted focus:border-action focus:outline-none resize-none"
         />
 
         {!confirming ? (
           <button
             onClick={() => setConfirming(true)}
-            className="w-full py-3.5 bg-accent hover:bg-accent-hover active:bg-accent-active text-white font-semibold rounded-xl text-base transition-colors"
+            className="w-full py-3.5 bg-accent hover:bg-accent-hover active:bg-accent-active text-white font-semibold rounded-xl text-base transition-colors min-h-[44px]"
           >
             Finish Workout
           </button>
         ) : (
           <div className="space-y-2">
-            <p className="text-sm text-ink-muted text-center">
+            <p className="text-base text-ink-muted text-center">
               Mark workout as {status}? This cannot be undone.
             </p>
             <div className="flex gap-2">
               <button
                 onClick={() => setConfirming(false)}
-                className="flex-1 py-3 bg-cream-dark text-ink-light font-medium rounded-xl text-sm active:bg-cream-border"
+                className="flex-1 py-3 bg-cream-dark text-ink-light font-medium rounded-xl text-base active:bg-cream-border min-h-[44px]"
               >
                 Go Back
               </button>
               <button
                 onClick={handleComplete}
                 disabled={saving}
-                className="flex-1 py-3 bg-accent hover:bg-accent-hover active:bg-accent-active disabled:bg-cream-dark text-white font-semibold rounded-xl text-sm transition-colors"
+                className="flex-1 py-3 bg-accent hover:bg-accent-hover active:bg-accent-active disabled:bg-cream-dark text-white font-semibold rounded-xl text-base transition-colors min-h-[44px]"
               >
                 {saving ? "Saving…" : "Yes, Finish"}
               </button>

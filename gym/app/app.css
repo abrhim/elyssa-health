@@ -27,6 +27,8 @@
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  font-size: 18px;
+  line-height: 1.625;
   -webkit-tap-highlight-color: transparent;
   -webkit-font-smoothing: antialiased;
 }

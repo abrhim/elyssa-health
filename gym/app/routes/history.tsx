@@ -60,7 +60,7 @@ export default function History() {
     return (
       <>
         <div className="flex-1 flex items-center justify-center">
-          <div className="text-ink-muted text-sm">Loading workout history…</div>
+          <div className="text-ink-muted text-base">Loading workout history…</div>
         </div>
         <Nav />
       </>
@@ -71,13 +71,13 @@ export default function History() {
     <>
       <div className="flex-1 overflow-y-auto">
         <div className="px-4 pt-5 pb-3">
-          <h1 className="text-xl font-bold">History</h1>
-          <p className="text-xs text-ink-muted mt-1">Last 14 days</p>
+          <h1 className="text-2xl font-bold leading-tight">History</h1>
+          <p className="text-sm text-ink-muted mt-1">Last 14 days</p>
         </div>
 
         <div className="px-4 pb-4 space-y-2">
           {workouts.length === 0 && (
-            <div className="text-center text-ink-muted text-sm py-12">No workouts yet</div>
+            <div className="text-center text-ink-muted text-base py-12">No workouts yet</div>
           )}
 
           {workouts.map((w) => {
@@ -95,10 +95,10 @@ export default function History() {
                   onClick={() => toggleExpand(w.id)}
                   className="w-full text-left px-4 py-3 active:bg-cream-dark transition-colors"
                 >
-                  <div className="flex items-center justify-between">
+                  <div className="flex items-center justify-between min-h-[44px]">
                     <div>
-                      <div className="text-sm font-medium">{dateLabel}</div>
-                      <div className="text-xs text-ink-muted mt-0.5">
+                      <div className="text-base font-medium">{dateLabel}</div>
+                      <div className="text-sm text-ink-muted mt-0.5">
                         {SESSION_LABELS[w.session_type] ?? w.session_type} · {exCount} exercises
                       </div>
                     </div>
@@ -116,10 +116,10 @@ export default function History() {
                         <div key={pe.id}>
                           <button
                             onClick={(e) => { e.stopPropagation(); setExpandedExercise(isExpanded ? null : pe.id); }}
-                            className="w-full flex items-center justify-between py-1.5 active:bg-cream-dark/50"
+                            className="w-full flex items-center justify-between py-2 active:bg-cream-dark/50 min-h-[44px]"
                           >
-                            <span className="text-sm text-ink-light">{pe.exercise.name}</span>
-                            <span className="text-xs text-ink-muted">
+                            <span className="text-base text-ink-light">{pe.exercise.name}</span>
+                            <span className="text-sm text-ink-muted">
                               {workingSets.length > 0
                                 ? workingSets.map((s) => `${s.weight ?? 0}×${s.reps}`).join(", ")
                                 : "—"}
@@ -128,7 +128,7 @@ export default function History() {
                           {isExpanded && exResults.length > 0 && (
                             <div className="ml-2 mb-2 pl-2 border-l border-cream-border space-y-1">
                               {exResults.map((r) => (
-                                <div key={r.id} className="flex items-center gap-3 text-xs">
+                                <div key={r.id} className="flex items-center gap-3 text-sm">
                                   <span className="text-ink-muted w-4">{r.set_number}</span>
                                   <span className={`w-10 ${r.set_type === "working" ? "text-ink-muted" : "text-ink-muted"}`}>
                                     {r.set_type === "working" ? "Work" : r.set_type === "warmup" ? "Warm" : r.set_type === "test_set" ? "Test" : r.set_type === "drop_set" ? "Drop" : r.set_type}
@@ -138,13 +138,13 @@ export default function History() {
                                   {r.rpe && <span className="text-ink-muted">RPE {r.rpe}</span>}
                                 </div>
                               ))}
-                              <div className="text-xs text-ink-muted pt-0.5">
+                              <div className="text-sm text-ink-muted pt-0.5">
                                 Vol: {workingSets.reduce((sum, s) => sum + (s.weight ?? 0) * s.reps, 0).toLocaleString()} lbs
                               </div>
                             </div>
                           )}
                           {isExpanded && exResults.length === 0 && (
-                            <div className="ml-2 mb-2 pl-2 border-l border-cream-border text-xs text-ink-muted">
+                            <div className="ml-2 mb-2 pl-2 border-l border-cream-border text-sm text-ink-muted">
                               No sets logged
                             </div>
                           )}

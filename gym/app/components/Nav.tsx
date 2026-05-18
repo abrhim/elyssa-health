@@ -1,7 +1,7 @@
 import { NavLink } from "react-router";
 
 export function Nav() {
-  const base = "flex-1 flex flex-col items-center gap-1 py-3 text-xs transition-colors";
+  const base = "flex-1 flex flex-col items-center gap-1 py-3 text-sm transition-colors min-h-[44px]";
   const active = "text-action";
   const inactive = "text-ink-muted";
 

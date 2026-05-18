@@ -67,7 +67,7 @@ export default function TodayWorkout() {
   if (loading) {
     return (
       <div className="flex-1 flex items-center justify-center">
-        <div className="text-ink-muted text-sm">Loading today's workout…</div>
+        <div className="text-ink-muted text-base">Loading today's workout…</div>
       </div>
     );
   }
@@ -96,21 +96,21 @@ export default function TodayWorkout() {
         {/* Header */}
         <div className="px-4 pt-5 pb-3">
           <div className="flex items-center gap-2 flex-wrap mb-2">
-            <span className="px-3 py-1 bg-cream-dark rounded-lg text-sm font-semibold">
+            <span className="px-3 py-1.5 bg-cream-dark rounded-lg text-base font-semibold">
               {SESSION_LABELS[plan.session_type] ?? plan.session_type}
             </span>
             <PhaseBadge phase={plan.cycle_phase} day={plan.cycle_day} />
             {plan.training_mode && (
-              <span className="px-2 py-1 bg-cream-dark rounded text-xs text-ink-muted">
+              <span className="px-2.5 py-1 bg-cream-dark rounded text-sm text-ink-muted">
                 {MODE_LABELS[plan.training_mode] ?? plan.training_mode}
               </span>
             )}
           </div>
           {plan.rir_target && (
-            <div className="text-xs text-ink-muted mb-1">RIR target: {plan.rir_target}</div>
+            <div className="text-sm text-ink-muted mb-1">RIR target: {plan.rir_target}</div>
           )}
           {plan.coach_notes && (
-            <div className="text-sm text-ink-light italic whitespace-pre-line">{plan.coach_notes.replace(/\\n/g, "\n")}</div>
+            <div className="text-base text-ink-light leading-relaxed whitespace-pre-line">{plan.coach_notes.replace(/\\n/g, "\n")}</div>
           )}
         </div>
 
@@ -130,7 +130,7 @@ export default function TodayWorkout() {
           <div className="px-4 pb-6">
             <button
               onClick={() => navigate("/complete")}
-              className="w-full py-3.5 bg-accent hover:bg-accent-hover active:bg-accent-active text-white font-semibold rounded-xl text-base transition-colors"
+              className="w-full py-3.5 bg-accent hover:bg-accent-hover active:bg-accent-active text-white font-semibold rounded-xl text-base transition-colors min-h-[44px]"
             >
               Review and Finish Workout
             </button>

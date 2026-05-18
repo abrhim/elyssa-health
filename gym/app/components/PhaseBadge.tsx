@@ -11,7 +11,7 @@ export function PhaseBadge({ phase, day }: { phase: string | null; day: number |
   const colors = PHASE_COLORS[phase] ?? "bg-cream-dark text-ink-muted";
   const label = phase.charAt(0).toUpperCase() + phase.slice(1);
   return (
-    <span className={`px-2.5 py-1 rounded-full text-xs font-medium ${colors}`}>
+    <span className={`px-2.5 py-1.5 rounded-full text-sm font-medium ${colors}`}>
       {label}{day ? ` Day ${day}` : ""}
     </span>
   );

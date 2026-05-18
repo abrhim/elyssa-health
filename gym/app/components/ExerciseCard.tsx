@@ -37,11 +37,11 @@ export function ExerciseCard({ exercise, results }: Props) {
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 mb-1">
             <StatusBadge status={status} />
-            <h3 className="font-semibold text-base truncate">{ex.name}</h3>
+            <h3 className="font-semibold text-lg leading-snug truncate">{ex.name}</h3>
           </div>
-          <div className="flex items-center gap-2 text-xs text-ink-muted mb-2">
+          <div className="flex items-center gap-2 text-sm text-ink-muted mb-2">
             <span>{ex.muscle_group}</span>
-            <span className={`px-1.5 py-0.5 rounded text-[10px] font-medium ${exercise.layer === 1 ? "bg-layer-1/20 text-layer-1" : "bg-layer-2/20 text-layer-2"}`}>
+            <span className={`px-1.5 py-0.5 rounded text-xs font-medium ${exercise.layer === 1 ? "bg-layer-1/20 text-layer-1" : "bg-layer-2/20 text-layer-2"}`}>
               L{exercise.layer}
             </span>
             {ex.is_seated && <span className="text-accent/70">seated</span>}
@@ -49,34 +49,34 @@ export function ExerciseCard({ exercise, results }: Props) {
         </div>
       </div>
 
-      <div className="text-sm text-ink mb-1">
+      <div className="text-base text-ink mb-1">
         <span className="text-ink-muted">Goal: </span>{goalStr}
       </div>
 
       {exercise.previous_weight && (
-        <div className="text-xs text-ink-muted">
+        <div className="text-sm text-ink-muted">
           Prev: {exercise.previous_weight} lbs{perHand} × {exercise.previous_reps}
           {exercise.previous_best_note && ` — ${exercise.previous_best_note}`}
         </div>
       )}
 
       {actualStr && (
-        <div className="text-sm text-accent mt-1.5">
+        <div className="text-base text-accent mt-1.5 font-medium">
           Done: {actualStr}
         </div>
       )}
 
       {exercise.coaching_note && (
-        <div className="text-xs text-ink-light mt-1.5 italic whitespace-pre-line">
+        <div className="text-sm text-ink-light mt-2 font-medium leading-relaxed whitespace-pre-line">
           {exercise.coaching_note.replace(/\\n/g, "\n")}
         </div>
       )}
 
-      <div className="mt-3 pt-2.5 border-t border-cream-border flex items-center justify-between">
-        <span className="text-xs text-action font-medium">
+      <div className="mt-3 pt-2.5 border-t border-cream-border flex items-center justify-between min-h-[44px]">
+        <span className="text-sm text-action font-medium">
           {status === "pending" ? "Log Sets" : "Edit Sets"}
         </span>
-        <span className="text-action text-sm">›</span>
+        <span className="text-action text-base">›</span>
       </div>
     </button>
   );
