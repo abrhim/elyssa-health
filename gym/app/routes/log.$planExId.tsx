@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router";
 import { fetchPlannedExercise, fetchExistingSets, saveSets } from "~/lib/queries";
 import type { PlannedExercise, ExerciseResult, SetInput as SetInputType } from "~/lib/types";
+import { isTimed, formatDuration } from "~/lib/format";
 import { SetInput } from "~/components/SetInput";
 
 export default function LogExercise() {
@@ -34,12 +35,13 @@ export default function LogExercise() {
           rpe: r.rpe,
         })));
       } else {
+        const timed = isTimed(ex);
         const numSets = ex.goal_sets ?? 3;
         setSets(
           Array.from({ length: numSets }, (_, i) => ({
             set_number: i + 1,
-            type: "working",
-            weight: ex.goal_weight,
+            type: timed ? "timed" : "working",
+            weight: timed ? null : ex.goal_weight,
             reps: null,
             rpe: null,
           })),
@@ -63,12 +65,13 @@ export default function LogExercise() {
   }
 
   function addSet() {
+    const timed = exercise ? isTimed(exercise) : false;
     setSets((prev) => [
       ...prev,
       {
         set_number: prev.length + 1,
-        type: "working",
-        weight: exercise?.goal_weight ?? null,
+        type: timed ? "timed" : "working",
+        weight: timed ? null : (exercise?.goal_weight ?? null),
         reps: null,
         rpe: null,
       },
@@ -77,25 +80,29 @@ export default function LogExercise() {
 
   async function handleSave() {
     if (!exercise) return;
+    const timed = isTimed(exercise);
     const validSets = sets.filter((s) => s.reps !== null && s.reps > 0);
     if (validSets.length === 0) {
-      setError("Fill in the reps for at least one set, then tap Save");
+      setError(timed
+        ? "Enter a duration for at least one set, then tap Save"
+        : "Fill in the reps for at least one set, then tap Save");
       return;
     }
 
     setSaving(true);
     setError(null);
 
+    const ex = exercise.exercise;
     const rows = validSets.map((s) => ({
       exercise_id: exercise.exercise_id,
       workout_plan_id: exercise.workout_plan_id,
       planned_exercise_id: exercise.id,
       workout_date: new Date().toISOString().split("T")[0],
       set_number: s.set_number,
-      set_type: s.type,
-      weight: s.weight,
+      set_type: timed ? "timed" : "working",
+      weight: timed ? null : s.weight,
       reps: s.reps!,
-      rpe: s.rpe,
+      rpe: timed ? null : s.rpe,
       is_per_hand: exercise.is_per_hand,
     }));
 
@@ -119,10 +126,17 @@ export default function LogExercise() {
   }
 
   const ex = exercise.exercise;
+  const timed = isTimed(exercise);
   const perHand = exercise.is_per_hand ? "/hand" : "";
-  const goalStr = exercise.goal_weight
-    ? `${exercise.goal_weight} lbs${perHand} × ${exercise.goal_reps} × ${exercise.goal_sets}`
-    : `${exercise.goal_reps} × ${exercise.goal_sets}`;
+
+  let goalStr: string;
+  if (timed) {
+    goalStr = exercise.coaching_note ?? `${exercise.goal_sets ?? 1} sets`;
+  } else {
+    goalStr = exercise.goal_weight
+      ? `${exercise.goal_weight} lbs${perHand} × ${exercise.goal_reps} × ${exercise.goal_sets}`
+      : `${exercise.goal_reps} × ${exercise.goal_sets}`;
+  }
 
   return (
     <div className="flex-1 flex flex-col">
@@ -132,14 +146,25 @@ export default function LogExercise() {
           <span className="text-lg leading-none">‹</span> Back to workout
         </button>
         <h1 className="text-2xl font-bold leading-tight">{ex.name}</h1>
-        <div className="text-base text-ink-muted mt-1">Goal: {goalStr}</div>
+
+        {/* Exercise metadata */}
+        <div className="flex items-center gap-2 text-sm text-ink-muted mt-1">
+          <span>{ex.muscle_group}</span>
+          <span className={`px-1.5 py-0.5 rounded text-xs font-medium ${exercise.layer === 1 ? "bg-layer-1/20 text-layer-1" : "bg-layer-2/20 text-layer-2"}`}>
+            L{exercise.layer}
+          </span>
+          {ex.equipment !== "bodyweight" && <span>{ex.equipment}</span>}
+          {ex.is_seated && <span className="text-accent/70">seated</span>}
+        </div>
+
+        <div className="text-base text-ink-muted mt-1.5">Goal: {goalStr}</div>
         {exercise.previous_weight && (
           <div className="text-sm text-ink-muted mt-0.5">
             Prev: {exercise.previous_weight} lbs{perHand} × {exercise.previous_reps}
             {exercise.previous_best_note && ` — ${exercise.previous_best_note}`}
           </div>
         )}
-        {exercise.coaching_note && (
+        {!timed && exercise.coaching_note && (
           <div className="text-sm text-ink-light mt-1.5 font-medium leading-relaxed whitespace-pre-line">{exercise.coaching_note.replace(/\\n/g, "\n")}</div>
         )}
         {ex.form_cues && ex.form_cues.length > 0 && (
@@ -155,12 +180,17 @@ export default function LogExercise() {
       {/* Set Labels */}
       <div className="px-4 pt-3">
         <div className="flex items-center gap-2 text-xs text-ink-muted uppercase tracking-wide">
-          <div className="w-8 text-center">#</div>
-          <div className="w-20">Type</div>
-          <div className="flex-1 text-center">Weight</div>
-          <div className="w-14 text-center">Reps</div>
-          <div className="w-12 text-center">RPE</div>
-          {sets.length > 1 && <div className="w-8" />}
+          <div className="w-7 text-center">#</div>
+          {timed ? (
+            <div className="flex-1 text-center">Duration</div>
+          ) : (
+            <>
+              <div className="flex-1 text-center">Weight</div>
+              <div className="w-16 text-center">Reps</div>
+              <div className="w-14 text-center">RPE</div>
+            </>
+          )}
+          {sets.length > 1 && <div className="w-10" />}
         </div>
       </div>
 
@@ -172,6 +202,7 @@ export default function LogExercise() {
             set={set}
             index={i}
             equipment={ex.equipment}
+            timed={timed}
             onChange={handleChange}
             onRemove={handleRemove}
             canRemove={sets.length > 1}

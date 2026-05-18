@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { fetchHistory, fetchWorkoutDetail } from "~/lib/queries";
 import type { WorkoutPlan, PlannedExercise, ExerciseResult } from "~/lib/types";
+import { formatDuration } from "~/lib/format";
 import { WorkoutStatusBadge } from "~/components/StatusBadge";
 import { Nav } from "~/components/Nav";
 
@@ -110,7 +111,8 @@ export default function History() {
                   <div className="border-t border-cream-border px-4 py-2 space-y-0.5">
                     {detail.exercises.map((pe) => {
                       const exResults = detail.results.filter((r) => r.exercise_id === pe.exercise_id).sort((a, b) => a.set_number - b.set_number);
-                      const workingSets = exResults.filter((r) => r.set_type === "working" || r.set_type === "test_set");
+                      const workingSets = exResults.filter((r) => r.set_type === "working" || r.set_type === "test_set" || r.set_type === "timed");
+                      const isTimedEx = exResults.some((r) => r.set_type === "timed");
                       const isExpanded = expandedExercise === pe.id;
                       return (
                         <div key={pe.id}>
@@ -121,7 +123,9 @@ export default function History() {
                             <span className="text-base text-ink-light">{pe.exercise.name}</span>
                             <span className="text-sm text-ink-muted">
                               {workingSets.length > 0
-                                ? workingSets.map((s) => `${s.weight ?? 0}×${s.reps}`).join(", ")
+                                ? isTimedEx
+                                  ? workingSets.map((s) => formatDuration(s.reps)).join(", ")
+                                  : workingSets.map((s) => `${s.weight ?? 0}×${s.reps}`).join(", ")
                                 : "—"}
                             </span>
                           </button>

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import { fetchTodayPlan, completeWorkout } from "~/lib/queries";
 import type { WorkoutPlan, PlannedExercise, ExerciseResult } from "~/lib/types";
+import { isTimed, formatDuration } from "~/lib/format";
 
 export default function CompleteWorkout() {
   const navigate = useNavigate();
@@ -45,22 +46,20 @@ export default function CompleteWorkout() {
   }
 
   const exerciseSummary = plan.planned_exercises.map((pe) => {
+    const timed = isTimed(pe);
     const exResults = results.filter((r) => r.exercise_id === pe.exercise_id);
-    const workingSets = exResults.filter((r) => r.set_type === "working" || r.set_type === "test_set");
-    const volume = workingSets.reduce((sum, s) => sum + (s.weight ?? 0) * s.reps, 0);
+    const countableSets = exResults.filter((r) => r.set_type === "working" || r.set_type === "test_set" || r.set_type === "timed");
+    const volume = timed ? 0 : countableSets.reduce((sum, s) => sum + (s.weight ?? 0) * s.reps, 0);
     return {
       name: pe.exercise.name,
+      timed,
       goalSets: pe.goal_sets ?? 3,
-      loggedSets: workingSets.length,
+      loggedSets: countableSets.length,
       volume: Math.round(volume),
-      bestWeight: workingSets.reduce((max, s) => Math.max(max, s.weight ?? 0), 0),
-      bestReps: workingSets.length > 0
-        ? workingSets.reduce((best, s) => {
-            if ((s.weight ?? 0) > (best.weight ?? 0)) return s;
-            if ((s.weight ?? 0) === (best.weight ?? 0) && s.reps > best.reps) return s;
-            return best;
-          }, workingSets[0])
-        : null,
+      bestWeight: timed ? 0 : countableSets.reduce((max, s) => Math.max(max, s.weight ?? 0), 0),
+      bestDuration: timed && countableSets.length > 0
+        ? countableSets.reduce((max, s) => Math.max(max, s.reps), 0)
+        : 0,
     };
   });
 
@@ -94,10 +93,13 @@ export default function CompleteWorkout() {
               <div className="text-sm text-ink-muted">
                 {e.loggedSets}/{e.goalSets} sets
                 {e.bestWeight > 0 && ` · best ${e.bestWeight} lbs`}
+                {e.timed && e.bestDuration > 0 && ` · best ${formatDuration(e.bestDuration)}`}
               </div>
             </div>
             <div className="text-sm text-ink-muted">
-              {e.volume > 0 ? `${e.volume.toLocaleString()} lbs` : "—"}
+              {e.timed
+                ? (e.loggedSets > 0 ? `${formatDuration(e.bestDuration)}` : "—")
+                : (e.volume > 0 ? `${e.volume.toLocaleString()} lbs` : "—")}
             </div>
           </div>
         ))}

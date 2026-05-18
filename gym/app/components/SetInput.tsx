@@ -1,33 +1,65 @@
+import { useState } from "react";
 import type { SetInput as SetInputType } from "~/lib/types";
+import { formatDuration, parseDuration } from "~/lib/format";
 
 interface Props {
   set: SetInputType;
   index: number;
   equipment: string;
+  timed: boolean;
   onChange: (index: number, field: keyof SetInputType, value: number | string | null) => void;
   onRemove: (index: number) => void;
   canRemove: boolean;
 }
 
-export function SetInput({ set, index, equipment, onChange, onRemove, canRemove }: Props) {
+export function SetInput({ set, index, equipment, timed, onChange, onRemove, canRemove }: Props) {
   const step = equipment === "dumbbell" ? 2.5 : 5;
+  const [durationText, setDurationText] = useState(
+    set.reps ? formatDuration(set.reps) : "",
+  );
+
+  function handleDurationChange(text: string) {
+    setDurationText(text);
+    const seconds = parseDuration(text);
+    onChange(index, "reps", seconds);
+  }
+
+  if (timed) {
+    return (
+      <div className="flex items-center gap-2 py-2.5">
+        <div className="w-7 text-center text-sm text-ink-muted shrink-0">
+          {set.set_number}
+        </div>
+
+        <div className="flex-1">
+          <input
+            type="text"
+            inputMode="numeric"
+            value={durationText}
+            onChange={(e) => handleDurationChange(e.target.value)}
+            placeholder="m:ss"
+            className="w-full h-11 bg-cream-dark border border-cream-border rounded-lg text-center text-base text-ink focus:border-action focus:outline-none"
+          />
+        </div>
+
+        {canRemove && (
+          <button
+            type="button"
+            onClick={() => onRemove(index)}
+            className="w-10 h-11 text-ink-muted text-lg active:text-phase-menstrual shrink-0 min-h-[44px]"
+          >
+            ×
+          </button>
+        )}
+      </div>
+    );
+  }
 
   return (
     <div className="flex items-center gap-1.5 py-2.5">
       <div className="w-7 text-center text-sm text-ink-muted shrink-0">
         {set.set_number}
       </div>
-
-      <select
-        value={set.type}
-        onChange={(e) => onChange(index, "type", e.target.value)}
-        className="bg-cream-dark border border-cream-border rounded-lg px-1.5 py-2.5 text-sm text-ink-light w-[4.5rem] shrink-0"
-      >
-        <option value="working">Work</option>
-        <option value="warmup">Warm</option>
-        <option value="drop_set">Drop</option>
-        <option value="burn_set">Burn</option>
-      </select>
 
       <div className="flex items-center gap-1 flex-1">
         <button

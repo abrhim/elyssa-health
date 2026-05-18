@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router";
 import type { PlannedExercise, ExerciseResult } from "~/lib/types";
+import { isTimed, formatDuration } from "~/lib/format";
 import { StatusBadge } from "./StatusBadge";
 
 interface Props {
@@ -10,22 +11,31 @@ interface Props {
 export function ExerciseCard({ exercise, results }: Props) {
   const navigate = useNavigate();
   const ex = exercise.exercise;
-  const workingSets = results.filter((r) => r.set_type === "working" || r.set_type === "test_set");
+  const timed = isTimed(exercise);
+  const countableSets = results.filter((r) => r.set_type === "working" || r.set_type === "test_set" || r.set_type === "timed");
 
   const status: "pending" | "in_progress" | "done" =
-    workingSets.length === 0 ? "pending"
-    : workingSets.length >= (exercise.goal_sets ?? 3) ? "done"
+    countableSets.length === 0 ? "pending"
+    : countableSets.length >= (exercise.goal_sets ?? 3) ? "done"
     : "in_progress";
 
   const perHand = exercise.is_per_hand ? "/hand" : "";
-  const parts: string[] = [];
-  if (exercise.goal_weight) parts.push(`${exercise.goal_weight} lbs${perHand}`);
-  if (exercise.goal_reps) parts.push(`${exercise.goal_reps}`);
-  if (exercise.goal_sets) parts.push(`${exercise.goal_sets}`);
-  const goalStr = parts.join(" × ") || "See notes";
 
-  const actualStr = workingSets.length > 0
-    ? workingSets.map((s) => `${s.weight ?? 0}×${s.reps}`).join(", ")
+  let goalStr: string;
+  if (timed) {
+    goalStr = exercise.coaching_note ?? `${exercise.goal_sets ?? 1} sets`;
+  } else {
+    const parts: string[] = [];
+    if (exercise.goal_weight) parts.push(`${exercise.goal_weight} lbs${perHand}`);
+    if (exercise.goal_reps) parts.push(`${exercise.goal_reps}`);
+    if (exercise.goal_sets) parts.push(`${exercise.goal_sets}`);
+    goalStr = parts.join(" × ") || "See notes";
+  }
+
+  const actualStr = countableSets.length > 0
+    ? timed
+      ? countableSets.map((s) => formatDuration(s.reps)).join(", ")
+      : countableSets.map((s) => `${s.weight ?? 0}×${s.reps}`).join(", ")
     : null;
 
   return (
