@@ -198,7 +198,7 @@ export default function LogExercise() {
         <button
           onClick={handleSave}
           disabled={saving}
-          className="w-full py-3.5 bg-action hover:bg-action-hover active:bg-action-hover disabled:bg-cream-dark disabled:text-ink-muted text-white font-semibold rounded-xl text-base transition-colors"
+          className="w-full py-3.5 bg-accent hover:bg-accent-hover active:bg-accent-active disabled:bg-cream-dark disabled:text-ink-muted text-white font-semibold rounded-xl text-base transition-colors"
         >
           {saving ? "Saving sets…" : "Save Sets and Go Back"}
         </button>
