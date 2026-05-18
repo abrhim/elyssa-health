@@ -1,0 +1,38 @@
+{
+  "name": "elyssa-gym",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "react-router dev",
+    "build": "react-router build",
+    "preview": "vite preview",
+    "typecheck": "react-router typegen && tsc",
+    "deploy": "npm run build && npx wrangler pages deploy build/client --project-name elyssa-gym",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "@react-router/node": "^7.15.1",
+    "@react-router/serve": "^7.15.1",
+    "@supabase/supabase-js": "^2.101.1",
+    "isbot": "^5",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "react-router": "^7.15.1"
+  },
+  "devDependencies": {
+    "@react-router/dev": "^7.15.1",
+    "@tailwindcss/vite": "^4.2.2",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@types/react": "^19.2.3",
+    "@types/react-dom": "^19.2.3",
+    "jsdom": "^29.1.1",
+    "tailwindcss": "^4.2.2",
+    "typescript": "^5.9.3",
+    "vite": "^7.1.7",
+    "vite-tsconfig-paths": "^4.3.2",
+    "vitest": "^4.1.6",
+    "wrangler": "^4.19.1"
+  }
+}

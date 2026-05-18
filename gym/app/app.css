@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+@theme {
+  --color-phase-menstrual: #c97a7a;
+  --color-phase-follicular: #7aaa8c;
+  --color-phase-ovulatory: #c4a46d;
+  --color-phase-luteal: #9b8ab8;
+  --color-layer-1: #7a9bb5;
+  --color-layer-2: #8a8a8f;
+  --color-status-done: #7aaa8c;
+  --color-status-progress: #c4a46d;
+  --color-status-pending: #3f3f46;
+  --color-accent: #7aaa8c;
+  --color-accent-hover: #6b9b7d;
+  --color-accent-active: #5c8c6e;
+  --color-action: #7a9bb5;
+  --color-action-hover: #6b8ca6;
+  --color-note: #c4a46d;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-font-smoothing: antialiased;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}

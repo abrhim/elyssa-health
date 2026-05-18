@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "gym",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "--prefix", "gym", "dev"],
+      "port": 5173
+    }
+  ]
+}
