@@ -31,7 +31,7 @@ export function ExerciseCard({ exercise, results }: Props) {
   return (
     <button
       onClick={() => navigate(`/log/${exercise.id}`)}
-      className="w-full text-left bg-white border border-cream-border rounded-xl p-4 active:bg-cream-dark transition-colors"
+      className="w-full text-left bg-cream-card border border-cream-border rounded-xl p-4 active:bg-cream-dark transition-colors"
     >
       <div className="flex items-start justify-between gap-2">
         <div className="flex-1 min-w-0">

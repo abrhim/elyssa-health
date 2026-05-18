@@ -127,7 +127,7 @@ export default function CompleteWorkout() {
           onChange={(e) => setNotes(e.target.value)}
           placeholder="Notes (optional)"
           rows={2}
-          className="w-full bg-white border border-cream-border rounded-xl px-3 py-2.5 text-sm text-ink placeholder:text-ink-muted focus:border-action focus:outline-none resize-none"
+          className="w-full bg-cream-card border border-cream-border rounded-xl px-3 py-2.5 text-sm text-ink placeholder:text-ink-muted focus:border-action focus:outline-none resize-none"
         />
 
         {!confirming ? (

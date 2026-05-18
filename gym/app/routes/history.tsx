@@ -90,7 +90,7 @@ export default function History() {
             });
 
             return (
-              <div key={w.id} className="bg-white border border-cream-border rounded-xl overflow-hidden">
+              <div key={w.id} className="bg-cream-card border border-cream-border rounded-xl overflow-hidden">
                 <button
                   onClick={() => toggleExpand(w.id)}
                   className="w-full text-left px-4 py-3 active:bg-cream-dark transition-colors"
